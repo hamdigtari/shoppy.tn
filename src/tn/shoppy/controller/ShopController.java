@@ -57,7 +57,8 @@ public class ShopController implements Initializable {
     
     @FXML
     private TextField searchShopField;
-    
+    @FXML
+    private Label searchShopLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,7 +75,9 @@ public class ShopController implements Initializable {
             shopStockColumn.setCellValueFactory(new PropertyValueFactory<>("taille_stock"));
             shopFiscalityColumn.setCellValueFactory(new PropertyValueFactory<>("matricule_fiscal"));
             shopTable.setItems(shopData);
+            searchShopLabel.setText("Résultat : "+shopList.size()+" ligne(s).");
         } else {
+            searchShopLabel.setText("");
             shopTable.setPlaceholder(new Label("Il n'y a aucun magasin dans la base de données. Veuillez en rajouter! "));
         }
     }
@@ -116,8 +119,8 @@ public class ShopController implements Initializable {
         shopList = shopService.getAllShops();
         shopData.clear();
         shopData.addAll(shopList);
-//        ObservableList<Shop> data = FXCollections.observableArrayList(shopList);
         shopTable.setItems(shopData);
+        searchShopLabel.setText("Résultat : "+shopList.size()+" ligne(s).");
     }
     
     //********************* U **************************//
@@ -213,6 +216,7 @@ public class ShopController implements Initializable {
             shopData.clear();
             shopData.addAll(resultList);
             shopTable.setItems(shopData);   
+            searchShopLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
         }
         else
         {
@@ -229,6 +233,7 @@ public class ShopController implements Initializable {
             shopData.clear();
             shopData.addAll(resultList);
             shopTable.setItems(shopData);
+            searchShopLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
         } else {
             refreshTableData();
         }
