@@ -9,6 +9,8 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -84,5 +86,10 @@
             </children>
         </VBox>
         <Button fx:id="deleteShopButton" layoutX="850.0" layoutY="515.0" mnemonicParsing="false" onAction="#deleteShopAction" text="Supprimer la selection" />
+      <ImageView fx:id="shopHelpImage" fitHeight="32.0" fitWidth="32.0" layoutX="1002.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/help.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

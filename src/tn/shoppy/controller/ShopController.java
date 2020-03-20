@@ -16,7 +16,9 @@ import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import tn.shoppy.model.Shop;
 import tn.shoppy.services.ShopService;
@@ -59,6 +61,10 @@ public class ShopController implements Initializable {
     private TextField searchShopField;
     @FXML
     private Label searchShopLabel;
+    
+    @FXML
+    private ImageView shopHelpImage;
+    private Tooltip helpTooltip;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -80,6 +86,16 @@ public class ShopController implements Initializable {
             searchShopLabel.setText("");
             shopTable.setPlaceholder(new Label("Il n'y a aucun magasin dans la base de données. Veuillez en rajouter! "));
         }
+        
+        helpTooltip = new Tooltip("Vous êtes dans l'onglet de getion de magasin.\n"
+                + "Ici, vous pouvez visualiser la liste des magasins partenaires de Shoppy,\n "
+                + "en rechercher par identifiant, matricule fiscal et biensûr par nom.\n"
+                + "Il est aussi possible d'en ajouter de nouveaux ou de modifier un magasin existant.\n"
+                + "Il est aussi posible de supprimer un ou plusieurs magasins.\n"
+                + "Pour la sélection multiple, il vous suffit de maintenir la touche Ctrl de votre clavier\n"
+                + "enfoncée lors du clic de sélection.");
+//        helpToltip.show();
+        Tooltip.install(shopHelpImage, helpTooltip);
     }
 
     //********************* C **************************//
@@ -238,4 +254,5 @@ public class ShopController implements Initializable {
             refreshTableData();
         }
     }
+    
 }
