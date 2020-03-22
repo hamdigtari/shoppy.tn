@@ -50,7 +50,17 @@ public class OfferController implements Initializable {
     private TableColumn<Offer, Integer> offerIdColumn;
     @FXML
     private TableColumn<Offer, String> offerNameColumn;
-
+    @FXML
+    private TableColumn<Offer, Integer> offerShopColumn;
+    @FXML
+    private TableColumn<Offer, Double> offerRateColumn;
+    @FXML
+    private TableColumn<Offer, String> offerDescriptionColumn;
+    @FXML
+    private TableColumn<Offer, Date> offerStartDateColumn;
+    @FXML
+    private TableColumn<Offer, Date> offerEndDateColumn;
+    
     private ObservableList<Offer> offerData = FXCollections.observableArrayList();
     private ObservableList<Shop> shopData = FXCollections.observableArrayList();
 
@@ -91,7 +101,11 @@ public class OfferController implements Initializable {
             offerData.addAll(offerList);
             offerIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
             offerNameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
-            //TODO complete the table view !!    
+            offerShopColumn.setCellValueFactory(new PropertyValueFactory<>("id_magasin"));
+            offerRateColumn.setCellValueFactory(new PropertyValueFactory<>("taux"));
+            offerDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+            offerStartDateColumn.setCellValueFactory(new PropertyValueFactory<>("date_debut"));
+            offerEndDateColumn.setCellValueFactory(new PropertyValueFactory<>("date_fin"));
             offerTable.setItems(offerData);
             searchOfferLabel.setText("Résultat : " + offerList.size() + " ligne(s).");
         } else {
@@ -170,6 +184,10 @@ public class OfferController implements Initializable {
     }
 
     //********************* U **************************//
+    
+    
+    
+    
     //********************* D **************************//
     @FXML
     public void deleteOfferAction() {
