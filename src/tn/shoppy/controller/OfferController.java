@@ -78,6 +78,19 @@ public class OfferController implements Initializable {
     private ComboBox<Shop> addOfferShopComboBox;  
 
     @FXML
+    private TextField updateOfferNameField;
+    @FXML
+    private TextField updateOfferRateField;
+    @FXML
+    private TextArea updateOfferDescriptionArea;
+    @FXML
+    private DatePicker updateOfferStartDatePicker;
+    @FXML
+    private DatePicker updateOfferEndDatePicker;
+    @FXML
+    private ComboBox<Shop> updateOfferShopComboBox; 
+    
+    @FXML
     private TextField searchOfferField;
     @FXML
     private Label searchOfferLabel;
@@ -120,6 +133,7 @@ public class OfferController implements Initializable {
         if (shopList != null) {
             shopData.addAll(shopList);
             addOfferShopComboBox.getItems().addAll(shopData);
+            updateOfferShopComboBox.getItems().addAll(shopData);
         }
 
         helpTooltip = new Tooltip("Vous êtes dans l'onglet de getion des offres.\n"
@@ -184,10 +198,84 @@ public class OfferController implements Initializable {
     }
 
     //********************* U **************************//
+    @FXML
+    public void selectOneOfferAction(KeyEvent keyEvent) {
+        Offer offer = (Offer) offerTable.getSelectionModel().getSelectedItem();
+        if(offer != null)
+        {
+            fillUpdateForm(offer);
+        }
+    }
+    @FXML
+    public void clickOneShopAction() {
+        Offer offer = (Offer) offerTable.getSelectionModel().getSelectedItem();
+        if(offer != null)
+        {
+            fillUpdateForm(offer);
+        }
+    }
     
-    
-    
-    
+    public void fillUpdateForm(Offer offer)
+    {
+        ShopService shopService= ShopService.getInstance();
+        
+        updateOfferNameField.setText(offer.getNom());
+        updateOfferRateField.setText(String.valueOf(offer.getTaux()));
+        updateOfferDescriptionArea.setText(offer.getDescription());
+        updateOfferStartDatePicker.setValue(LocalDate.parse(offer.getDate_debut().toString()));
+        updateOfferEndDatePicker.setValue(LocalDate.parse(offer.getDate_fin().toString()));
+        updateOfferShopComboBox.setValue(shopService.findOneShopByID(offer.getId_magasin()));    
+        
+    }
+    @FXML
+    public void updateOfferAction() {
+        Offer selection = offerTable.getSelectionModel().getSelectedItem();
+        InputCheck inputCheck = InputCheck.getInstance();
+        if (selection != null)
+        {   
+            Offer offer = new Offer();
+            offer.setId(selection.getId());
+            String newName = updateOfferNameField.getText();
+            String newRate = updateOfferRateField.getText();  
+            String newDescription = updateOfferDescriptionArea.getText();
+            Date newStartDate = Date.valueOf(updateOfferStartDatePicker.getValue());
+            Date newEndDate = Date.valueOf(updateOfferEndDatePicker.getValue());
+            int newShopID = updateOfferShopComboBox.getValue().getId();
+            
+            Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir modifier le magasin: "+selection.getNom()+" de la base de données ?",ButtonType.YES,ButtonType.NO);
+            a.showAndWait();
+            
+            if(a.getResult()==ButtonType.YES){
+                if (inputCheck.testTextInput(newName) && inputCheck.testDoubleInput(newRate)
+                && (inputCheck.testFutureDate(newStartDate, newEndDate)))
+                {
+                    offer.setNom(newName);
+                    offer.setTaux(Double.parseDouble(newRate));
+                    offer.setDescription(newDescription);
+                    offer.setDate_debut(newStartDate);
+                    offer.setDate_fin(newEndDate);
+                    offer.setId_magasin(newShopID);
+                    
+                    OfferService offerService = OfferService.getInstance();
+                    offerService.updateOffer(offer);
+                    refreshTableData();
+                    a.close();
+                }
+                else
+                {
+                    Alert inputAlert = new Alert(Alert.AlertType.ERROR,"Le format de données saisi est incorrect.",ButtonType.OK);
+                }
+            }else{
+            a.close();
+            }
+        }
+        else
+        {   
+            Alert a=new Alert(Alert.AlertType.WARNING,"Aucune séléction !",ButtonType.CLOSE); 
+            a.showAndWait();
+        }
+        refreshTableData();
+    }    
     //********************* D **************************//
     @FXML
     public void deleteOfferAction() {

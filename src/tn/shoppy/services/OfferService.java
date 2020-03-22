@@ -6,10 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import tn.shoppy.model.Offer;
-import tn.shoppy.model.Shop;
 import tn.shoppy.utils.ConnectionDB;
 
 /**
@@ -29,7 +27,6 @@ public class OfferService {
             shopServiceInstance = new OfferService();
         }
         return shopServiceInstance;  
-//        return new ShopService();
     }
         
         
@@ -64,19 +61,12 @@ public class OfferService {
             }
         }
         catch (SQLException ex) {
-//            Logger.getLogger(AvisService.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println(ex.getMessage());
             return null;
         }
     }
         
-    /**
-     *  This method is used to add a shop to the dataBase. Call it in the
-     * ShopController class. 
-     * DISCLAIMER: the input checking must be done BEFORE using this methods.
-     * @param shopName
-     * @param taxID
-     * @return true if the operation is successful and false otherwise.
-     */
+
     public boolean addOffer(Offer offer)
     {
         String query = "INSERT INTO Offre (id_magasin, taux, nom, description, date_debut, date_fin) VALUES (?,?,?,?,?,?)";      
@@ -123,10 +113,10 @@ public class OfferService {
     
     public boolean updateOffer(Offer offer)
     {
-        System.out.println(offer);
         String query = "UPDATE Offre SET id_magasin=?, taux=?, nom=?, description=?, date_debut=?, date_fin=? WHERE id=?";
         try {
-            PreparedStatement pst = cn.prepareStatement(query);
+            PreparedStatement pst = cn.prepareStatement(query);           
+            pst.setInt(7, offer.getId());
             pst.setInt(1, offer.getId_magasin());
             pst.setDouble(2, offer.getTaux());
             pst.setString(3, offer.getNom());
@@ -134,12 +124,12 @@ public class OfferService {
             pst.setDate(5, offer.getDate_debut());
             pst.setDate(6, offer.getDate_fin());
             System.out.println("Update successful !");
-
+            return true;
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
-            return true;
+            return false;
         }       
-        return false;
+        
     }
 //TODO search operations    
 /**

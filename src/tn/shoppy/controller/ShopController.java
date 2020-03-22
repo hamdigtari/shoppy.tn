@@ -180,7 +180,7 @@ public class ShopController implements Initializable {
             shop.setId(selection.getId());
             String newName = updateMagasinNameField.getText();
             String newTaxID = updateMagasinFiscalityField.getText();            
-            Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir modifier le magasin: "+shop.getNom()+" de la base de données ?",ButtonType.YES,ButtonType.NO);
+            Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir modifier le magasin: "+selection.getNom()+" de la base de données ?",ButtonType.YES,ButtonType.NO);
             a.showAndWait();
             if(a.getResult()==ButtonType.YES){
                 if(inputCheck.testNumberInput(newTaxID) && inputCheck.testTextInput(newName))

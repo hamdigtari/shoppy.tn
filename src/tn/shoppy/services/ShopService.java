@@ -243,6 +243,29 @@ public class ShopService {
             return null;
         }
     }
+        
+        public Shop findOneShopByID(int ID) {
+        String query = "SELECT * FROM Magasin WHERE id = " + ID;
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) 
+            {
+                Shop r = new Shop();
+                r.setId(rs.getInt(1));
+                r.setNom(rs.getString(2));
+                r.setTaille_stock(rs.getInt(3));
+                r.setMatricule_fiscal(rs.getInt(4));
+                return r;
+            }
+            return null;
+        } 
+        catch (SQLException ex) 
+        {
+            System.err.println(ex.getMessage());
+            return null;
+        }
+    }        
 
 
 }
