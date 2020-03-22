@@ -74,8 +74,8 @@ public class ShopController implements Initializable {
         ShopService shopService = ShopService.getInstance();
         shopList = shopService.getAllShops();    
         shopData.clear();
-        shopData.addAll(shopList);
-        if (!shopList.isEmpty()) {
+        if (shopList != null) {
+            shopData.addAll(shopList);
             shopIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
             shopNameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
             shopStockColumn.setCellValueFactory(new PropertyValueFactory<>("taille_stock"));
@@ -134,9 +134,17 @@ public class ShopController implements Initializable {
         ShopService shopService = ShopService.getInstance();
         shopList = shopService.getAllShops();
         shopData.clear();
-        shopData.addAll(shopList);
-        shopTable.setItems(shopData);
-        searchShopLabel.setText("Résultat : "+shopList.size()+" ligne(s).");
+        if (shopList != null)
+        {           
+            shopData.addAll(shopList);
+            shopTable.setItems(shopData);
+            searchShopLabel.setText("Résultat : "+shopList.size()+" ligne(s)."); 
+        }
+        else
+        {
+            searchShopLabel.setText("Aucun résultat."); 
+            shopTable.setPlaceholder(new Label("Il n'y a aucun magasin dans la base de données. Veuillez en rajouter! "));
+        }
     }
     
     //********************* U **************************//

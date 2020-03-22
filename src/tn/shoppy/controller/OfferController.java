@@ -20,7 +20,9 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import tn.shoppy.model.Offer;
 import tn.shoppy.model.Shop;
+import tn.shoppy.services.OfferService;
 import tn.shoppy.services.ShopService;
 import tn.shoppy.utils.ConnectionDB;
 import tn.shoppy.utils.InputCheck;
@@ -30,229 +32,96 @@ import tn.shoppy.utils.InputCheck;
  * @author Haroun
  */
 public class OfferController implements Initializable {
+
     Connection cnx = ConnectionDB.getCnx();
 
     /**
      * UI attributes
      */
     @FXML
-    private TableView<Shop> shopTable;    
+    private TableView<Offer> offerTable;
     @FXML
-    private TableColumn<Shop, Integer> shopIdColumn;
+    private TableColumn<Offer, Integer> offerIdColumn;
     @FXML
-    private TableColumn<Shop, String> shopNameColumn;
-    @FXML
-    private TableColumn<Shop, Integer> shopStockColumn;
-    @FXML
-    private TableColumn<Shop, Integer> shopFiscalityColumn;
+    private TableColumn<Offer, String> offerNameColumn;
 
-    private ObservableList<Shop> shopData = FXCollections.observableArrayList();
- 
+    private ObservableList<Offer> offerData = FXCollections.observableArrayList();
+
     @FXML
-    private TextField addMagasinNameField;
+    private TextField searchOfferField;
     @FXML
-    private TextField addMagasinFiscalityField;
+    private Label searchOfferLabel;
+
     @FXML
-    private TextField updateMagasinNameField;
-    @FXML
-    private TextField updateMagasinFiscalityField;
-    
-    @FXML
-    private TextField searchShopField;
-    @FXML
-    private Label searchShopLabel;
-    
-    @FXML
-    private ImageView shopHelpImage;
+    private ImageView offerHelpImage;
     private Tooltip helpTooltip;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        shopTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        
-        List<Shop> shopList = new ArrayList<>();
-        ShopService shopService = ShopService.getInstance();
-        shopList = shopService.getAllShops();    
-        shopData.clear();
-        shopData.addAll(shopList);
-        if (!shopList.isEmpty()) {
-            shopIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-            shopNameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
-            shopStockColumn.setCellValueFactory(new PropertyValueFactory<>("taille_stock"));
-            shopFiscalityColumn.setCellValueFactory(new PropertyValueFactory<>("matricule_fiscal"));
-            shopTable.setItems(shopData);
-            searchShopLabel.setText("Résultat : "+shopList.size()+" ligne(s).");
+        offerTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
+        List<Offer> offerList = new ArrayList<>();
+        OfferService offerService = OfferService.getInstance();
+        offerList = offerService.getAllOffers();
+        offerData.clear();
+        if (offerList != null) {
+            offerData.addAll(offerList);
+            offerIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+            offerNameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
+            //TODO complete the table view !!    
+            offerTable.setItems(offerData);
+            searchOfferLabel.setText("Résultat : " + offerList.size() + " ligne(s).");
         } else {
-            searchShopLabel.setText("");
-            shopTable.setPlaceholder(new Label("Il n'y a aucun magasin dans la base de données. Veuillez en rajouter! "));
+            searchOfferLabel.setText("Aucun résultat.");
+            offerTable.setPlaceholder(new Label("Il n'y a aucune offre dans la base de données. Veuillez en rajouter! "));
         }
-        
-        helpTooltip = new Tooltip("Vous êtes dans l'onglet de getion de magasin.\n"
-                + "Ici, vous pouvez visualiser la liste des magasins partenaires de Shoppy,\n "
-                + "en rechercher par identifiant, matricule fiscal et biensûr par nom.\n"
-                + "Il est aussi possible d'en ajouter de nouveaux ou de modifier un magasin existant.\n"
-                + "Il est aussi posible de supprimer un ou plusieurs magasins.\n"
+
+        helpTooltip = new Tooltip("Vous êtes dans l'onglet de getion des offres.\n"
+                + "Ici, vous pouvez visualiser la liste des offres des partenaires de Shoppy,\n "
+                + "en rechercher par identifiant, nom et biensûr par identifiant de magasin.\n"
+                + "Il est aussi possible d'en ajouter de nouvelles ou de modifier une existante.\n"
+                + "Il est aussi posible d'en supprimer une ou plusieures.\n"
                 + "Pour la sélection multiple, il vous suffit de maintenir la touche Ctrl de votre clavier\n"
                 + "enfoncée lors du clic de sélection.");
-//        helpToltip.show();
-        Tooltip.install(shopHelpImage, helpTooltip);
+        Tooltip.install(offerHelpImage, helpTooltip);
     }
 
     //********************* C **************************//
-    @FXML
-    public void addShopAction() {
-        ShopService shopService = ShopService.getInstance();
-        InputCheck inputCheck = InputCheck.getInstance();
-        String name = addMagasinNameField.getText();
-        String taxID = addMagasinFiscalityField.getText();
-        boolean result = false;
-        
-        if (inputCheck.testTextInput(name) && inputCheck.testNumberInput(taxID))
-        {
-            int intTaxID = Integer.parseInt(taxID);
-            result = shopService.addShop(new Shop(name,intTaxID));
-        }
-        else
-        {
-            System.out.println("WIP : Error dialog => Wrong input format !");
-        }
-        if (result)
-        {
-            refreshTableData();
-            System.out.println("Succès de l'ajout du magasin !");
-        }
-        else
-        {
-            System.out.println("Echec de l'ajout du magasin !");
-            
-        }
-
-    }
     //********************* R **************************//
     public void refreshTableData() {
-        List<Shop> shopList = new ArrayList<>();
-        ShopService shopService = ShopService.getInstance();
-        shopList = shopService.getAllShops();
-        shopData.clear();
-        shopData.addAll(shopList);
-        shopTable.setItems(shopData);
-        searchShopLabel.setText("Résultat : "+shopList.size()+" ligne(s).");
+        List<Offer> offerList = new ArrayList<>();
+        OfferService offerService = OfferService.getInstance();
+        offerList = offerService.getAllOffers();
+        offerData.clear();
+        if (offerList != null) {
+            offerData.addAll(offerList);
+            offerTable.setItems(offerData);
+            searchOfferLabel.setText("Résultat : " + offerList.size() + " ligne(s).");
+        } else {
+            searchOfferLabel.setText("Aucun résultat.");
+            offerTable.setPlaceholder(new Label("Il n'y a aucune offre dans la base de données. Veuillez en rajouter! "));
+        }
     }
-    
+
     //********************* U **************************//
-    @FXML
-    public void selectOneShopAction(KeyEvent keyEvent) {
-        Shop shop = (Shop) shopTable.getSelectionModel().getSelectedItem();
-        if(shop != null)
-        {
-            fillUpdateForm(shop);
-        }
-    }
-    @FXML
-    public void clickOneShopAction() {
-        Shop shop = (Shop) shopTable.getSelectionModel().getSelectedItem();
-        if(shop != null)
-        {
-            fillUpdateForm(shop);
-        }
-    }
-    
-    public void fillUpdateForm(Shop shop)
-    {
-        updateMagasinNameField.setText(shop.getNom());
-        updateMagasinFiscalityField.setText(String.valueOf(shop.getMatricule_fiscal()));   
-    }
-    @FXML
-    public void updateShopAction() {
-        Shop selection = shopTable.getSelectionModel().getSelectedItem();
-        InputCheck inputCheck = InputCheck.getInstance();
-        if (selection != null)
-        {   
-            Shop shop = new Shop();
-            shop.setId(selection.getId());
-            String newName = updateMagasinNameField.getText();
-            String newTaxID = updateMagasinFiscalityField.getText();            
-            Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir modifier le magasin: "+shop.getNom()+" de la base de données ?",ButtonType.YES,ButtonType.NO);
-            a.showAndWait();
-            if(a.getResult()==ButtonType.YES){
-                if(inputCheck.testNumberInput(newTaxID) && inputCheck.testTextInput(newName))
-                {
-                    shop.setNom(newName);
-                    shop.setMatricule_fiscal(Integer.parseInt(newTaxID));
-                    ShopService shopService = ShopService.getInstance();
-                    shopService.updateShop(shop);
-                    a.close();
-                }
-                else
-                {
-                    Alert inputAlert = new Alert(Alert.AlertType.ERROR,"Le format de données saisi est incorrect.",ButtonType.OK);
-                }
-            }else{
-            a.close();
-            }
-        }
-        else
-        {   
-            updateMagasinNameField.setText("");
-            updateMagasinFiscalityField.setText("");  
-            Alert a=new Alert(Alert.AlertType.WARNING,"Aucune séléction !",ButtonType.CLOSE); 
-            a.showAndWait();
-        }
-        refreshTableData();
-    }
-    
     //********************* D **************************//
     @FXML
-    public void deleteShopAction() {
-        ObservableList<Shop> selectedItems = shopTable.getSelectionModel().getSelectedItems();
+    public void deleteOfferAction() {
+        ObservableList<Offer> selectedItems = offerTable.getSelectionModel().getSelectedItems();
         System.out.println(selectedItems);
-        Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir supprimer ces "+ selectedItems.size() +" éléments de la base de données ?",ButtonType.YES,ButtonType.NO);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Êtes-vous sûr(e) de vouloir supprimer ces " + selectedItems.size() + " éléments de la base de données ?", ButtonType.YES, ButtonType.NO);
         a.showAndWait();
-        if(a.getResult()==ButtonType.YES){
-            ShopService shopService = ShopService.getInstance();
-            for(Shop shop : selectedItems)
-            {
-                shopService.deleteShop(shop);
+        if (a.getResult() == ButtonType.YES) {
+            OfferService offerService = OfferService.getInstance();
+            for (Offer offer : selectedItems) {
+                offerService.deleteOffer(offer);
             }
             refreshTableData();
             a.close();
-        }else{
-        a.close();
-        }
-    }
-     
-    //************ SEARCH *********************//
-        public void searchShopAction() {
-        List<Shop> resultList = new ArrayList<>();
-        ShopService shopService = ShopService.getInstance();
-        String input = searchShopField.getText();
-        if(input.length()>0)
-        {
-            resultList = shopService.findShops(input);
-            shopData.clear();
-            shopData.addAll(resultList);
-            shopTable.setItems(shopData);   
-            searchShopLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
-        }
-        else
-        {
-            refreshTableData();
-        }
-    }
-        
-    public void typingSearchShopAction(KeyEvent event) {
-        List<Shop> resultList = new ArrayList<>();
-        ShopService shopService = ShopService.getInstance();
-        String input = searchShopField.getText();
-        if (input.length() > 0) {
-            resultList = shopService.findShops(input);
-            shopData.clear();
-            shopData.addAll(resultList);
-            shopTable.setItems(shopData);
-            searchShopLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
         } else {
-            refreshTableData();
+            a.close();
         }
     }
-    
+
+    //************ SEARCH *********************//
 }

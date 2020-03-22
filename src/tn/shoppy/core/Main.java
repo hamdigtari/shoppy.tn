@@ -24,8 +24,7 @@ public class Main extends Application {
         Connection cnx = cbd.getCnx();
         
         //Debug
-        OfferService os = OfferService.getInstance();
-        os.getAllOffers();
+
         //End debug
         
         launch(args);

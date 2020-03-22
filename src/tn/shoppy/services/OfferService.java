@@ -37,7 +37,6 @@ public class OfferService {
     {
         List<Offer> list = new ArrayList<>();
         int count = 0;
-        System.out.println("tn.shoppy.services.OfferService.getAllOffers()");
         String query="select * from Offre ";
         try{
             Statement st = cn.createStatement();
@@ -52,7 +51,6 @@ public class OfferService {
                 r.setDescription(rs.getString(5));
                 r.setDate_debut(rs.getDate(6));
                 r.setDate_fin(rs.getDate(7));
-                System.out.println(r);
                 list.add(r);
                 count++;
             }
