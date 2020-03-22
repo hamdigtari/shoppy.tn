@@ -72,9 +72,15 @@ public class InputCheck {
         }
     }    
     
-    public boolean testFutureDate(java.sql.Date date)
+    /**
+     * Tests id 'date' is in the future.
+     * @param date
+     * @return true if the parameter is equal or superior to current date
+     *         false otherwise.
+     */
+    public boolean testFutureDate(Date date)
     {
-        return (date.compareTo(new java.sql.Date(System.currentTimeMillis())) >= 0 );
+        return (date.compareTo(new Date(System.currentTimeMillis())) <= 0 );
     }
     
     /**
@@ -86,7 +92,7 @@ public class InputCheck {
      */
     public boolean testFutureDate(Date date1, Date date2)
     {
-        return (date1.compareTo(date2) >= 0 );
+        return (date1.compareTo(date2) <= 0 );
     }
     
 }

@@ -59,7 +59,7 @@ public class Shop {
 
     @Override
     public String toString() {
-        return "Shop{" + "id=" + id + ", nom=" + nom + ", taille_stock=" + taille_stock + ", matricule_fiscal=" + matricule_fiscal + '}';
+        return nom +"  => ID : " + id + ", mattricule fiscal: " + matricule_fiscal;
     }
     
     /**
