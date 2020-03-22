@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import tn.shoppy.controller.DashboardController;
+import tn.shoppy.services.OfferService;
 
 import tn.shoppy.utils.ConnectionDB;
 
@@ -18,11 +19,15 @@ import tn.shoppy.utils.ConnectionDB;
  */
 public class Main extends Application {
     
-//    private DashboardController dashboardController = new DashboardController();
-
     public static void main(String[] args) {
         ConnectionDB cbd = ConnectionDB.getInstance();
         Connection cnx = cbd.getCnx();
+        
+        //Debug
+        OfferService os = OfferService.getInstance();
+        os.getAllOffers();
+        //End debug
+        
         launch(args);
     }
     

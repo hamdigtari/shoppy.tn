@@ -77,8 +77,6 @@ public class ShopService {
      */
     public boolean addShop(Shop shop)
     {
-        System.out.println(shop.getNom() + " " + shop.getMatricule_fiscal());
-
         String query = "INSERT INTO Magasin (nom,matricule_fiscal) VALUES (?,?)";      
         try
         {
