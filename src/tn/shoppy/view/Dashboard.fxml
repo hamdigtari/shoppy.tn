@@ -24,8 +24,11 @@
         </Pane>
         <TabPane prefHeight="648.0" prefWidth="802.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab closable="false" text="Gestion des Magasins">
+                <Tab closable="false" text="Gestion des magasins">
                     <fx:include fx:id="shopTab" source="ShopTab.fxml" />
+                </Tab>
+                <Tab closable="false" disable="false" text="Gestion des offres">
+                    <fx:include fx:id="offerTab" source="OfferTab.fxml" />
                 </Tab>
                 <Tab text="POUR OMAR">
                     <content>
