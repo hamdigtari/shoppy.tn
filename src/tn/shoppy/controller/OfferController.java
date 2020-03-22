@@ -2,6 +2,7 @@ package tn.shoppy.controller;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -11,10 +12,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -46,6 +49,17 @@ public class OfferController implements Initializable {
     private TableColumn<Offer, String> offerNameColumn;
 
     private ObservableList<Offer> offerData = FXCollections.observableArrayList();
+    
+    @FXML
+    private TextField addOfferNameField;
+    @FXML
+    private TextField addOfferTauxField;
+    @FXML
+    private TextArea addOfferDescriptionArea;
+    @FXML
+    private DatePicker addOfferStartDatePicker;
+    @FXML
+    private DatePicker addOfferStartEndPicker;
 
     @FXML
     private TextField searchOfferField;
@@ -87,6 +101,39 @@ public class OfferController implements Initializable {
     }
 
     //********************* C **************************//
+    @FXML
+    public void addOfferAction() {
+        OfferService offerService = OfferService.getInstance();
+        InputCheck inputCheck = InputCheck.getInstance();
+        String name = addOfferNameField.getText();
+        String taux = addOfferTauxField.getText();
+        String description = addOfferDescriptionArea.getText();
+//        Date startDate =  Date.valueOf(addOfferStartDatePicker.getValue());
+//        Date endDate =  Date.valueOf(addOfferStartEndPicker.getValue());
+        
+        boolean result = false;
+        
+        if (inputCheck.testTextInput(name) )
+        {
+            result = offerService.addOffer(new Offer());
+        }
+        else
+        {
+            System.out.println("WIP : Error dialog => Wrong input format !");
+        }
+        if (result)
+        {
+            refreshTableData();
+            System.out.println("Succès de l'ajout de l'offre !");
+        }
+        else
+        {
+            System.out.println("Echec de l'ajout de l'offre !");
+            
+        }
+
+    }
+    
     //********************* R **************************//
     public void refreshTableData() {
         List<Offer> offerList = new ArrayList<>();

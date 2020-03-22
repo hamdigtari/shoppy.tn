@@ -5,6 +5,8 @@
  */
 package tn.shoppy.utils;
 
+import java.sql.Date;
+
 /**
  *
  * @author Haroun
@@ -57,4 +59,34 @@ public class InputCheck {
             return false;
         }
     }
+    
+    public boolean testDoubleInput (String a) {
+        try
+        {
+            Double i = Double.parseDouble(a);
+            return true;
+        }
+        catch ( NumberFormatException e )
+        {
+            return false;
+        }
+    }    
+    
+    public boolean testFutureDate(java.sql.Date date)
+    {
+        return (date.compareTo(new java.sql.Date(System.currentTimeMillis())) >= 0 );
+    }
+    
+    /**
+     * Tests if date1 is after date2
+     * @param date1
+     * @param date2
+     * @return true: if date1 is after or equal to date2
+     *         false: if date1 is before date2. 
+     */
+    public boolean testFutureDate(Date date1, Date date2)
+    {
+        return (date1.compareTo(date2) >= 0 );
+    }
+    
 }

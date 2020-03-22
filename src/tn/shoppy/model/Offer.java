@@ -40,7 +40,7 @@ public class Offer {
     
     public Offer()
     {
-        this(0,0,0.0,"default_name","empty_offer",null,null);
+        this(0,0,0.0,"default_name","empty_offer",new java.sql.Date(System.currentTimeMillis()),new java.sql.Date(System.currentTimeMillis()));
     }
 
     /**
