@@ -105,7 +105,6 @@ public class OfferController implements Initializable {
         shopData.clear();
         if (shopList != null) {
             shopData.addAll(shopList);
-            System.out.println(addOfferShopComboBox);
             addOfferShopComboBox.getItems().addAll(shopData);
         }
 
@@ -135,11 +134,16 @@ public class OfferController implements Initializable {
         if (inputCheck.testTextInput(name) && inputCheck.testDoubleInput(rate)
                 && (inputCheck.testFutureDate(startDate, endDate))) {
             Double rateDouble = Double.parseDouble(rate);
+            if(addOfferShopComboBox.getValue()!= null)
+            {
+                shopID = addOfferShopComboBox.getValue().getId();
+            }
             result = offerService.addOffer(new Offer(0, shopID, rateDouble, name, description, startDate, endDate));
         } else {
             System.out.println("WIP : Error dialog => Wrong input format !");
         }
         if (result) {
+            offerData.clear();
             refreshTableData();
             System.out.println("Succès de l'ajout de l'offre !");
         } else {
