@@ -113,7 +113,7 @@ public class OfferService {
     
     public boolean updateOffer(Offer offer)
     {
-        String query = "UPDATE Offre SET id_magasin=?, taux=?, nom=?, description=?, date_debut=?, date_fin=? WHERE id=?";
+        String query = "UPDATE Offre SET id_magasin=?, taux=?, nom=?, description=?, date_debut=?, date_fin=? WHERE id=? ;";
         try {
             PreparedStatement pst = cn.prepareStatement(query);           
             pst.setInt(7, offer.getId());
@@ -123,7 +123,7 @@ public class OfferService {
             pst.setString(4, offer.getDescription());
             pst.setDate(5, offer.getDate_debut());
             pst.setDate(6, offer.getDate_fin());
-            System.out.println("Update successful !");
+            pst.executeUpdate();
             return true;
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
