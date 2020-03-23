@@ -6,7 +6,7 @@ public class ConnexionDB {
 	private static Connection conn = null;
 	
 	public static Connection getConnection() {
-		return conn!=null?conn:getConnection("pidev","pidev","/|*v3aMx%U");
+		return conn!=null?conn:getConnection("pidev","pidev","PASSWORD");
 	}
 	
 	private static Connection getConnection(String db, String user, String password) {
