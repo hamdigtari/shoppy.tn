@@ -77,9 +77,7 @@ public class ShopService {
      * @return true if the operation is successful and false otherwise.
      */
     public boolean addShop(Shop shop)
-    {
-        System.out.println(shop);
-        
+    {     
         if (shop.getId_vendeur() == 0)
         {
             return addShopNoSeller(shop);
@@ -91,9 +89,7 @@ public class ShopService {
             PreparedStatement pst = cn.prepareStatement(query);
             pst.setString(1, shop.getNom());
             pst.setInt(2, shop.getId_vendeur());
-            pst.setInt(3, shop.getMatricule_fiscal()); 
-            System.out.println("tn.shoppy.services.ShopService.addShop()");
-            System.out.println(query);
+            pst.setInt(3, shop.getMatricule_fiscal());
             pst.executeUpdate();
         }
         catch(SQLException e)
@@ -113,9 +109,7 @@ public class ShopService {
         {
             PreparedStatement pst = cn.prepareStatement(query);
             pst.setString(1, shop.getNom());
-            pst.setInt(2, shop.getMatricule_fiscal()); 
-            System.out.println("tn.shoppy.services.ShopService.addShop()");
-            System.out.println(query);
+            pst.setInt(2, shop.getMatricule_fiscal());
             pst.executeUpdate();
         }
         catch(SQLException e)

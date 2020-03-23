@@ -79,7 +79,6 @@ public class OfferService {
             pst.setString(4, offer.getDescription());
             pst.setDate(5, offer.getDate_debut());
             pst.setDate(6, offer.getDate_fin());
-
             pst.executeUpdate();
             System.out.println("Addition successful !");
         }
@@ -123,6 +122,9 @@ public class OfferService {
             pst.setString(4, offer.getDescription());
             pst.setDate(5, offer.getDate_debut());
             pst.setDate(6, offer.getDate_fin());
+            
+            System.out.println(pst);
+            
             pst.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -131,13 +133,44 @@ public class OfferService {
         }       
         
     }
-//TODO search operations    
+   
 /**
- * Search operations
- * @param input : pattern your are looking for
- * @return 
+ * Searches for offers in the data base with either the name or the description
+ * matching the provided pattern.
+ * @param pattern : pattern your are looking for
+ * @return a list of offers matching the search.
  */
 
+    public List<Offer> findOfferByNameOrDescription(String pattern)
+    {
+        List<Offer> list = new ArrayList<>();
+        int count = 0;
+        String query = "SELECT * FROM Offre WHERE nom like '%"+ pattern +"%' or description like '%"+ pattern +"%'";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                Offer r = new Offer();
+                r.setId(rs.getInt(1));
+                r.setId_magasin(rs.getInt(2));
+                r.setTaux(rs.getDouble(3));
+                r.setNom(rs.getString(4));
+                r.setDescription(rs.getString(5));
+                r.setDate_debut(rs.getDate(6));
+                r.setDate_fin(rs.getDate(7));
+                list.add(r);
+                count++;
+            }
+            if (count == 0) {
+                return null;
+            } else {
+                return list;
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            return null;
+        } 
+    }
 
 
 }

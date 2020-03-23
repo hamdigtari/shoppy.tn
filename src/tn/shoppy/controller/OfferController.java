@@ -296,4 +296,41 @@ public class OfferController implements Initializable {
     }
 
     //************ SEARCH *********************//
+    
+     public void searchOfferAction() {
+        List<Offer> resultList = new ArrayList<>();
+        OfferService offerService = OfferService.getInstance();
+        String input = searchOfferField.getText();
+        if(input.length()>0)
+        {
+            resultList = offerService.findOfferByNameOrDescription(input);
+            offerData.clear();
+            offerData.addAll(resultList);
+            offerTable.setItems(offerData);   
+            searchOfferLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
+        }
+        else
+        {
+            refreshTableData();
+        }
+    }
+     
+     
+        public void typingSearchOfferAction() {
+        List<Offer> resultList = new ArrayList<>();
+        OfferService offerService = OfferService.getInstance();
+        String input = searchOfferField.getText();
+        if(input.length()>0)
+        {
+            resultList = offerService.findOfferByNameOrDescription(input);
+            offerData.clear();
+            offerData.addAll(resultList);
+            searchOfferLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
+            offerTable.setItems(offerData);   
+        }
+        else
+        {
+            refreshTableData();
+        }
+    }
 }

@@ -23,9 +23,9 @@
     <children>
         <Pane prefHeight="51.0" prefWidth="800.0">
             <children>
-                <Button fx:id="searchOfferButton" layoutX="339.0" layoutY="10.0" mnemonicParsing="false" text="Rechercher" />
+                <Button fx:id="searchOfferButton" layoutX="339.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchOfferAction" text="Rechercher" />
                 <Label fx:id="searchOfferLabel" layoutX="441.0" layoutY="15.0" text="Aucune offre ne correspond à votre recherche." />
-                <TextField fx:id="searchOfferField" layoutX="14.0" layoutY="10.0" prefHeight="31.0" prefWidth="315.0" promptText="Trouver un magasin..." />
+                <TextField fx:id="searchOfferField" layoutX="14.0" layoutY="10.0" onAction="#typingSearchOfferAction" prefHeight="31.0" prefWidth="315.0" promptText="Nom ou description d'offre" />
             </children>
         </Pane>
         <TableView fx:id="offerTable" layoutY="53.0" onKeyPressed="#selectOneOfferAction" onMouseClicked="#clickOneShopAction" prefHeight="551.0" prefWidth="802.0">
