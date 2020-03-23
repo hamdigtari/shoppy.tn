@@ -40,6 +40,8 @@ public class ShopController implements Initializable {
     @FXML
     private TableColumn<Shop, Integer> shopIdColumn;
     @FXML
+    private TableColumn<Shop, Integer> shopSellerIdColumn;    
+    @FXML
     private TableColumn<Shop, String> shopNameColumn;
     @FXML
     private TableColumn<Shop, Integer> shopStockColumn;
@@ -77,6 +79,7 @@ public class ShopController implements Initializable {
         if (shopList != null) {
             shopData.addAll(shopList);
             shopIdColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+            shopSellerIdColumn.setCellValueFactory(new PropertyValueFactory<>("id_vendeur"));
             shopNameColumn.setCellValueFactory(new PropertyValueFactory<>("nom"));
             shopStockColumn.setCellValueFactory(new PropertyValueFactory<>("taille_stock"));
             shopFiscalityColumn.setCellValueFactory(new PropertyValueFactory<>("matricule_fiscal"));

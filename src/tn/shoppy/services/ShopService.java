@@ -45,9 +45,10 @@ public class ShopService {
                 
                 Shop r = new Shop();
                 r.setId(rs.getInt(1));
-                r.setNom(rs.getString(2));
-                r.setTaille_stock(rs.getInt(3));
-                r.setMatricule_fiscal(rs.getInt(4));
+                r.setId_vendeur(rs.getInt(2));
+                r.setNom(rs.getString(3));
+                r.setTaille_stock(rs.getInt(4));
+                r.setMatricule_fiscal(rs.getInt(5));
                 
                 list.add(r);
                 count++;
@@ -62,7 +63,7 @@ public class ShopService {
             }
         }
         catch (SQLException ex) {
-//            Logger.getLogger(AvisService.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println(ex.getMessage());
             return null;
         }
     }
@@ -77,12 +78,22 @@ public class ShopService {
      */
     public boolean addShop(Shop shop)
     {
-        String query = "INSERT INTO Magasin (nom,matricule_fiscal) VALUES (?,?)";      
+        System.out.println(shop);
+        
+        if (shop.getId_vendeur() == 0)
+        {
+            return addShopNoSeller(shop);
+        }
+        
+        String query = "INSERT INTO Magasin (nom,id_vendeur,matricule_fiscal) VALUES (?,?,?)";      
         try
         {
             PreparedStatement pst = cn.prepareStatement(query);
             pst.setString(1, shop.getNom());
-            pst.setInt(2, shop.getMatricule_fiscal()); 
+            pst.setInt(2, shop.getId_vendeur());
+            pst.setInt(3, shop.getMatricule_fiscal()); 
+            System.out.println("tn.shoppy.services.ShopService.addShop()");
+            System.out.println(query);
             pst.executeUpdate();
         }
         catch(SQLException e)
@@ -93,6 +104,26 @@ public class ShopService {
         return true;
         //TODO ajouter le false si jamais on veut ajouter une condition d'unicité sur le nom du magasin.
         
+    }
+    
+    public boolean addShopNoSeller(Shop shop)
+    {
+        String query = "INSERT INTO Magasin (nom,matricule_fiscal) VALUES (?,?)";      
+        try
+        {
+            PreparedStatement pst = cn.prepareStatement(query);
+            pst.setString(1, shop.getNom());
+            pst.setInt(2, shop.getMatricule_fiscal()); 
+            System.out.println("tn.shoppy.services.ShopService.addShop()");
+            System.out.println(query);
+            pst.executeUpdate();
+        }
+        catch(SQLException e)
+        {
+            System.err.println(e.getMessage());
+            return false;
+        }
+        return true; 
     }
     
     public boolean deleteShop(Shop shop)
@@ -167,9 +198,10 @@ public class ShopService {
                 
                 Shop r = new Shop();
                 r.setId(rs.getInt(1));
-                r.setNom(rs.getString(2));
-                r.setTaille_stock(rs.getInt(3));
-                r.setMatricule_fiscal(rs.getInt(4));
+                r.setId_vendeur(rs.getInt(2));
+                r.setNom(rs.getString(3));
+                r.setTaille_stock(rs.getInt(4));
+                r.setMatricule_fiscal(rs.getInt(5));
                 list.add(r);
                 count++;
             }
@@ -199,9 +231,10 @@ public class ShopService {
 
                 Shop r = new Shop();
                 r.setId(rs.getInt(1));
-                r.setNom(rs.getString(2));
-                r.setTaille_stock(rs.getInt(3));
-                r.setMatricule_fiscal(rs.getInt(4));
+                r.setId_vendeur(rs.getInt(2));
+                r.setNom(rs.getString(3));
+                r.setTaille_stock(rs.getInt(4));
+                r.setMatricule_fiscal(rs.getInt(5));
                 list.add(r);
                 count++;
             }
@@ -227,9 +260,10 @@ public class ShopService {
 
                 Shop r = new Shop();
                 r.setId(rs.getInt(1));
-                r.setNom(rs.getString(2));
-                r.setTaille_stock(rs.getInt(3));
-                r.setMatricule_fiscal(rs.getInt(4));
+                r.setId_vendeur(rs.getInt(2));
+                r.setNom(rs.getString(3));
+                r.setTaille_stock(rs.getInt(4));
+                r.setMatricule_fiscal(rs.getInt(5));
                 list.add(r);
                 count++;
             }
@@ -253,9 +287,10 @@ public class ShopService {
             {
                 Shop r = new Shop();
                 r.setId(rs.getInt(1));
-                r.setNom(rs.getString(2));
-                r.setTaille_stock(rs.getInt(3));
-                r.setMatricule_fiscal(rs.getInt(4));
+                r.setId_vendeur(rs.getInt(2));
+                r.setNom(rs.getString(3));
+                r.setTaille_stock(rs.getInt(4));
+                r.setMatricule_fiscal(rs.getInt(5));
                 return r;
             }
             return null;

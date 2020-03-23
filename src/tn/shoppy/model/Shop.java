@@ -7,9 +7,8 @@ import javafx.beans.property.StringProperty;
  * @author Haroun
  */
 public class Shop {
-//TODO: add the user class !
-//    private User seller; 
     private int id;
+    private Integer id_vendeur;
     private String nom;
     private int taille_stock;
     private int matricule_fiscal;
@@ -19,13 +18,14 @@ public class Shop {
      */
     public Shop()
     {
-        this(1,"Default_name",0);
+        this(1,null,"Default_name",0);
     }
     
 
-    public Shop(int id, String nom, int matriculeFiscal)
+    public Shop(int id, Integer id_vendeur,String nom, int matriculeFiscal)
     {
         this.id = id;
+        this.id_vendeur=id_vendeur;
         this.nom = nom;
         this.matricule_fiscal = matriculeFiscal;
         this.taille_stock = 0;
@@ -34,6 +34,7 @@ public class Shop {
     public Shop(String nom, int matriculeFiscal)
     {
         this.id = 1;
+        this.id_vendeur=null;
         this.nom = nom;
         this.matricule_fiscal = matriculeFiscal;
         this.taille_stock = 0;
@@ -59,19 +60,29 @@ public class Shop {
 
     @Override
     public String toString() {
-        return nom +"  => ID : " + id + ", mattricule fiscal: " + matricule_fiscal;
+        return nom +"  => ID : " + id +", Responsable: "+this.getId_vendeur()+ ", mattricule fiscal: " + matricule_fiscal;
     }
-    
-    /**
-     * Attributes properties
-     */
-    
-    //TODO convert attributes to properties 
+
     
     /**
      * Getters & setters
      */
     
+        
+    public Integer getId_vendeur() {
+        if (this.id_vendeur != null)
+        {
+            return id_vendeur;
+        }
+        else{
+            return 0;
+        }
+    }
+    
+    public void setId_vendeur(int id_vendeur) {
+        this.id_vendeur = id_vendeur;
+    }
+
     public int getId() {
         return id;
     }

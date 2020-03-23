@@ -9,9 +9,12 @@ import java.sql.SQLException;
  */
 public class ConnectionDB {
     //TODO use the project's data base !
-    private static String url= "jdbc:mysql://localhost:3306/test_pi?useUnicode=true" +
-        "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&" +
-        "serverTimezone=UTC";    
+//    private static String url= "jdbc:mysql://localhost:3306/test_pi?useUnicode=true" +
+//        "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&" +
+//        "serverTimezone=UTC";    
+    private static String url = "jdbc:mysql://localhost:3306/shoppy?useUnicode=true"
+            + "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&"
+            + "serverTimezone=UTC";
     private static String usr="root";
     private static String pwd="";
     private static ConnectionDB cbd;
