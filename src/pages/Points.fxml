@@ -21,13 +21,13 @@
             <TableColumn fx:id="date_exp_col" prefWidth="215.0" text="Date Exp" />
         </columns>
       </TableView>
-      <TextField fx:id="search_input" layoutX="286.0" layoutY="483.0" onAction="#search" onKeyTyped="#search" />
+      <TextField fx:id="search_input" layoutX="286.0" layoutY="483.0" onKeyTyped="#search" />
       <MenuButton fx:id="search_col" layoutX="173.0" layoutY="483.0" mnemonicParsing="false" text="Colonne">
         <items>
-          <MenuItem mnemonicParsing="false" text="ID" />
-          <MenuItem mnemonicParsing="false" text="Portfolio_ID" />
-            <MenuItem mnemonicParsing="false" text="Montant" />
-            <MenuItem mnemonicParsing="false" text="Date Exp" />
+          <MenuItem fx:id="search_col_id" mnemonicParsing="false" onAction="#setSearchCol" text="ID" />
+          <MenuItem fx:id="search_col_pid" mnemonicParsing="false" onAction="#setSearchCol" text="Portfolio_ID" />
+            <MenuItem fx:id="search_col_m" mnemonicParsing="false" onAction="#setSearchCol" text="Montant" />
+            <MenuItem fx:id="search_col_d" mnemonicParsing="false" onAction="#setSearchCol" text="Date Exp" />
         </items>
       </MenuButton>
    </children>

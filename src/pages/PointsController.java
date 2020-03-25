@@ -21,7 +21,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
 import InteractionDB.Interaction_Points;
+import javafx.event.ActionEvent;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 
@@ -32,10 +34,18 @@ public class PointsController implements Initializable {
     @FXML private TableColumn<Ticket, Integer> portfolio_id_col;
     @FXML private TableColumn<Ticket, Integer> montant_col;
     @FXML private TableColumn<Ticket, Date> date_exp_col;
-    private ObservableList<Ticket> tablist= FXCollections.observableArrayList();
     @FXML private TextField search_input;
     @FXML private MenuButton search_col;
-
+    @FXML private MenuItem search_col_id;
+    @FXML private MenuItem search_col_pid;
+    @FXML private MenuItem search_col_m;
+    @FXML private MenuItem search_col_d;
+  
+    
+    
+    
+    private ObservableList<Ticket> tablist= FXCollections.observableArrayList();
+    private String searchcol;
     
 
     /**
@@ -55,7 +65,7 @@ public class PointsController implements Initializable {
 
     @FXML
     private void search(KeyEvent event) {
-        ResultSet r=Interaction_Points.searchTicketsBy("id",search_input.getText());
+        ResultSet r=Interaction_Points.searchTicketsBy(searchcol,search_input.getText());
         updateTable(r);
         
     }
@@ -76,4 +86,20 @@ public class PointsController implements Initializable {
             
         }
     }
+
+
+    @FXML
+    private void setSearchCol(ActionEvent event) {
+        switch(((MenuItem) event.getSource()).getId()){
+            case "search_col_id": searchcol="id"; break;
+            case "search_col_pid": searchcol="portfolio_id"; break;
+            case "search_col_m": searchcol="montant"; break;
+            case "search_col_d": searchcol="date_exp"; break;
+            
+        }
+        search_col.setText(searchcol);
+}
+
+
+  
 }
