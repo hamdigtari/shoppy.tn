@@ -64,7 +64,7 @@ public class Interaction_Portfolios {
 		}
 	}
         
-        public static ResultSet getAllTickets(){
+        public static ResultSet getAllPortfolios(){
             ResultSet r = null;
             try {
 		Connection c = ConnexionDB.getConnection();
@@ -79,4 +79,33 @@ public class Interaction_Portfolios {
             return r;
         }
         
+        
+        public static ResultSet getPortfoliosBy(String col, String value){
+            ResultSet r = null;
+            try {
+		Connection c = ConnexionDB.getConnection();
+		Statement s = c.createStatement();
+		r=s.executeQuery("select * from portfolios where "+ col+"='"+value+"'");
+		
+	}
+		catch(SQLException e) {
+			
+		}
+            
+            return r;
+        }
+        public static ResultSet searchPortfoliosBy(String col, String value){
+            ResultSet r = null;
+            try {
+		Connection c = ConnexionDB.getConnection();
+		Statement s = c.createStatement();
+		r=s.executeQuery("select * from portfolios where "+ col+" LIKE '"+value+"%'");
+		
+	}
+		catch(SQLException e) {
+			
+		}
+            
+            return r;
+        }
 }
