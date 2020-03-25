@@ -87,6 +87,34 @@ public class Interaction_Points {
             return r;
         }
         
+        public static ResultSet getTicketsBy(String col, String value){
+            ResultSet r = null;
+            try {
+		Connection c = ConnexionDB.getConnection();
+		Statement s = c.createStatement();
+		r=s.executeQuery("select * from tickets where "+ col+"='"+value+"'");
+		
+	}
+		catch(SQLException e) {
+			
+		}
+            
+            return r;
+        }
+        public static ResultSet searchTicketsBy(String col, String value){
+            ResultSet r = null;
+            try {
+		Connection c = ConnexionDB.getConnection();
+		Statement s = c.createStatement();
+		r=s.executeQuery("select * from tickets where "+ col+" LIKE '"+value+"%'");
+		
+	}
+		catch(SQLException e) {
+			
+		}
+            
+            return r;
+        }
         
         
         

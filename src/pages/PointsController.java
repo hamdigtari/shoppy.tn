@@ -21,6 +21,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.cell.PropertyValueFactory;
 import InteractionDB.Interaction_Points;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 
 public class PointsController implements Initializable {
 
@@ -29,6 +32,12 @@ public class PointsController implements Initializable {
     @FXML private TableColumn<Ticket, Integer> portfolio_id_col;
     @FXML private TableColumn<Ticket, Integer> montant_col;
     @FXML private TableColumn<Ticket, Date> date_exp_col;
+    private ObservableList<Ticket> tablist= FXCollections.observableArrayList();
+    @FXML private TextField search_input;
+    @FXML private MenuButton search_col;
+
+    
+
     /**
      * Initializes the controller class.
      */
@@ -40,8 +49,22 @@ public class PointsController implements Initializable {
          portfolio_id_col.setCellValueFactory(new PropertyValueFactory<>("portfolio_id"));
          montant_col.setCellValueFactory(new PropertyValueFactory<>("montant"));
          date_exp_col.setCellValueFactory(new PropertyValueFactory<>("date_exp"));
-         ObservableList<Ticket> tablist= FXCollections.observableArrayList();
          ResultSet r=Interaction_Points.getAllTickets();
+        updateTable(r);
+}
+
+    @FXML
+    private void search(KeyEvent event) {
+        ResultSet r=Interaction_Points.searchTicketsBy("id",search_input.getText());
+        updateTable(r);
+        
+    }
+ 
+    
+    
+    
+    void updateTable(ResultSet r){
+        tablist.clear();
         try{
          while(r.next()){
              
@@ -52,6 +75,5 @@ public class PointsController implements Initializable {
         catch(SQLException e){
             
         }
-}
-    
+    }
 }
