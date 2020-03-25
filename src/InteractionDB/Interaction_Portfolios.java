@@ -108,4 +108,28 @@ public class Interaction_Portfolios {
             
             return r;
         }
+        
+        public static ResultSet getAllTickets(Portfolio p){
+            ResultSet r = null;
+            try {
+		Connection c = ConnexionDB.getConnection();
+		Statement s = c.createStatement();
+		r=s.executeQuery("select * from tickets where portfolio_id = '"+p.getId()+"' ");
+		
+	}
+		catch(SQLException e) {
+			
+		}
+            
+            return r;
+        }
+
+        
+        
+        
+        
+        
+        
+        
 }
+
