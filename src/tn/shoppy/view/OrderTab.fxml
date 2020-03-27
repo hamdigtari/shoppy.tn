@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="618.0" prefWidth="1058.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.shoppy.controller.OrderController">
+    <children>
+        <Pane prefHeight="51.0" prefWidth="800.0">
+            <children>
+                <Button fx:id="searchOrderButton" layoutX="339.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchOrderAction" text="Rechercher" />
+                <Label fx:id="searchOrderLabel" layoutX="441.0" layoutY="15.0" text="Aucun commande ne correspond à votre recherche." />
+                <TextField fx:id="searchOrderField" layoutX="14.0" layoutY="10.0" onKeyTyped="#typingSearchOrderAction" prefHeight="31.0" prefWidth="315.0" promptText="Trouver une commande" />
+            </children>
+        </Pane>
+        <TableView fx:id="orderTable" layoutY="53.0" prefHeight="551.0" prefWidth="802.0">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="56.0" text="ID" />
+                <TableColumn fx:id="qteTotalColumn" prefWidth="138.0" text="Quantite total " />
+                <TableColumn fx:id="prixTotalColumn" prefWidth="135.0" text="Prix Total" />
+                <TableColumn fx:id="AdresseLivColumn" prefWidth="299.0" text=" Adresse Livrasion" />
+            <TableColumn fx:id="IdAch" prefWidth="151.0" text="ID acheteur" />
+            </columns>
+        </TableView>
+        <VBox layoutX="811.0" layoutY="51.0" prefHeight="444.0" prefWidth="245.0">
+            <children>
+                <Accordion prefHeight="499.0" prefWidth="245.0">
+                    <panes>
+                     
+                        
+                        <TitledPane animated="false" prefHeight="448.0" prefWidth="245.0" text="Ajouter une commande">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="193.0">
+                                    <children>
+                                        <TextField fx:id="addOrderNameField" layoutX="17.0" layoutY="59.0" prefHeight="30.0" prefWidth="200.0" />
+                                        <TextField fx:id="addOrderTotalField" layoutX="17.0" layoutY="137.0" prefHeight="30.0" prefWidth="200.0" />
+                                        <Button fx:id="addOrderButton" layoutX="17.0" layoutY="319.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Valider">
+                                            <cursor>
+                                                <!--<Cursor fx:constant="HAND" />-->
+                                            </cursor>
+                                        </Button>
+                                        <Text layoutX="17.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantite" />
+                                        <Text layoutX="17.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" />
+                                        <Text layoutX="17.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="acheteur " />
+                                        <ComboBox fx:id="idAch" layoutX="17.0" layoutY="209.0" prefHeight="30.0" prefWidth="200.0" />
+                                        <Text layoutX="17.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Produit " />
+                                        <ComboBox layoutX="17.0" layoutY="279.0" prefHeight="30.0" prefWidth="200.0" />
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </TitledPane>
+                         <TitledPane animated="false" onMouseClicked="#stat" prefHeight="475.0" prefWidth="245.0" text="stat">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="400.0">
+                                    <children>
+                                              <PieChart fx:id="pie" layoutX="48.0" layoutY="31.0" AnchorPane.bottomAnchor="31.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="122.0" AnchorPane.topAnchor="31.0" />
+
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </TitledPane>
+                    </panes>
+                </Accordion>
+                <HBox alignment="CENTER" prefHeight="39.0" prefWidth="802.0" spacing="10.0">
+                    <padding>
+                        <Insets top="20.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+        <Button layoutX="850.0" layoutY="515.0" mnemonicParsing="false" onAction="#deleteOrderAction" text="Supprimer la selection" />
+      <ImageView fx:id="shopHelpImage" fitHeight="32.0" fitWidth="32.0" layoutX="1002.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/help.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="CreatePdfButton" layoutX="852.0" layoutY="556.0" mnemonicParsing="false" onAction="#CreatePdfAction" prefHeight="25.0" prefWidth="134.0" text="Generer PDF" />
+    </children>
+</AnchorPane>
