@@ -8,9 +8,12 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Shoppy.jar" size="2273657" download="eager" />
+    <jar href="Shoppy.jar" size="2283088" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.19.jar" size="2356711" download="eager" />
   </resources>
+  <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Shoppy" >
+    <param name="requiredFXVersion" value="8.0+"/>
+  </applet-desc>
   <jfx:javafx-desc  width="800" height="600" main-class="tn.shoppy.core.Main"  name="Shoppy" />
   <update check="always"/>
 </jnlp>

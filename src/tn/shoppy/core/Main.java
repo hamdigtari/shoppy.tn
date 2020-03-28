@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import tn.shoppy.controller.DashboardController;
 import tn.shoppy.services.OfferService;
+import tn.shoppy.services.ProductService;
 
 import tn.shoppy.utils.ConnectionDB;
 
@@ -24,7 +25,8 @@ public class Main extends Application {
         Connection cnx = cbd.getCnx();
         
         //Debug
-
+//        ProductService ps = ProductService.getInstance();
+//        System.out.println(ps.getAllProducts());
         //End debug
         
         launch(args);

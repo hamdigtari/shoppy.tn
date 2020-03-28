@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.Clock;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,20 +30,20 @@ public class ProductService {
         return productServiceInstance;  
     }
     
-    public List<Product> getAllProduct() 
+    public List<Product> getAllProducts() 
     {
         List<Product> list = new ArrayList<>();
         int count = 0;
         
         String query="select * from produit ";
         try{
-            PreparedStatement st = (PreparedStatement)  cn.createStatement();
+            Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()){
                 
                 Product r = new Product();
                 r.setId(rs.getInt(1));
-                //id_magasin 2
+                r.setId_magasin(rs.getInt(2));
                 r.setNom(rs.getString(4));
                 r.setQuantite(rs.getInt(3));
                 r.setDescription(rs.getString(5));
@@ -74,19 +75,20 @@ public class ProductService {
     {
         System.out.println(product.getNom() + " " + product.getId());
         
-        PreparedStatement pst = cn.prepareStatement("INSERT INTO produit VALUES (?,?,?,?,?,?,?,?)");
+        PreparedStatement pst = cn.prepareStatement("INSERT INTO Produit "
+                + "(id_magasin, quantite, nom, description, prix, marque, updated_at)"
+                + "VALUES (?,?,?,?,?,?,?)");
             
         try
         {
             System.out.println("adding product"+product);
-            pst.setInt(1,product.getId());
-            pst.setInt(2,product.getId_magasin());
-            pst.setInt(3,product.getQuantite());
-            pst.setString(4,product.getNom());
-            pst.setString(5,product.getDescription());
-            pst.setDouble(6,product.getPrix());
-            pst.setString(7,product.getMarque());
-            pst.setDate(8,product.getUpdated_at());
+            pst.setInt(1,product.getId_magasin());
+            pst.setInt(2,product.getQuantite());
+            pst.setString(3,product.getNom());
+            pst.setString(4,product.getDescription());
+            pst.setDouble(5,product.getPrix());
+            pst.setString(6,product.getMarque());
+            pst.setDate(7,product.getUpdated_at());
             
             System.out.println(pst);
             pst.executeUpdate();
