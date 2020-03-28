@@ -11,6 +11,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
@@ -161,7 +163,7 @@ public class ProductController implements Initializable{
         }
         if (result) {
             productData.clear();
-//            refreshTableData();
+            refreshTableData();
             System.out.println("Succès de l'ajout du produit !");
         } else {
             System.out.println("Echec de l'ajout du produit !");
@@ -171,4 +173,41 @@ public class ProductController implements Initializable{
     }
     
     
+    //********************* R **************************//
+    public void refreshTableData() {
+        List<Product> productList = new ArrayList<>();
+        ProductService productService = ProductService.getInstance();
+        productList = productService.getAllProducts();
+        productData.clear();
+        if (productList != null) {
+            productData.addAll(productList);
+            productTable.setItems(productData);
+            searchProductLabel.setText("Résultat : " + productList.size() + " ligne(s).");
+        } else {
+            searchProductLabel.setText("Aucun résultat.");
+            productTable.setPlaceholder(new Label("Il n'y a aucun produit dans la base de données. Veuillez en rajouter! "));
+        }
+    }
+    
+    
+    
+    
+    //********************* D **************************//
+    @FXML
+    public void deleteProductAction() {
+        ObservableList<Product> selectedItems = productTable.getSelectionModel().getSelectedItems();
+        System.out.println(selectedItems);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Êtes-vous sûr(e) de vouloir supprimer ces " + selectedItems.size() + " éléments de la base de données ?", ButtonType.YES, ButtonType.NO);
+        a.showAndWait();
+        if (a.getResult() == ButtonType.YES) {
+            ProductService productService = ProductService.getInstance();
+            for (Product p : selectedItems) {
+                productService.deleteProduct(p);
+            }
+            refreshTableData();
+            a.close();
+        } else {
+            a.close();
+        }
+    }
 }
