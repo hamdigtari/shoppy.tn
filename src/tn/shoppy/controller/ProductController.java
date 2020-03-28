@@ -23,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import tn.shoppy.model.Product;
 import tn.shoppy.model.Shop;
 import tn.shoppy.services.ProductService;
@@ -74,6 +75,19 @@ public class ProductController implements Initializable{
     private ComboBox<Shop> addProductShopComboBox;
     
     @FXML
+    private TextField updateProductNameField;
+    @FXML
+    private TextField updateProductQuantityField;
+    @FXML
+    private TextField updateProductPriceField;
+    @FXML
+    private TextField updateProductBrandField;
+    @FXML
+    private TextArea updateProductDescriptionArea;
+    @FXML
+    private ComboBox<Shop> updateProductShopComboBox;
+    
+    @FXML
     private Label searchProductLabel;
     private ObservableList<Product> productData = FXCollections.observableArrayList();
     private ObservableList<Shop> shopData = FXCollections.observableArrayList();
@@ -107,7 +121,7 @@ public class ProductController implements Initializable{
             searchProductLabel.setText("Résultat : " + productList.size() + " ligne(s).");
         } else {
             searchProductLabel.setText("Aucun résultat.");
-           productTable.setPlaceholder(new Label("Il n'y a aucun produit dans la base de données. Veuillez en rajouter! "));
+            productTable.setPlaceholder(new Label("Il n'y a aucun produit dans la base de données. Veuillez en rajouter! "));
         }
         
         List<Shop> shopList = new ArrayList<>();
@@ -117,7 +131,7 @@ public class ProductController implements Initializable{
         if (shopList != null) {
             shopData.addAll(shopList);
             addProductShopComboBox.getItems().addAll(shopData);
-//            updateOfferShopComboBox.getItems().addAll(shopData);
+            updateProductShopComboBox.getItems().addAll(shopData);
         }
 
         helpTooltip = new Tooltip("Vous êtes dans l'onglet de getion des produits.\n"
@@ -189,7 +203,89 @@ public class ProductController implements Initializable{
         }
     }
     
+     //********************* U **************************//
+    @FXML
+    public void selectOneProductAction(KeyEvent keyEvent) {
+        Product product = (Product) productTable.getSelectionModel().getSelectedItem();
+        if(product != null)
+        {
+            fillUpdateForm(product);
+        }
+    }
+    @FXML
+    public void clickOneProductAction() {
+        Product product = (Product) productTable.getSelectionModel().getSelectedItem();
+        if(product != null)
+        {
+            fillUpdateForm(product);
+        }
+    }
     
+    public void fillUpdateForm(Product product)
+    {
+        ShopService shopService= ShopService.getInstance();
+        
+        updateProductNameField.setText(product.getNom());
+        updateProductQuantityField.setText(String.valueOf(product.getQuantite()));
+        updateProductDescriptionArea.setText(product.getDescription());
+        updateProductPriceField.setText(String.valueOf(product.getPrix()));
+        updateProductBrandField.setText(product.getMarque());
+        updateProductShopComboBox.setValue(shopService.findOneShopByID(product.getId_magasin()));    
+        
+    }
+    
+    @FXML
+    public void updateProductAction() {
+        Product selection = productTable.getSelectionModel().getSelectedItem();
+        InputCheck inputCheck = InputCheck.getInstance();
+        if (selection != null)
+        {   
+            Product product = new Product();
+            product.setId(selection.getId());
+            String newName = updateProductNameField.getText();
+            String newQuantity = updateProductQuantityField.getText();  
+            String newDescription = updateProductDescriptionArea.getText();
+            String newPrice = updateProductPriceField.getText();  
+            String newBrand = updateProductBrandField.getText();  
+            int newShopID = updateProductShopComboBox.getValue().getId();
+            
+            Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir modifier le produit: "+selection.getNom()+" de la base de données ?",ButtonType.YES,ButtonType.NO);
+            a.showAndWait();
+            
+            if(a.getResult()==ButtonType.YES){
+                if (inputCheck.testTextInput(newName) && inputCheck.testDoubleInput(newPrice)
+                && (inputCheck.testNumberInput(newQuantity)) && inputCheck.testTextInput(newBrand) ) 
+       
+                {
+                    product.setNom(newName);
+                    product.setQuantite(Integer.parseInt(newQuantity));
+                    product.setDescription(newDescription);
+                    product.setPrix(Double.parseDouble(newPrice));
+                    product.setId_magasin(newShopID);
+                    product.setUpdated_at(new java.sql.Date(System.currentTimeMillis()));
+
+                    
+                    ProductService productService = ProductService.getInstance();
+                    productService.updateProduct(product);
+                    refreshTableData();
+                    a.close();
+                }
+                else
+                {
+                    Alert inputAlert = new Alert(Alert.AlertType.ERROR,"Le format de données saisi est incorrect.",ButtonType.OK);
+                    inputAlert.showAndWait();
+                }
+            }else{
+            a.close();
+            }
+        }
+        else
+        {   
+            Alert a=new Alert(Alert.AlertType.WARNING,"Aucune séléction !",ButtonType.CLOSE); 
+            a.showAndWait();
+        }
+        refreshTableData();
+    }    
     
     
     //********************* D **************************//

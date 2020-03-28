@@ -122,17 +122,18 @@ public class ProductService {
     public boolean updateProduct(Product product)
     {
         System.out.println(product);
-        String query = "UPDATE Produit SET nom=?,quantite=?,description=?,prix=?,marque=? WHERE id=?";
+        String query = "UPDATE Produit SET nom=?, id_magasin=?, quantite=?, description=?, prix=?, marque=?, updated_at=? WHERE id=?";
         try {
             PreparedStatement pst = cn.prepareStatement(query);
-            pst.setInt(1,product.getId());
+            pst.setInt(8,product.getId());
+            
+            pst.setString(1,product.getNom());
             pst.setInt(2,product.getId_magasin());
             pst.setInt(3,product.getQuantite());
-            pst.setString(4,product.getNom());
-            pst.setString(5,product.getDescription());
-            pst.setDouble(6,product.getPrix());
-            pst.setString(7,product.getMarque());
-            pst.setDate(8,product.getUpdated_at());
+            pst.setString(4,product.getDescription());
+            pst.setDouble(5,product.getPrix());
+            pst.setString(6,product.getMarque());
+            pst.setDate(7,product.getUpdated_at());
             
             System.out.println(pst);
             pst.executeUpdate();

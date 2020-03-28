@@ -27,7 +27,7 @@
                 <TextField fx:id="searchProductField" layoutX="14.0" layoutY="10.0" prefHeight="31.0" prefWidth="315.0" promptText="Trouver un produit.." />
             </children>
         </Pane>
-        <TableView fx:id="productTable" layoutY="54.0" prefHeight="551.0" prefWidth="802.0">
+        <TableView fx:id="productTable" layoutY="54.0" onKeyPressed="#selectOneProductAction" onMouseClicked="#clickOneProductAction" prefHeight="551.0" prefWidth="802.0">
             <columns>
                 <TableColumn fx:id="productIdColumn" prefWidth="56.0" text="ID" />
                 <TableColumn fx:id="productNameColumn" prefWidth="96.66668701171875" text="Nom" />
@@ -47,14 +47,19 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="243.0">
                                     <children>
-                                        <Button fx:id="updateProductButton" layoutX="20.0" layoutY="303.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Valider">
-                                            <cursor>
-                                                <!--<Cursor fx:constant="HAND" />-->
-                                            </cursor>
+                                        <Button fx:id="updateProductButton" layoutX="20.0" layoutY="335.0" mnemonicParsing="false" onAction="#updateProductAction" prefHeight="30.0" prefWidth="200.0" text="Valider">
                                         </Button>
-                                        <Text layoutX="17.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du magasin :" />
-                                        <Text layoutX="17.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matricule fiscal :" />
-                                        <Text layoutX="17.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gérant / Vendeur responsable :" />
+                                        <TextField fx:id="updateProductNameField" layoutX="14.0" layoutY="30.0" prefHeight="25.0" prefWidth="204.0" />
+                                        <Text layoutX="17.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du produit :" />
+                                        <Text layoutX="17.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantité :" />
+                                        <Text layoutX="26.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description :" />
+                                        <TextField fx:id="updateProductQuantityField" layoutX="69.0" layoutY="60.0" />
+                                        <Text layoutX="28.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix :" />
+                                        <TextField fx:id="updateProductPriceField" layoutX="70.0" layoutY="94.0" />
+                                        <TextArea fx:id="updateProductDescriptionArea" layoutX="22.0" layoutY="192.0" prefHeight="92.0" prefWidth="190.0" />
+                                        <Text layoutX="19.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marque :" />
+                                        <TextField fx:id="updateProductBrandField" layoutX="69.0" layoutY="131.0" />
+                                        <ComboBox fx:id="updateProductShopComboBox" layoutX="23.0" layoutY="295.0" prefHeight="25.0" prefWidth="190.0" promptText="Magasin offrant" />                                                                               
                                     </children>
                                 </AnchorPane>
                             </content>
