@@ -30,6 +30,9 @@
                 <Tab closable="false" text="Gestion des produits">
                     <fx:include fx:id="productTab" source="ProductTab.fxml" />
                 </Tab>
+                <Tab closable="false" text="Gestion des produits">
+                    <fx:include fx:id="categoryTab" source="CategoryTab.fxml" />
+                </Tab>
                 <Tab closable="false" disable="false" text="Gestion des offres">
                     <fx:include fx:id="offerTab" source="OfferTab.fxml" />
                 </Tab>

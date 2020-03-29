@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="618.0" prefWidth="1058.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.shoppy.controller.OfferController">
+    <children>
+        <Pane prefHeight="51.0" prefWidth="800.0">
+            <children>
+                <Button fx:id="searchCategoryButton" layoutX="339.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchCategoryAction" text="Rechercher" />
+                <Label fx:id="searchCategoryLabel" layoutX="441.0" layoutY="15.0" text="Aucune catégorie ne correspond à votre recherche." />
+                <TextField fx:id="searchCategoryField" layoutX="14.0" layoutY="10.0" onAction="#typingSearchCategoryAction" prefHeight="31.0" prefWidth="315.0" promptText="Nom catégorie" />
+            </children>
+        </Pane>
+        <TableView fx:id="CategoryTable" layoutY="53.0" onKeyPressed="#selectOneOfferAction" onMouseClicked="#clickOneShopAction" prefHeight="551.0" prefWidth="802.0">
+            <columns>
+                <TableColumn fx:id="CategoryIdColumn" prefWidth="60.0" text="ID" />
+                <TableColumn fx:id="CategoryNameColumn" prefWidth="104.0" text="Nom" />
+            </columns>
+        </TableView>
+        <VBox layoutX="811.0" layoutY="51.0" prefHeight="499.0" prefWidth="245.0">
+            <children>
+                <Accordion prefHeight="475.0" prefWidth="245.0">
+                    <panes>
+                        <TitledPane animated="false" prefHeight="448.0" prefWidth="245.0" text="Ajouter une catégorie">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="435.0" prefWidth="243.0">
+                                    <children>
+                                        <TextField fx:id="addCategoryNameField" layoutX="17.0" layoutY="30.0" prefHeight="30.0" prefWidth="200.0" />
+                                        <Button fx:id="addCategoryButton" layoutX="17.0" layoutY="70.0" mnemonicParsing="false" onAction="#addCategoryAction" prefHeight="30.0" prefWidth="200.0" text="Valider">
+                                            <cursor>
+                                                <!--<Cursor fx:constant="HAND" />-->
+                                            </cursor>
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                        </Button>
+                                        <Text layoutX="17.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de la catégorie :" />
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </TitledPane>
+                        <TitledPane animated="false" prefHeight="448.0" prefWidth="245.0" text="Modifier une catégorie">
+                            <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="435.0" prefWidth="243.0">
+                                    <children>
+                                        <TextField fx:id="updateCategoryNameField" layoutX="17.0" layoutY="30.0" prefHeight="30.0" prefWidth="200.0" />
+                                        <Button fx:id="updateCategoryButton" layoutX="17.0" layoutY="370.0" mnemonicParsing="false" onAction="#updateCategoryAction" prefHeight="30.0" prefWidth="200.0" text="Valider">
+                                            <cursor>
+                                                <!--<Cursor fx:constant="HAND" />-->
+                                            </cursor>
+                                            <opaqueInsets>
+                                                <Insets />
+                                            </opaqueInsets>
+                                        </Button>
+                                        <Text layoutX="17.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de la catégorie :" />
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </TitledPane>
+                    </panes>
+                </Accordion>
+                <HBox alignment="CENTER" prefHeight="39.0" prefWidth="802.0" spacing="10.0">
+                    <padding>
+                        <Insets top="20.0" />
+                    </padding>
+                </HBox>
+            </children>
+        </VBox>
+        <Button fx:id="deleteCategoryButton" layoutX="867.0" layoutY="555.0" mnemonicParsing="false" onAction="#deleteCategoryAction" text="Supprimer la selection" />
+      <ImageView fx:id="CategoryHelpImage" fitHeight="32.0" fitWidth="32.0" layoutX="1002.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../resources/images/help.png" />
+         </image>
+      </ImageView>
+    </children>
+</AnchorPane>
