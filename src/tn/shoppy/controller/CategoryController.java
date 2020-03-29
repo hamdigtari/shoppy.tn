@@ -121,7 +121,7 @@ public class CategoryController implements Initializable{
         }
         if (result) {
             categoryData.clear();
-            //refreshTableData();
+            refreshTableData();
             System.out.println("Succès de l'ajout de la catégorie !");
         } else {
             System.out.println("Echec de l'ajout de la catégorie !");
@@ -130,7 +130,22 @@ public class CategoryController implements Initializable{
 
     }
     
-    
+    //********************* R **************************//
+    public void refreshTableData() {
+        List<Category> categoryList = new ArrayList<>();
+        CategoryService categoryService = CategoryService.getInstance();
+        categoryList = categoryService.getAllCategory();
+        categoryData.clear();
+        if (categoryList != null) {
+            categoryData.addAll(categoryList);
+            categoryTable.setItems(categoryData);
+            searchCategoryLabel.setText("Résultat : " + categoryList.size() + " ligne(s).");
+        } else {
+            searchCategoryLabel.setText("Aucun résultat.");
+            categoryTable.setPlaceholder(new Label("Il n'y a aucune catégorie dans la base de données. Veuillez en rajouter! "));
+        }
+    }
+        
     
     
 }
