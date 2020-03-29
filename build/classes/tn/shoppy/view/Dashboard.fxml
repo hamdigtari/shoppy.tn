@@ -33,6 +33,9 @@
                 <Tab closable="false" disable="false" text="Gestion des offres">
                     <fx:include fx:id="offerTab" source="OfferTab.fxml" />
                 </Tab>
+                <Tab closable="false" disable="false" text="Gestion des catégories">
+                    <fx:include fx:id="categoryTab" source="CategoryTab.fxml" />
+                </Tab>
                 <Tab text="POUR OMAR">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
