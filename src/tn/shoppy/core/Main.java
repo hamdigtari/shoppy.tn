@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import tn.shoppy.controller.DashboardController;
 import tn.shoppy.services.OfferService;
 import tn.shoppy.services.ProductService;
+import tn.shoppy.services.CategoryService;
 
 import tn.shoppy.utils.ConnectionDB;
 

@@ -30,7 +30,7 @@ public class CategoryService {
         return categoryServiceInstance;  
     }
 
-    public List<Category> getAllProducts() 
+    public List<Category> getAllCategory() 
     {
         List<Category> list = new ArrayList<>();
         int count = 0;
