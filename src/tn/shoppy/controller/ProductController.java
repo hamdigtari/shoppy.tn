@@ -93,6 +93,9 @@ public class ProductController implements Initializable{
     private ObservableList<Shop> shopData = FXCollections.observableArrayList();
 
     @FXML
+    private TextField searchProductField;
+
+    @FXML
     private ImageView productHelpImage;
     private Tooltip helpTooltip;
     
@@ -306,4 +309,43 @@ public class ProductController implements Initializable{
             a.close();
         }
     }
+    
+        //************ SEARCH *********************//
+    
+     public void searchProductAction() {
+        List<Product> resultList = new ArrayList<>();
+        ProductService productService = ProductService.getInstance();
+        String input = searchProductField.getText();
+        if(input.length()>0)
+        {
+            resultList = productService.findProductByNameOrDescription(input);
+            productData.clear();
+            productData.addAll(resultList);
+            productTable.setItems(productData);   
+            searchProductLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
+        }
+        else
+        {
+            refreshTableData();
+        }
+    }
+     
+     public void typingSearchProductAction() {
+        List<Product> resultList = new ArrayList<>();
+        ProductService productService = ProductService.getInstance();
+        String input = searchProductField.getText();
+        if(input.length()>0)
+        {
+            resultList = productService.findProductByNameOrDescription(input);
+            productData.clear();
+            productData.addAll(resultList);
+            searchProductLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
+            productTable.setItems(productData);   
+        }
+        else
+        {
+            refreshTableData();
+        }
+    }
+    
 }

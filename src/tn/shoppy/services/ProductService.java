@@ -144,6 +144,37 @@ public class ProductService {
         }       
         return false;
     }
+    
+     public List<Product> findProductByNameOrDescription(String pattern)
+    {
+        List<Product> list = new ArrayList<>();
+        int count = 0;
+        String query = "SELECT * FROM Produit WHERE nom like '%"+ pattern +"%' or description like '%"+ pattern +"%'";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                Product r = new Product();
+                r.setId(rs.getInt(1));
+                r.setId_magasin(rs.getInt(2));
+                r.setNom(rs.getString(4));
+                r.setQuantite(rs.getInt(3));
+                r.setDescription(rs.getString(5));
+                r.setPrix(rs.getDouble(6));
+                r.setMarque(rs.getString(7));
+                list.add(r);
+                count++;
+            }
+            if (count == 0) {
+                return null;
+            } else {
+                return list;
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            return null;
+        } 
+    }
 
     
     
