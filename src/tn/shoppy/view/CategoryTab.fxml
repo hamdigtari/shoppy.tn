@@ -71,7 +71,7 @@
                 </HBox>
             </children>
         </VBox>
-        <Button fx:id="deleteCategoryAction" layoutX="850.0" layoutY="515.0" mnemonicParsing="false" text="Supprimer la selection" />
+        <Button fx:id="deleteCategoryAction" layoutX="850.0" layoutY="515.0" mnemonicParsing="false" onAction="#deleteCategoryAction" text="Supprimer la selection" />
       <ImageView fx:id="categoryHelpImage" fitHeight="32.0" fitWidth="32.0" layoutX="1002.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../resources/images/help.png" />

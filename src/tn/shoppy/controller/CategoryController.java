@@ -21,6 +21,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.cell.PropertyValueFactory;
 import tn.shoppy.services.CategoryService;
@@ -146,6 +148,23 @@ public class CategoryController implements Initializable{
         }
     }
         
-    
+    //********************* D **************************//
+    @FXML
+    public void deleteCategoryAction() {
+        ObservableList<Category> selectedItems = categoryTable.getSelectionModel().getSelectedItems();
+        System.out.println(selectedItems);
+        Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Êtes-vous sûr(e) de vouloir supprimer ces " + selectedItems.size() + " éléments de la base de données ?", ButtonType.YES, ButtonType.NO);
+        a.showAndWait();
+        if (a.getResult() == ButtonType.YES) {
+            CategoryService categoryService = CategoryService.getInstance();
+            for (Category c : selectedItems) {
+                categoryService.deleteCategory(c);
+            }
+            refreshTableData();
+            a.close();
+        } else {
+            a.close();
+        }
+    }
     
 }
