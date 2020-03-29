@@ -25,6 +25,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import tn.shoppy.services.CategoryService;
 import tn.shoppy.utils.InputCheck;
 
@@ -147,6 +148,68 @@ public class CategoryController implements Initializable{
             categoryTable.setPlaceholder(new Label("Il n'y a aucune catégorie dans la base de données. Veuillez en rajouter! "));
         }
     }
+    
+         //********************* U **************************//
+        
+    @FXML
+    public void selectOneCategoryAction(KeyEvent keyEvent) {
+        Category category = (Category) categoryTable.getSelectionModel().getSelectedItem();
+        if(category != null)
+        {
+            fillUpdateForm(category);
+        }
+    }
+    @FXML
+    public void clickOneCategoryAction() {
+        Category category = (Category) categoryTable.getSelectionModel().getSelectedItem();
+        if(category != null)
+        {
+            fillUpdateForm(category);
+        }
+    }
+    
+    @FXML
+    public void updateCategoryAction() {
+        Category selection = categoryTable.getSelectionModel().getSelectedItem();
+        InputCheck inputCheck = InputCheck.getInstance();
+        if (selection != null)
+        {   
+            Category category = new Category();
+            category.setId(selection.getId());
+            String newName = updateCategoryNameField.getText();
+
+            
+            Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir modifier la catégoorie: "+selection.getNom()+" de la base de données ?",ButtonType.YES,ButtonType.NO);
+            a.showAndWait();
+            
+            if(a.getResult()==ButtonType.YES){
+                if (inputCheck.testTextInput(newName)) 
+       
+                {
+                    category.setNom(newName);
+         
+                    
+                    CategoryService categoryService = CategoryService.getInstance();
+                    categoryService.updateCategory(category);
+                    refreshTableData();
+                    a.close();
+                }
+                else
+                {
+                    Alert inputAlert = new Alert(Alert.AlertType.ERROR,"Le format de données saisi est incorrect.",ButtonType.OK);
+                    inputAlert.showAndWait();
+                }
+            }else{
+            a.close();
+            }
+        }
+        else
+        {   
+            Alert a=new Alert(Alert.AlertType.WARNING,"Aucune séléction !",ButtonType.CLOSE); 
+            a.showAndWait();
+        }
+        refreshTableData();
+    }    
         
     //********************* D **************************//
     @FXML
@@ -165,6 +228,10 @@ public class CategoryController implements Initializable{
         } else {
             a.close();
         }
+    }
+
+    private void fillUpdateForm(Category category) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

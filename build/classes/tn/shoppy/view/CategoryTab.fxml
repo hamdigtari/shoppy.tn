@@ -25,7 +25,7 @@
                 <TextField fx:id="searchCategoryField" layoutX="14.0" layoutY="10.0" prefHeight="31.0" prefWidth="315.0" promptText="Trouver une catégorie.." />
             </children>
         </Pane>
-        <TableView fx:id="categoryTable" layoutY="54.0" prefHeight="551.0" prefWidth="802.0">
+        <TableView fx:id="categoryTable" layoutY="54.0" onKeyPressed="#selectOneCategoryAction" onMouseClicked="#clickOneCategoryAction" prefHeight="551.0" prefWidth="802.0">
             <columns>
                 <TableColumn fx:id="categoryIdColumn" prefWidth="56.0" text="ID" />
                 <TableColumn fx:id="categoryNameColumn" prefWidth="96.66668701171875" text="Nom" />
@@ -39,7 +39,7 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="318.0" prefWidth="243.0">
                                     <children>
-                                        <Button fx:id="updateCatégorieButton" layoutX="20.0" layoutY="335.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="200.0" text="Valider">
+                                        <Button fx:id="updateCatégorieButton" layoutX="20.0" layoutY="335.0" mnemonicParsing="false" onAction="#updateCategoryAction" prefHeight="30.0" prefWidth="200.0" text="Valider">
                                         </Button>
                                         <TextField fx:id="updateCategoryNameField" layoutX="14.0" layoutY="30.0" prefHeight="25.0" prefWidth="204.0" />
                                         <Text layoutX="17.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de la catégorie :" />                                                                               
