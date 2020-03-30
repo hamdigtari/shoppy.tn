@@ -59,6 +59,7 @@ public class AjoutPointsController implements Initializable {
 
     
     
+    
     private ObservableList<Ticket> tablist= FXCollections.observableArrayList();
     private String searchcol;
     @FXML
@@ -106,6 +107,7 @@ public class AjoutPointsController implements Initializable {
      
     void resetTable(){
         ResultSet r=Interaction_Points.getAllTickets();
+        
         updateTable(r);
     }
     

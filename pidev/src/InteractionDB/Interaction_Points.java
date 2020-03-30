@@ -23,7 +23,6 @@ public class Interaction_Points {
 			s.setDate(3, d);
 			s.executeUpdate(); //insertion + nombre de ligne insérées
 			
-			c.close();
 			
 			return true;
 		}
@@ -40,7 +39,6 @@ public class Interaction_Points {
 			s.setInt(1, id);
 			s.executeUpdate(); //insertion + nombre de ligne insérées
 			
-			c.close();
 			
 			return true;
 		}
@@ -63,7 +61,6 @@ public class Interaction_Points {
 			s.setDate(3, t.getDate_exp());
 			s.executeUpdate(); //insertion + nombre de ligne insérées
 			
-			c.close();
 			
 			return true;
 		}
