@@ -56,4 +56,9 @@ public class Ticket {
         this.montant=montant;
         this.date_exp=date_exp;
     }
+    public Ticket( int portfolio_id, int montant, Date date_exp){
+        this.portfolio_id=portfolio_id;
+        this.montant=montant;
+        this.date_exp=date_exp;
+    }
 }
