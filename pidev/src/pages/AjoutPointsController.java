@@ -146,7 +146,7 @@ public class AjoutPointsController implements Initializable {
         
         //                  MISE A JOUR TEXTS
         
-        id_text.setText(String.valueOf(t.getPortfolio_id()));
+        id_text.setText(String.valueOf(t.getId()));
         portfolio_id_text.setText(String.valueOf(t.getPortfolio_id()));;
         montant_text.setText(String.valueOf(t.getMontant()));;
         date_text.setText(t.getDate_exp().toString());
@@ -166,15 +166,17 @@ public class AjoutPointsController implements Initializable {
 
     @FXML
     private void modifierPoints(ActionEvent event) {
-        
+                Ticket t=new Ticket(Integer.valueOf(id_text.getText()),Integer.valueOf(portfolio_id_field.getText()),Integer.valueOf(montant_field.getText()),Date.valueOf(date_field.getValue()));
+                Interaction_Points.modifier(t);
                 resetTable();
 
     }
 
     @FXML
     private void supprimerPoints(ActionEvent event) {
-        
-        
+               
+                Interaction_Points.supprimer(Integer.valueOf(id_text.getText()));
+
                 resetTable();
 
     }

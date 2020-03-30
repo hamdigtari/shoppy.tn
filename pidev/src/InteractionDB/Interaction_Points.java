@@ -59,6 +59,7 @@ public class Interaction_Points {
 			s.setInt(1, t.getPortfolio_id());
 			s.setInt(2, t.getMontant());
 			s.setDate(3, t.getDate_exp());
+                        s.setInt(4,t.getId());
 			s.executeUpdate(); //insertion + nombre de ligne insérées
 			
 			
