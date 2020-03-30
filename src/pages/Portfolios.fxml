@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="522.0" prefWidth="889.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pages.PortfoliosController">
+    <stylesheets>
+        <URL value="@points.css" />
+    </stylesheets>
+   <children>
+      <TableView fx:id="tableView" layoutX="14.0" layoutY="13.0" prefHeight="367.0" prefWidth="571.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="id_col" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="user_id_col" prefWidth="69.0" text="User ID" />
+            <TableColumn fx:id="montant_col" prefWidth="240.0" text="Montant" />
+        </columns>
+      </TableView>
+      <TextField fx:id="search_input" layoutX="286.0" layoutY="483.0" onKeyTyped="#search" />
+      <MenuButton fx:id="search_col" layoutX="173.0" layoutY="483.0" mnemonicParsing="false" text="Colonne">
+        <items>
+          <MenuItem fx:id="search_col_id" mnemonicParsing="false" onAction="#setSearchCol" text="ID" />
+          <MenuItem fx:id="search_col_uid" mnemonicParsing="false" onAction="#setSearchCol" text="User_ID" />
+            <MenuItem fx:id="search_col_m" mnemonicParsing="false" onAction="#setSearchCol" text="Montant" />
+        </items>
+      </MenuButton>
+   </children>
+</AnchorPane>

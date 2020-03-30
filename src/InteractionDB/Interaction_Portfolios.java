@@ -126,8 +126,17 @@ public class Interaction_Portfolios {
 
         
         
-        
-        
+        public static int getMontant(Portfolio p){
+            ResultSet r = getAllTickets(p);
+            int montant=0;
+            try{
+            while(r.next()) montant+= r.getInt("montant");
+            }
+            catch (SQLException s){
+                
+            }
+            return montant;
+        }
         
         
         

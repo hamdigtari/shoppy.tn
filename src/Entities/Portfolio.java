@@ -13,6 +13,11 @@ public class Portfolio {
     
     private int id;
     private int user_id;
+    private int montant;
+
+    public int getMontant() {
+        return montant;
+    }
 
     public int getId() {
         return id;
@@ -30,4 +35,13 @@ public class Portfolio {
         this.user_id = user_id;
     }
     
+    public Portfolio(int id, int user_id){
+        this.id=id;
+        this.user_id=user_id;
+    }
+    public Portfolio(int id, int user_id,int montant){
+        this.id=id;
+        this.user_id=user_id;
+        this.montant=montant;
+    }
 }

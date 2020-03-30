@@ -101,6 +101,8 @@ public class Interaction_Points {
             
             return r;
         }
+        
+        
         public static ResultSet searchTicketsBy(String col, String value){
             ResultSet r = null;
             try {
@@ -115,6 +117,7 @@ public class Interaction_Points {
             
             return r;
         }
+        
         
         
         
