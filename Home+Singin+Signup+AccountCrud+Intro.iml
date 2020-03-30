@@ -7,7 +7,7 @@
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" name="jfoenix-8.0.8" level="project" />
-    <orderEntry type="library" name="mysql-connector-java-5.1.18-bin" level="project" />
+    <orderEntry type="library" name="jfoenix" level="project" />
+    <orderEntry type="library" name="mysql-connector-java-8.0.18" level="project" />
   </component>
 </module>
