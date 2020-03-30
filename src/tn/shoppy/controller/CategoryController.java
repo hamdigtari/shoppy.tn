@@ -231,7 +231,7 @@ public class CategoryController implements Initializable{
     }
 
     private void fillUpdateForm(Category category) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        updateCategoryNameField.setText(category.getNom());
     }
     
 }
