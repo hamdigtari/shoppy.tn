@@ -18,7 +18,7 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.util.Callback;
 
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.function.Predicate;
 
 public class Controller implements Initializable{
@@ -68,6 +68,10 @@ public class Controller implements Initializable{
 
     ObservableList<Account> list;
 
+    List<Account> accountList= new ArrayList<>();
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -113,6 +117,19 @@ public class Controller implements Initializable{
         list.addAll(new Account("adel","vendor","22","Male"));
         list.addAll(new Account("Salam","client","32","Female"));
         list.addAll(new Account("Jack","admin","42","Male"));
+
+
+        AccountService productService = AccountService.getInstance();
+        accountList = productService.getAllAccounts();
+
+        if (accountList != null) {
+
+            for (Account acc : accountList) {
+                list.addAll(new Account(acc.getName(),acc.getJob(),acc.getPassword(),"Male"));
+            }
+
+
+        }
 
         searchTF.textProperty().addListener(new ChangeListener<String>() {
             @Override

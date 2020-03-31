@@ -2,7 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Shoppy.Desk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/META-INF/Home+Singin+Signup+AccountCrud+Intro.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/DB/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/DB/DBConnection.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Account.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$5$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$5$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hamdigtar/DB/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hamdigtar/DB/DBConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hamdigtar/Login/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hamdigtar/Login/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hamdigtar/crudAccount/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hamdigtar/crudAccount/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hamdigtar/crudAccount/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hamdigtar/crudAccount/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hamdigtar/crudAccount/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hamdigtar/crudAccount/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +108,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="js.eslint.eslintPackage" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../mysql-connector-java-8.0.18.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Shoppy.Desk" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -371,8 +386,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainAcc" />
-        <item itemvalue="Application.Main (4)" />
         <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.Main (4)" />
         <item itemvalue="Application.Main (3)" />
         <item itemvalue="Application.Main (1)" />
       </list>
@@ -400,7 +415,8 @@
       <workItem from="1585133768962" duration="602000" />
       <workItem from="1585497283135" duration="5902000" />
       <workItem from="1585562017820" duration="1377000" />
-      <workItem from="1585566547447" duration="77000" />
+      <workItem from="1585566547447" duration="7004000" />
+      <workItem from="1585594617031" duration="3905000" />
     </task>
     <servers />
   </component>
@@ -412,30 +428,30 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="15" width="816" height="723" key="#Intentions/0.0.1366.738@0.0.1366.738" timestamp="1585502214793" />
-    <state x="488" y="78" key="#com.intellij.ide.util.MemberChooser" timestamp="1585003182994">
+    <state x="488" y="78" key="#com.intellij.ide.util.MemberChooser" timestamp="1585586090802">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="488" y="78" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1585003182994" />
-    <state x="463" y="127" key="FileChooserDialogImpl" timestamp="1585566616066">
+    <state x="488" y="78" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1585586090802" />
+    <state x="463" y="127" key="FileChooserDialogImpl" timestamp="1585586928878">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="463" y="127" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1585566616066" />
-    <state width="661" height="74" key="GridCell.Tab.0.bottom" timestamp="1585506411916">
+    <state x="463" y="127" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1585586928878" />
+    <state width="661" height="149" key="GridCell.Tab.0.bottom" timestamp="1585662139499">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="661" height="74" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1585506411916" />
-    <state width="661" height="74" key="GridCell.Tab.0.center" timestamp="1585506411916">
+    <state width="661" height="149" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1585662139499" />
+    <state width="661" height="149" key="GridCell.Tab.0.center" timestamp="1585662139499">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="661" height="74" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1585506411916" />
-    <state width="661" height="74" key="GridCell.Tab.0.left" timestamp="1585506411916">
+    <state width="661" height="149" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1585662139499" />
+    <state width="661" height="149" key="GridCell.Tab.0.left" timestamp="1585662139498">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="661" height="74" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1585506411916" />
-    <state width="661" height="74" key="GridCell.Tab.0.right" timestamp="1585506411916">
+    <state width="661" height="149" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1585662139498" />
+    <state width="661" height="149" key="GridCell.Tab.0.right" timestamp="1585662139499">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state width="661" height="74" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1585506411916" />
+    <state width="661" height="149" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1585662139499" />
     <state x="186" y="0" key="SettingsEditor" timestamp="1585566623582">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

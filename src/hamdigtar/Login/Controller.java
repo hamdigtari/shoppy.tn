@@ -44,7 +44,7 @@ public class Controller implements Initializable {
     private void LoginAction() {
  /*       if(usernameField.getText().isEmpty()) {
           //  errorMsg.show("Username is empty !", 1500);
-            return ;
+          return ; // + ------ -------      -------- -------- +
         }
         if(passwordField.getText().isEmpty()) {
           //  errorMsg.show("Password is empty !", 1500);

@@ -17,15 +17,17 @@ public class DBConnection {
     private static final String PASSWORD = "";
     private static final String HOST = "127.0.0.1";
     private static final String PORT = "3306";
-    private static final String DB_NAME = "test_db";
+    private static final String DB_NAME = "shoppyblog";
 
     public static Connection con;
 
     static {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/" + DB_NAME, USERNAME, PASSWORD);
-        } catch (SQLException | ClassNotFoundException ex) {
+     //       Class.forName("com.mysql.jdbc.Driver");| ClassNotFoundException
+            con = DriverManager.getConnection("jdbc:mysql://" + HOST + ":" + PORT + "/"+ DB_NAME+"?useUnicode=true"
+                    + "&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&"
+                    + "serverTimezone=UTC" , USERNAME, PASSWORD);
+        } catch (SQLException  ex) {
             ex.printStackTrace();
             System.out.println("connection failed hh!");
         }
@@ -36,7 +38,7 @@ public class DBConnection {
         if(con == null)
             return -1;
 
-        String sql = "SELECT * FROM users WHERE username=? AND password=?";
+        String sql = "SELECT * FROM fos_user WHERE username=? AND password=?";
         try {
             PreparedStatement prest = con.prepareStatement(sql);
             prest.setString(1, username);

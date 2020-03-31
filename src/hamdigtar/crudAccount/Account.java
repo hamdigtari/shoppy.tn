@@ -8,14 +8,46 @@ import javafx.beans.property.StringProperty;
 public class Account extends RecursiveTreeObject<Account> {
 
 
-    StringProperty name , job ,age ,gender;
+    StringProperty name;
+    StringProperty job;
+    StringProperty age;
+    StringProperty gender;
+    StringProperty username;
 
+    public Account(int id, StringProperty username, StringProperty email, StringProperty password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.id=id;
+    }
+
+    StringProperty email;
+
+
+
+    StringProperty password;
+    int id;
+
+    public Account(StringProperty name, StringProperty job, StringProperty age, StringProperty gender, StringProperty username, StringProperty email, StringProperty password, int id) {
+        this.name = name;
+        this.job = job;
+        this.age = age;
+        this.gender = gender;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.id = id;
+    }
     public Account(String name , String job , String age , String gender){
 
         this.name=new SimpleStringProperty(name);
         this.job=new SimpleStringProperty(job);
         this.age=new SimpleStringProperty(age);
         this.gender=new SimpleStringProperty(gender);
+    }
+
+    public Account() {
+
     }
 
 
@@ -29,11 +61,11 @@ public class Account extends RecursiveTreeObject<Account> {
     }
 
     public void setName(String name) {
-        this.name.set(name);
+        this.name =new SimpleStringProperty(name);
     }
 
     public String getJob() {
-        return job.get();
+        return job.toString();
     }
 
     public StringProperty jobProperty() {
@@ -41,7 +73,7 @@ public class Account extends RecursiveTreeObject<Account> {
     }
 
     public void setJob(String job) {
-        this.job.set(job);
+        this.job=new SimpleStringProperty(job);
     }
 
     public String getAge() {
@@ -53,7 +85,7 @@ public class Account extends RecursiveTreeObject<Account> {
     }
 
     public void setAge(String age) {
-        this.age.set(age);
+        this.age=new SimpleStringProperty(age);
     }
 
     public String getGender() {
@@ -65,6 +97,47 @@ public class Account extends RecursiveTreeObject<Account> {
     }
 
     public void setGender(String gender) {
-        this.gender.set(gender);
+        this.gender=new SimpleStringProperty(gender);
     }
+
+    public int getId() {
+        return id; }
+    public void setId(int id) {
+    this.id = id; }
+    public String getEmail() {
+        return email.get();
+    }
+
+    public StringProperty emailProperty() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = new SimpleStringProperty(email);
+    }
+
+    public String getPassword() {
+        return password.get();
+    }
+
+    public StringProperty passwordProperty() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password=new SimpleStringProperty(password);
+    }
+    public String getUsername() {
+        return username.toString();
+    }
+
+    public StringProperty usernameProperty() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username=new SimpleStringProperty(username);
+    }
+
+
 }
