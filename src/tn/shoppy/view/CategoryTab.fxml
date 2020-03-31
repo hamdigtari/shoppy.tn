@@ -20,7 +20,7 @@
     <children>
         <Pane prefHeight="51.0" prefWidth="800.0">
             <children>
-                <Button fx:id="searchCategoryButton" layoutX="339.0" layoutY="10.0" mnemonicParsing="false" text="Rechercher" />
+                <Button fx:id="searchCategoryButton" layoutX="339.0" layoutY="10.0" mnemonicParsing="false" onAction="#searchCategoryAction" text="Rechercher" />
                 <Label fx:id="searchCategoryLabel" layoutX="441.0" layoutY="15.0" text="Aucune catégorie ne correspond à votre recherche." />
                 <TextField fx:id="searchCategoryField" layoutX="14.0" layoutY="10.0" prefHeight="31.0" prefWidth="315.0" promptText="Trouver une catégorie.." />
             </children>

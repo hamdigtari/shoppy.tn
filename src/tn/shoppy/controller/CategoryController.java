@@ -234,4 +234,45 @@ public class CategoryController implements Initializable{
         updateCategoryNameField.setText(category.getNom());
     }
     
+        //************ SEARCH *********************//
+    
+     public void searchCategoryAction() {
+        List<Category> resultList = new ArrayList<>();
+        CategoryService categoryService = CategoryService.getInstance();
+        String input = searchCategoryField.getText();
+        if(input.length()>0)
+        {
+            resultList = categoryService.findCategoryByName(input);
+            categoryData.clear();
+            categoryData.addAll(resultList);
+            categoryTable.setItems(categoryData);   
+            searchCategoryLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
+        }
+        else
+        {
+            refreshTableData();
+        }
+    }
+     
+     public void typingSearchCategoryAction() {
+        List<Category> resultList = new ArrayList<>();
+        CategoryService categoryService = CategoryService.getInstance();
+        String input = searchCategoryField.getText();
+        if(input.length()>0)
+        {
+            resultList = categoryService.findCategoryByName(input);
+            categoryData.clear();
+            categoryData.addAll(resultList);
+            searchCategoryLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
+            categoryTable.setItems(categoryData);   
+        }
+        else
+        {
+            refreshTableData();
+        }
+    }
+    
+    
+    
+    
 }
