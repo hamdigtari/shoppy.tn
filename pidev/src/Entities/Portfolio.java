@@ -34,7 +34,9 @@ public class Portfolio {
     public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
-    
+    public Portfolio( int user_id){
+        this.user_id=user_id;
+    }
     public Portfolio(int id, int user_id){
         this.id=id;
         this.user_id=user_id;
