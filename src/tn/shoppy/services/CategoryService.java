@@ -159,5 +159,33 @@ public class CategoryService {
         } 
     }
 
+    String findCategoryNameByID(int id) {
+         List<String> list = new ArrayList<>();
+        int count = 0;
+        
+        String query="select * from categorie where id= "+id+" ;";
+        try{
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()){
+                String r = rs.getString(2);             
+                list.add(r);
+                count++;
+            }
+            if(count == 0)
+            {
+                return null;
+            }
+            else
+            {
+               return list.get(0);
+            }
+        }
+        catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            return null;
+        }
+    }
+
     
 }

@@ -6,6 +6,8 @@
 package tn.shoppy.model;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -21,6 +23,8 @@ public class Product {
     private String marque;
     //private String image_name;
     private Date updated_at;
+    private List<Integer> categoriesID;
+    private String categoriesString;
 
     public Product() {
         this(0,0,"default product",0,"product description here",0,"brand");
@@ -35,6 +39,8 @@ public class Product {
         this.prix = prix;
         this.marque = marque;
         updated_at = new java.sql.Date(System.currentTimeMillis());
+        this.categoriesID = new ArrayList<>();
+        categoriesString = "Pas de catégorie.";
     }
 
     /**
@@ -67,7 +73,9 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product{" + "id=" + id + ", id_magasin=" + id_magasin + ", nom=" + nom + ", quantite=" + quantite + ", description=" + description + ", prix=" + prix + ", marque=" + marque + '}';
+        return "Product{" + "id=" + id + ", id_magasin=" + id_magasin + ", nom=" + nom + 
+                ", quantite=" + quantite + ", description=" + description + 
+                ", prix=" + prix + ", marque=" + marque + "ID catégories" + categoriesID + categoriesString +'}';
     }
     
     
@@ -77,6 +85,14 @@ public class Product {
 
     public int getId() {
         return id;
+    }
+
+    public List<Integer> getCategoriesID() {
+        return categoriesID;
+    }
+
+    public void setCategoriesID(ArrayList<Integer> categoriesID) {
+        this.categoriesID = categoriesID;
     }
 
     public void setId(int id) {
@@ -101,6 +117,14 @@ public class Product {
 
     public int getQuantite() {
         return quantite;
+    }
+
+    public String getCategoriesString() {
+        return categoriesString;
+    }
+
+    public void setCategoriesString(String categoriesString) {
+        this.categoriesString = categoriesString;
     }
 
     public void setQuantite(int quantite) {

@@ -36,6 +36,7 @@
             <TableColumn fx:id="productDescriptionColumn" prefWidth="135.99996948242188" text="Description" />
             <TableColumn fx:id="productQuantityColumn" prefWidth="65.0" text="Quantité" />
             <TableColumn fx:id="productPriceColumn" prefWidth="75.0" text="Prix" />
+            <TableColumn fx:id="productCategoriesColumn" prefWidth="75.0" text="Catégories" />
             <TableColumn fx:id="productUpdatedAtColumn" prefWidth="75.0" text="Modifié le" />
             </columns>
         </TableView>

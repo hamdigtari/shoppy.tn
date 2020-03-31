@@ -49,7 +49,11 @@ public class ProductService {
                 r.setDescription(rs.getString(5));
                 r.setPrix(rs.getDouble(6));
                 r.setMarque(rs.getString(7));
-
+                if (findAllCategoriesByProductID(rs.getInt(1)) != null){
+                    r.getCategoriesID().addAll(findAllCategoriesByProductID(rs.getInt(1)));
+                    r.setCategoriesString(getAllCategoriesAsString(rs.getInt(1)));
+                }
+                
                 list.add(r);
                 count++;
             }
@@ -176,6 +180,47 @@ public class ProductService {
         } 
     }
 
+    public List<Integer> findAllCategoriesByProductID(int id)
+    {
+        List<Integer> result = new ArrayList<>();
+        int count = 0;
+        String query = "SELECT * FROM produit_categorie WHERE produit_id=" + id + " ;";
+         try{
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()){
+                
+                Integer r = null;
+                r=rs.getInt(2);
+                
+               
+                result.add(r);
+                count++;
+            }
+            if(count == 0)
+            {
+                return null;
+            }
+            else
+            {
+               return result;
+            }
+        }
+        catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            return null;
+        }
+    }
     
-    
+    public String getAllCategoriesAsString(int id)
+    {
+        List<Integer> list = new ArrayList<>();
+        list = findAllCategoriesByProductID(id);
+        String result= "";
+        for (int elem : list){
+            CategoryService cs = CategoryService.getInstance();
+            result += cs.findCategoryNameByID(elem) +"  ";  
+        }
+        return result;
+    }
 }

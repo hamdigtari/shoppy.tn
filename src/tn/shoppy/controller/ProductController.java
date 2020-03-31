@@ -59,7 +59,10 @@ public class ProductController implements Initializable{
     @FXML
     private TableColumn<Product, Double> productPriceColumn;
     @FXML
+    private TableColumn<Product, String> productCategoriesColumn;
+    @FXML
     private TableColumn<Product, Date> productUpdatedAtColumn;
+
     
     @FXML
     private TextField addProductNameField;
@@ -116,8 +119,9 @@ public class ProductController implements Initializable{
             productDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
             productQuantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantite"));
             productPriceColumn.setCellValueFactory(new PropertyValueFactory<>("prix"));
+            productCategoriesColumn.setCellValueFactory(new PropertyValueFactory<>("categoriesString"));
             productUpdatedAtColumn.setCellValueFactory(new PropertyValueFactory<>("updated_at"));
-
+            
            
 
             productTable.setItems(productData);
