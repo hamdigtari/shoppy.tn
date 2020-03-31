@@ -46,4 +46,13 @@ public class Portfolio {
         this.user_id=user_id;
         this.montant=montant;
     }
+    
+    @Override
+    public String toString(){
+        return "ID: " + id + "\nUID: "+user_id ;
+    }
+    @Override
+    public boolean equals(Object o){
+        return (o.getClass()==getClass() && ((Portfolio)o).getId()==getId());
+    }
 }
