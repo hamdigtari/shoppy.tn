@@ -56,4 +56,22 @@ public class Ticket {
         this.montant=montant;
         this.date_exp=date_exp;
     }
+    public Ticket( int portfolio_id, int montant, Date date_exp){
+        this.portfolio_id=portfolio_id;
+        this.montant=montant;
+        this.date_exp=date_exp;
+    }
+    
+    @Override
+    public String toString(){
+        return "ID: " + id + "\nPID: "+portfolio_id + "\nMontant: " + montant + "\nDate_exp: "+ date_exp;
+    }
+  
+    /*
+    @Override
+    public boolean equals(Object o){
+        
+        return (o.getClass()==getClass() && ((Ticket)o).getId()==getId());
+
+    }*/
 }

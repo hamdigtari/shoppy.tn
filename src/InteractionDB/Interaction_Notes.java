@@ -16,12 +16,24 @@ public class Interaction_Notes {
     public static boolean ajouter( Note n) { //temporary -> arg = Ticket
 		try {
 			Connection c = ConnexionDB.getConnection();
-			PreparedStatement s = c.prepareStatement("insert into notes (user_id,type,value,magasin_id,produit_id,text) values(?,?,?,?,?,?)");
-			s.setInt(1, n.getUser_id());
-			s.setInt(2, n.getValue());
-			s.setInt(3, n.getMagasin_id());
+                        PreparedStatement s;
+                        if (n.getType()==0){
+                            
+                        
+			s = c.prepareStatement("insert into notes (user_id,type,value,produit_id,text) values(?,?,?,?,?)");
+			
 			s.setInt(4, n.getProduit_id());
-			s.setString(5, n.getText());
+                        }
+                        
+                        else{
+                            s = c.prepareStatement("insert into notes (user_id,type,value,magasin_id,text) values(?,?,?,?,?)");
+                            s.setInt(4, n.getMagasin_id());
+
+                        }
+                        s.setInt(1, n.getUser_id());
+			s.setInt(2, n.getType());
+			s.setInt(3, n.getValue());
+                        s.setString(5, n.getText());
 
 			s.executeUpdate(); //insertion + nombre de ligne insérées
 			
@@ -61,10 +73,11 @@ public class Interaction_Notes {
 			Connection c = ConnexionDB.getConnection();
 			PreparedStatement s = c.prepareStatement("update notes set user_id=?,type=?,value=?,magasin_id=?,produit_id=?,text=? where id=?");
 			s.setInt(1, n.getUser_id());
-			s.setInt(2, n.getValue());
-			s.setInt(3, n.getMagasin_id());
-			s.setInt(4, n.getProduit_id());
-			s.setString(5, n.getText());
+			s.setInt(2, n.getType());
+			s.setInt(3, n.getValue());
+			s.setInt(4, n.getMagasin_id());
+			s.setInt(5, n.getProduit_id());
+			s.setString(6, n.getText());
 			s.executeUpdate(); //insertion + nombre de ligne insérées
 			
 			c.close();
@@ -111,7 +124,7 @@ public class Interaction_Notes {
             try {
 		Connection c = ConnexionDB.getConnection();
 		Statement s = c.createStatement();
-		r=s.executeQuery("select * from ntoes where "+ col+" LIKE '"+value+"%'");
+		r=s.executeQuery("select * from notes where "+ col+" LIKE '"+value+"%'");
 		
 	}
 		catch(SQLException e) {

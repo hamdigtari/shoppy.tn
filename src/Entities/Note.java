@@ -18,6 +18,10 @@ public class Note {
     private int value;
     private String text;
 
+    public int getId() {
+        return id;
+    }
+
     
 
     public int getUser_id() {
@@ -75,5 +79,14 @@ public class Note {
         if (type==1) this.magasin_id=o_id;
         else this.produit_id=o_id;
         this.text=text;
+    }
+    
+    @Override
+    public String toString(){
+        return "ID: " + id + "\nUID: "+user_id + "\nType: " + type + "\nMID: "+magasin_id +"\nPID: "+produit_id  + "\nTexte: "+ text;
+    }
+    @Override
+    public boolean equals(Object o){
+        return (o.getClass()==getClass() && ((Note)o).getId()==getId());
     }
 }

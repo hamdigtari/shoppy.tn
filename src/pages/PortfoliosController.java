@@ -10,18 +10,23 @@ import java.sql.*;
 import InteractionDB.Interaction_Portfolios;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 
 /**
  * FXML Controller class
@@ -51,6 +56,20 @@ public class PortfoliosController implements Initializable {
 
     private ObservableList<Portfolio> tablist= FXCollections.observableArrayList();
     private String searchcol;
+    @FXML
+    private Text montant_text;
+    @FXML
+    private Text id_text;
+    @FXML
+    private Button ajouter_button;
+    @FXML
+    private Button modifier_button;
+    @FXML
+    private Button supprimer_button;
+    @FXML
+    private TextField user_id_field;
+    @FXML
+    private Text user_id_text;
     /**
      * Initializes the controller class.
      */
@@ -61,30 +80,46 @@ public class PortfoliosController implements Initializable {
         id_col.setCellValueFactory(new PropertyValueFactory<>("id"));
          user_id_col.setCellValueFactory(new PropertyValueFactory<>("user_id"));
          montant_col.setCellValueFactory(new PropertyValueFactory<>("montant"));
-         ResultSet r=Interaction_Portfolios.getAllPortfolios();
-        updateTable(r);
+         resetTable();
+         
+         
+         tableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+    @Override
+    public void changed(ObservableValue observableValue, Object oldValue, Object newValue) {
+        //Check whether item is selected and set value of selected item to Label
+        if(tableView.getSelectionModel().getSelectedItem() != null) 
+        {    
+           TableViewSelectionModel selectionModel = tableView.getSelectionModel();
+           Portfolio t = (Portfolio) selectionModel.getSelectedItem();
+           updateFields(t);
+        }
+         }
+     });
+         
+         
     }    
 
+    
+    
+    
+    
+    
+    
+    
     @FXML
     private void search(KeyEvent event) {
         ResultSet r=null;
         if (searchcol=="montant") {
-             r=Interaction_Portfolios.getAllPortfolios();
-            try{
-            while (r.next()){
-                Portfolio p = new Portfolio(r.getInt("id"),r.getInt("user_id"));
-                
-                if (String.valueOf(Interaction_Portfolios.getMontant(p)).indexOf(search_input.getText())!=0 ) 
-                {
-                    System.out.println(r.getInt("id"));
-                    r.deleteRow();
-                    System.out.println(r.getInt("id"));
-r.rowDeleted();
-                }
+
+            if (!search_input.getText().toString().equals("")){
+            String montant=search_input.getText().toString();
+             r=Interaction_Portfolios.searchPortfoliosByMontant(montant); // REVERIFIER MYSQL WILDCARD % BUG
             }
-            }
-            catch(SQLException s){
-                
+            else 
+            {
+
+                resetTable();
+                return;
             }
         }
 
@@ -106,6 +141,11 @@ r.rowDeleted();
         search_col.setText(searchcol);
     }
     
+    void resetTable(){
+        ResultSet r=Interaction_Portfolios.getAllPortfolios();
+
+        updateTable(r);
+    }
     
     void updateTable(ResultSet r){
         tablist.clear();
@@ -118,8 +158,69 @@ r.rowDeleted();
          tableView.setItems(tablist);
     }    
         catch(SQLException e){
-            
+
         }
+
+        
+    }
+
+    
+     private void updateFields(Portfolio t){
+        //                  MISE A JOUR FIELDS
+        user_id_field.setText(String.valueOf(t.getUser_id()));
+        
+        //                  MISE A JOUR TEXTS
+        
+        id_text.setText(String.valueOf(t.getId()));
+        user_id_text.setText(String.valueOf(t.getUser_id()));;
+        montant_text.setText(String.valueOf(t.getMontant()));;
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @FXML
+    private void ajouterPortfolio(ActionEvent event) {
+        Portfolio t=new Portfolio(Integer.valueOf(user_id_field.getText()));
+        Interaction_Portfolios.ajouter(t);
+
+        resetTable();
+
+    }
+
+    @FXML
+    private void modifierPortfolio(ActionEvent event) {
+        Portfolio t=new Portfolio(Integer.valueOf(id_text.getText()),Integer.valueOf(user_id_field.getText()));
+                Interaction_Portfolios.modifier(t);
+                resetTable();
+    }
+
+    @FXML
+    private void supprimerPortfolio(ActionEvent event) {
+        Interaction_Portfolios.supprimer(Integer.valueOf(id_text.getText()));
+
+                resetTable();
     }
     
 }

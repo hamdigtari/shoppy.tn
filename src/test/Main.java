@@ -10,6 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import InteractionDB.*;
+import Entities.*;
 
 /**
  *
@@ -19,8 +21,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
-        Parent root=FXMLLoader.load(getClass().getResource("/pages/Portfolios.fxml"));
+        Parent root=FXMLLoader.load(getClass().getResource("/pages/Points.fxml"));
+        Interaction_Notes.ajouter(new Note(2,10,0,1,"excellent"));
         Scene s = new Scene(root);
         stage.setTitle("TESTING");
         stage.setScene(s);
