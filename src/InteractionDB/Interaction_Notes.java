@@ -37,7 +37,6 @@ public class Interaction_Notes {
 
 			s.executeUpdate(); //insertion + nombre de ligne insérées
 			
-			c.close();
 			
 			return true;
 		}
@@ -54,7 +53,6 @@ public class Interaction_Notes {
 			s.setInt(1, id);
 			s.executeUpdate(); //insertion + nombre de ligne insérées
 			
-			c.close();
 			
 			return true;
 		}
@@ -80,7 +78,6 @@ public class Interaction_Notes {
 			s.setString(6, n.getText());
 			s.executeUpdate(); //insertion + nombre de ligne insérées
 			
-			c.close();
 			
 			return true;
 		}

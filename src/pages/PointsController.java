@@ -25,6 +25,7 @@ import static java.lang.Thread.sleep;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -34,6 +35,8 @@ import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import utils.InputCheck;
+
 
 public class PointsController implements Initializable {
 
@@ -158,14 +161,19 @@ public class PointsController implements Initializable {
     
     @FXML
     private void ajouterPoints(ActionEvent event) {
+        
+        if (!checkFields()) return;
         Ticket t=new Ticket(Integer.valueOf(portfolio_id_field.getText()),Integer.valueOf(montant_field.getText()),Date.valueOf(date_field.getValue()));
         Interaction_Points.ajouter(t);
         
         resetTable();
+        
+        
     }
 
     @FXML
     private void modifierPoints(ActionEvent event) {
+        if (!checkFields()) return;
                 Ticket t=new Ticket(Integer.valueOf(id_text.getText()),Integer.valueOf(portfolio_id_field.getText()),Integer.valueOf(montant_field.getText()),Date.valueOf(date_field.getValue()));
                 Interaction_Points.modifier(t);
                 resetTable();
@@ -179,6 +187,16 @@ public class PointsController implements Initializable {
 
                 resetTable();
 
+    }
+
+    private boolean checkFields(){
+        if(InputCheck.IsInt(portfolio_id_field.getText()) && InputCheck.IsInt(montant_field.getText()) && InputCheck.IsFutureDate(Date.valueOf(date_field.getValue()))) return true;
+        messageErreur("Entrées incorrectes !");
+        return false;
+            
+    }
+    private void messageErreur(String s) {
+new Alert(Alert.AlertType.ERROR, s).showAndWait();  
     }
 
 

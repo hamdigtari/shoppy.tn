@@ -17,6 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -27,6 +28,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
+import utils.InputCheck;
 
 /**
  * FXML Controller class
@@ -202,6 +204,7 @@ public class PortfoliosController implements Initializable {
     
     @FXML
     private void ajouterPortfolio(ActionEvent event) {
+        checkFields();
         Portfolio t=new Portfolio(Integer.valueOf(user_id_field.getText()));
         Interaction_Portfolios.ajouter(t);
 
@@ -211,6 +214,7 @@ public class PortfoliosController implements Initializable {
 
     @FXML
     private void modifierPortfolio(ActionEvent event) {
+        checkFields();
         Portfolio t=new Portfolio(Integer.valueOf(id_text.getText()),Integer.valueOf(user_id_field.getText()));
                 Interaction_Portfolios.modifier(t);
                 resetTable();
@@ -223,4 +227,15 @@ public class PortfoliosController implements Initializable {
                 resetTable();
     }
     
+    
+    
+    private boolean checkFields(){
+        if(InputCheck.IsInt(user_id_field.getText())) return true;
+        messageErreur("Entrées incorrectes !");
+        return false;
+            
+    }
+    private void messageErreur(String s) {
+new Alert(Alert.AlertType.ERROR, s).showAndWait();  
+    }
 }
