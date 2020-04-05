@@ -25,7 +25,7 @@ public class Main extends Application {
         try {
             AnchorPane pane=loader.load();
             Scene scene=new Scene(pane);
-        scene.getStylesheets().addAll(Main.class.getResource("style.css").toExternalForm());
+        scene.getStylesheets().addAll(Main.class.getResource("stylelogin.css").toExternalForm());
         stage.setResizable(true);
      //   stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("signin");

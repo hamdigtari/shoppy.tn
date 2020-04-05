@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="output" path="out/production/Home+Singin+Signup+AccountCrud+Intro"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="dist/Ecosmartdesk.jar"/>
+	<classpathentry kind="lib" path="dist/lib/apache-commons.jar"/>
+	<classpathentry kind="lib" path="dist/lib/apache-httpcomponents-httpclient.jar"/>
+	<classpathentry kind="lib" path="dist/lib/checker-compat-qual-2.0.0.jar"/>
+	<classpathentry kind="lib" path="dist/lib/commons-codec-1.10.jar"/>
+	<classpathentry kind="lib" path="dist/lib/commons-exec-1.3.jar"/>
+	<classpathentry kind="lib" path="dist/lib/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="dist/lib/controlsfx-11.0.0-RC2-javadoc.jar"/>
+	<classpathentry kind="lib" path="dist/lib/controlsfx-8.40.11.jar"/>
+	<classpathentry kind="lib" path="dist/lib/eclipselink.jar"/>
+	<classpathentry kind="lib" path="dist/lib/fontawesomefx-8.9.jar"/>
+	<classpathentry kind="lib" path="dist/lib/GMapsFX-2.0.9.jar"/>
+	<classpathentry kind="lib" path="dist/lib/gson-2.8.0.jar"/>
+	<classpathentry kind="lib" path="dist/lib/httpclient-4.5.5.jar"/>
+	<classpathentry kind="lib" path="dist/lib/javax.mail.jar"/>
+	<classpathentry kind="lib" path="dist/lib/javax.persistence_2.1.0.v201304241213.jar"/>
+	<classpathentry kind="lib" path="dist/lib/jfoenix-8.0.8.jar"/>
+	<classpathentry kind="lib" path="dist/lib/json-20171018.jar"/>
+	<classpathentry kind="lib" path="dist/lib/mysql-connector-java-5.1.23-bin.jar"/>
+	<classpathentry kind="lib" path="dist/lib/okhttp-3.10.0.jar"/>
+	<classpathentry kind="lib" path="dist/lib/org.eclipse.persistence.jpa.jpql_2.5.2.v20140319-9ad6abd.jar"/>
+	<classpathentry kind="lib" path="dist/lib/restfb-1.6.2.jar"/>
+	<classpathentry kind="lib" path="dist/lib/selenium-api-3.14.0.jar"/>
+	<classpathentry kind="lib" path="dist/lib/selenium-chrome-driver-3.14.0.jar"/>
+	<classpathentry kind="lib" path="dist/lib/selenium-java-3.14.0.jar"/>
+	<classpathentry kind="lib" path="dist/lib/selenium-support-3.14.0.jar"/>
+	<classpathentry kind="lib" path="GMapsFX-2.0.9.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/jdk1.8.0_241/javafx-src.zip"/>
+	<classpathentry kind="output" path="build/classes"/>
 </classpath>

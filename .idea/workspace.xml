@@ -2,22 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/com/shoppy/gui/AnnonceStat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/META-INF/Home+Singin+Signup+AccountCrud+Intro.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/DB/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/DB/DBConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Account.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Account.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$5$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$5$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hamdigtar/DB/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hamdigtar/DB/DBConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hamdigtar/Login/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hamdigtar/Login/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hamdigtar/crudAccount/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hamdigtar/crudAccount/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hamdigtar/crudAccount/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hamdigtar/crudAccount/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/hamdigtar/crudAccount/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hamdigtar/crudAccount/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.project" beforeDir="false" afterPath="$PROJECT_DIR$/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/DB/DBConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/Home/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/Home/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/Login/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/Login/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Account.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/AccountService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$5$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/crudAccount/MainAcc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/register/Controller.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Home+Singin+Signup+AccountCrud+Intro/hamdigtar/register/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hamdigtar/Login/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/hamdigtar/Login/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hamdigtar/Login/backgroung.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hamdigtar/Login/backgroung2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hamdigtar/Login/sample.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/hamdigtar/Login/sample.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hamdigtar/Login/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/shoppy/gui/stylelogin.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,14 +82,6 @@
   <component name="FavoritesManager">
     <favorites_list name="JavaFxApplication" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="CSS File" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="FindManager">
     <FindUsagesManager>
       <setting name="OPEN_NEW_TAB" value="false" />
@@ -85,7 +91,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectId" id="1ZUbZ3YUph8TRdnv5do8VfhJy3s" />
+  <component name="ProjectId" id="1ZvvPX822vp1HCLZEHmYQJDeVxm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
@@ -103,117 +109,56 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.sorted" value="false" />
     <property name="OverrideImplement.combined" value="false" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
-    <property name="js.eslint.eslintPackage" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Shoppy.Desk" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.25862068" />
     <property name="recentsLimit" value="5" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\mohamed\Desktop\Signin Screen 1\src\sample" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\JavaFx\simple login\src\com\hamdigtari\Login\Login\Login" />
+      <recent name="D:\JavaFx\ShoppyHamdi\javadev\src\com\shoppy\gui" />
+      <recent name="D:\JavaFx\ShoppyHamdi\javadev\src\com\shoppy" />
+      <recent name="D:\JavaFx\Ecosmartdesk\src\com\ecosmart\gui" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainAcc">
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
-        <option name="GAPID_ENABLED" value="false" />
-        <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
-      </Profilers>
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Application.NewFXMain">
     <configuration default="true" type="Applet" factoryName="Applet">
-      <module />
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
       <method />
     </configuration>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
     </configuration>
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hamdigtar.Login.Main" />
-      <module name="Home+Singin+Signup+AccountCrud+Intro" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hamdigtar.Login.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hamdigtar.register.Main" />
-      <module name="Home+Singin+Signup+AccountCrud+Intro" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hamdigtar.register.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hamdigtar.Home.Main" />
-      <module name="Home+Singin+Signup+AccountCrud+Intro" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="hamdigtar.Home.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="com.hamdigtari.Login.Main" />
-      <module name="Home+Singin+Signup+AccountCrud+Intro" />
+      <option name="MAIN_CLASS_NAME" value="sample.Main" />
+      <module name="ShoppyTn" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hamdigtari.Login.*" />
+          <option name="PATTERN" value="sample.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -223,13 +168,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainAcc" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="hamdigtar.crudAccount.MainAcc" />
-      <module name="Home+Singin+Signup+AccountCrud+Intro" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    <configuration name="MainDash" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.shoppy.gui.MainDashboardController" />
+      <module name="ShoppyTn" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="hamdigtar.crudAccount.Account" />
+          <option name="PATTERN" value="com.shoppy.tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -237,13 +181,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="crudAccount.Main" />
-      <module name="Signin Screen 1" />
+    <configuration name="NewFXMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.shoppy.gui.NewFXMain" />
+      <module name="ShoppyTn" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="crudAccount.*" />
+          <option name="PATTERN" value="com.shoppy.gui.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -251,13 +195,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.hamdigtari.Login.register.Main" />
-      <module name="Signin Screen 1" />
+    <configuration name="TestProfile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.shoppy.tests.TestProfile" />
+      <module name="ShoppyTn" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.hamdigtari.Login.register.*" />
+          <option name="PATTERN" value="com.shoppy.tests.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -271,44 +215,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <setting name="vmparams" value="" />
-      <setting name="cmdLine" value="run-app" />
-      <setting name="passParentEnv" value="true" />
-      <setting name="grailsApplicationRoot" value="" />
-      <setting name="launchBrowser" value="true" />
-      <setting name="launchBrowserUrl" value="" />
-      <setting name="depsClasspath" value="false" />
-      <method v="2" />
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -320,6 +226,7 @@
       </method>
     </configuration>
     <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <module name="ShoppyTn" />
       <option name="filePath" />
       <option name="vmParameters" />
       <option name="alternativeJrePath" />
@@ -334,7 +241,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="MAIN_CLASS_NAME" />
       <option name="WORKING_DIRECTORY" />
-      <module name="" />
       <option name="filePath" />
       <option name="vmParameters" />
       <option name="alternativeJrePath" />
@@ -374,22 +280,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="js.build_tools.gulp">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
-      <method v="2" />
-    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.MainDash" />
+      <item itemvalue="Application.TestProfile" />
+      <item itemvalue="Application.NewFXMain" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainAcc" />
-        <item itemvalue="Application.Main (1)" />
-        <item itemvalue="Application.Main (4)" />
-        <item itemvalue="Application.Main (3)" />
-        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.NewFXMain" />
+        <item itemvalue="Application.MainDash" />
+        <item itemvalue="Application.TestProfile" />
       </list>
     </recent_temporary>
   </component>
@@ -404,73 +305,56 @@
       <option name="presentableId" value="Default" />
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
-      <workItem from="1497708497752" duration="3167000" />
-      <workItem from="1584896921143" duration="832000" />
-      <workItem from="1584897844161" duration="14000" />
-      <workItem from="1584898316919" duration="1419000" />
-      <workItem from="1584967236358" duration="19071000" />
-      <workItem from="1585001493647" duration="2018000" />
-      <workItem from="1585063499764" duration="3801000" />
-      <workItem from="1585070690257" duration="1255000" />
-      <workItem from="1585133768962" duration="602000" />
-      <workItem from="1585497283135" duration="5902000" />
-      <workItem from="1585562017820" duration="1377000" />
-      <workItem from="1585566547447" duration="7004000" />
-      <workItem from="1585594617031" duration="3905000" />
+      <workItem from="1585732363738" duration="9031000" />
+      <workItem from="1586025204857" duration="326000" />
+      <workItem from="1586101363181" duration="6418000" />
+      <workItem from="1586116624484" duration="8685000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="275" y="15" width="816" height="723" key="#Intentions" timestamp="1585502214793">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="275" y="15" width="816" height="723" key="#Intentions/0.0.1366.738@0.0.1366.738" timestamp="1585502214793" />
-    <state x="488" y="78" key="#com.intellij.ide.util.MemberChooser" timestamp="1585586090802">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="488" y="78" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1585586090802" />
-    <state x="463" y="127" key="FileChooserDialogImpl" timestamp="1585586928878">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="463" y="127" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1585586928878" />
-    <state width="661" height="149" key="GridCell.Tab.0.bottom" timestamp="1585662139499">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="661" height="149" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1585662139499" />
-    <state width="661" height="149" key="GridCell.Tab.0.center" timestamp="1585662139499">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="661" height="149" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1585662139499" />
-    <state width="661" height="149" key="GridCell.Tab.0.left" timestamp="1585662139498">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="661" height="149" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1585662139498" />
-    <state width="661" height="149" key="GridCell.Tab.0.right" timestamp="1585662139499">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="661" height="149" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1585662139499" />
-    <state x="186" y="0" key="SettingsEditor" timestamp="1585566623582">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="186" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1585566623582" />
-    <state x="391" y="196" key="com.intellij.ide.util.TipDialog" timestamp="1585497341146">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="391" y="196" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1585497341146" />
-    <state x="413" y="131" width="540" height="482" key="extract.method.dialog" timestamp="1585002626799">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="413" y="131" width="540" height="482" key="extract.method.dialog/0.0.1366.738@0.0.1366.738" timestamp="1585002626799" />
-    <state width="600" height="423" key="javadoc.popup" timestamp="1584988089440">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state width="600" height="423" key="javadoc.popup/0.0.1366.738@0.0.1366.738" timestamp="1584988089440" />
+  <component name="VcsManagerConfiguration">
+    <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
+    <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
   </component>
-  <component name="antWorkspaceConfiguration">
-    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
-    <option name="FILTER_TARGETS" value="false" />
+  <component name="WindowStateProjectService">
+    <state x="274" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585733241122">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="274" y="37" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1585733241122" />
+    <state x="413" y="119" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586126410388">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="413" y="119" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.738@0.0.1366.738" timestamp="1586126410388" />
+    <state x="113" y="155" key="FileChooserDialogImpl" timestamp="1585733122719">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="113" y="155" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1585733122719" />
+    <state width="661" height="149" key="GridCell.Tab.0.bottom" timestamp="1586126853151">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="661" height="149" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1586126853151" />
+    <state width="661" height="149" key="GridCell.Tab.0.center" timestamp="1586126853151">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="661" height="149" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1586126853151" />
+    <state width="661" height="149" key="GridCell.Tab.0.left" timestamp="1586126853151">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="661" height="149" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1586126853151" />
+    <state width="661" height="149" key="GridCell.Tab.0.right" timestamp="1586126853151">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="661" height="149" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1586126853151" />
+    <state x="163" y="0" key="SettingsEditor" timestamp="1586116687272">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="163" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1586116687272" />
+    <state x="391" y="196" key="com.intellij.ide.util.TipDialog" timestamp="1586025501132">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="391" y="196" key="com.intellij.ide.util.TipDialog/0.0.1366.738@0.0.1366.738" timestamp="1586025501132" />
   </component>
 </project>

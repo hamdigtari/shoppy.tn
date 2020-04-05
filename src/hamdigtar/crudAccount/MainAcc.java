@@ -15,7 +15,7 @@ public class MainAcc extends Application {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("sample.fxml"));
         AnchorPane pane=loader.load();
         Scene scene=new Scene(pane);
-        scene.getStylesheets().addAll(getClass().getResource("style.css").toExternalForm());
+        scene.getStylesheets().addAll(getClass().getResource("stylelogin.css").toExternalForm());
 
         primaryStage.setScene(scene);
         primaryStage.show();
