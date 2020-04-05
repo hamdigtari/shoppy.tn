@@ -27,7 +27,7 @@ import com.shoppy.interfaces.IAnnonceServices;
 
 /**
  *
- * @author asus
+ * @author hamdi
  */
 public class AnnonceServices implements IAnnonceServices {
 

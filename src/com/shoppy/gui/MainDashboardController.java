@@ -15,7 +15,7 @@ import javafx.scene.layout.AnchorPane;
 
 /**
  *
- * @author firas
+ * @author hamdi
  */
 public class MainDashboardController implements Initializable{
 

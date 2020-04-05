@@ -7,7 +7,7 @@ package com.shoppy.util;
 
 /**
  *
- * @author firas
+ * @author hamdi
  */
 import java.util.Date;
 import java.util.Properties;

@@ -57,7 +57,7 @@ import javafx.scene.text.Text;
 /**
  * FXML Controller class
  *
- * @author firas
+ * @author hamdi
  */
 public class AnnonceShowFXMLController implements Initializable, MapComponentInitializedListener, DirectionsServiceCallback {
     

@@ -26,7 +26,7 @@ import org.controlsfx.control.Notifications;
 /*
  * FXML Controller class
  *
- * @author firas
+ * @author hamdi
  */
 public class AdminUserFXMLController implements Initializable {
 

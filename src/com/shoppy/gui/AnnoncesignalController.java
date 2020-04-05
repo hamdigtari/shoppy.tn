@@ -34,7 +34,7 @@ import javax.mail.internet.MimeMessage;
 /**
  * FXML Controller class
  *
- * @author firas
+ * @author hamdi
  */
 public class AnnoncesignalController implements Initializable {
 

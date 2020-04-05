@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 
 /**
  *
- * @author firas
+ * @author hamdi
  */
 public class FosUser implements Serializable {
 

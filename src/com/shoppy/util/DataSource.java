@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 /**
  *
- * @author firas
+ * @author hamdi
  */
 public class DataSource {
 

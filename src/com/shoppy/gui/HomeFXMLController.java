@@ -25,7 +25,7 @@ import javafx.scene.layout.Pane;
 /**
  * FXML Controller class
  *
- * @author firas
+ * @author hamdi
  */
 public class HomeFXMLController implements Initializable {
 

@@ -25,7 +25,7 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author firas
+ * @author hamdi
  */
 public class ConfirmAccountFXMLController implements Initializable {
 

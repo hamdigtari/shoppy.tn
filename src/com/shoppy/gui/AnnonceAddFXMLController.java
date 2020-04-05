@@ -68,7 +68,7 @@ import org.controlsfx.control.textfield.TextFields;
 /**
  * FXML Controller class
  *
- * @author firas
+ * @author hamdi
  */
 public class AnnonceAddFXMLController implements Initializable, MapComponentInitializedListener, DirectionsServiceCallback {
 

@@ -11,7 +11,7 @@ import com.shoppy.services.FosUserServices;
 
 /**
  *
- * @author firas
+ * @author hamdi
  */
 public class SessionUser {
     
