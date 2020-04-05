@@ -24,11 +24,15 @@
         </Pane>
         <TabPane prefHeight="648.0" prefWidth="802.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-                <Tab closable="false" text="Gestion des Magasins">
+                <!--<Tab closable="false" text="Gestion des Magasins">
                     <fx:include fx:id="shopTab" source="ShopTab.fxml" />
                 </Tab>
+                -->
                 <Tab closable="false" text="Gestion des Commandes">
                     <fx:include fx:id="orderTab" source="OrderTab.fxml" />
+                </Tab>
+                 <Tab closable="false" text="Statisques">
+                    <fx:include fx:id="Stat" source="Nv.fxml" />
                 </Tab>
                 <Tab closable="false" disable="true" text="WIP">
                     <content>

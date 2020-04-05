@@ -13,10 +13,51 @@ public class OrderLine {
   
     
   private int idLC ;  
-  private int id_cmd ;
-  private int id_product ; 
+  private int id_cmd=1 ;
+  private int id_product=1 ; 
   private  float totalLc; 
   private int qte ; 
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + this.idLC;
+        hash = 79 * hash + this.id_cmd;
+        hash = 79 * hash + this.id_product;
+        hash = 79 * hash + Float.floatToIntBits(this.totalLc);
+        hash = 79 * hash + this.qte;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final OrderLine other = (OrderLine) obj;
+        if (this.idLC != other.idLC) {
+            return false;
+        }
+        if (this.id_cmd != other.id_cmd) {
+            return false;
+        }
+        if (this.id_product != other.id_product) {
+            return false;
+        }
+        if (Float.floatToIntBits(this.totalLc) != Float.floatToIntBits(other.totalLc)) {
+            return false;
+        }
+        if (this.qte != other.qte) {
+            return false;
+        }
+        return true;
+    }
 
   
     public OrderLine(float totalLc, int qte) 
@@ -34,7 +75,10 @@ public class OrderLine {
         this.qte = qte;
     }
     
-    
+     public OrderLine() 
+    {
+        
+    }
 
     public int getIdLC() {
         return idLC;
@@ -72,6 +116,11 @@ public class OrderLine {
 
     public void setQte(int qte) {
         this.qte = qte;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderLine{" + "idLC=" + idLC + ", id_cmd=" + id_cmd + ", id_product=" + id_product + ", totalLc=" + totalLc + ", qte=" + qte + '}';
     }
    
 }

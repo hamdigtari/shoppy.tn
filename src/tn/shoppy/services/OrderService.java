@@ -10,9 +10,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import static java.time.LocalDateTime.now;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 import tn.shoppy.model.Order;
 import tn.shoppy.model.Shop;
 import tn.shoppy.utils.ConnectionDB;
@@ -40,21 +46,24 @@ public class OrderService {
     }
         
         
-    public List<Order> getAllShops() 
+  public List<Order> getAllOrders() 
     {
         List<Order> list = new ArrayList<>();
         int count = 0;
-        
-        String query="select * from commande ";
+           String s = "Archivage Active "; 
+        String query="select * from commande where adresse_liv not like '"+s+"%'";
         try{
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(query);
             while (rs.next()){
                 
                 Order r = new Order();
+                //Build formatter
+
                 r.setIdCmd(rs.getInt(1));
                 r.setTotal(rs.getFloat(2));
                 r.setQteTot(rs.getInt(3));
+                r.setDateCreation(rs.getTimestamp(4).toLocalDateTime());
                 r.setAdresseLiv(rs.getString(5));
                 r.setId_Acheteur(rs.getInt(6));
                 list.add(r);
@@ -87,14 +96,25 @@ public class OrderService {
     {
         System.out.println(order.getIdCmd() + " " + order.getTotal());
 
-        String query = "INSERT INTO Commande (QteTot,total,adresseLiv) VALUES (?,?)";      
+        String query = "INSERT INTO Commande (QteTot,total,adresse_liv,DateCreation,id_acheteur) VALUES (?,?,?,?,1)";      
+          DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
+ ZoneId zoneId = ZoneId.systemDefault();
+//Format LocalDateTime
         try
+            
         {
             PreparedStatement pst = cn.prepareStatement(query);
-            pst.setString(1, order.getAdresseLiv());
-            pst.setInt(2, order.getQteTot()); 
+                  pst.setTimestamp(4,Timestamp.from(order.getDateCreation().atZone(zoneId).toInstant()));
+
+            pst.setString(3, order.getAdresseLiv());
+            pst.setInt(1, order.getQteTot()); 
             pst.setFloat(2, order.getTotal()); 
-       
+            
+      //  r.setDateCreation(rs.getTimestamp(4).toLocalDateTime());
+     
+    
+ 
+
             pst.executeUpdate();
         }
         catch(SQLException e)
@@ -108,7 +128,9 @@ public class OrderService {
     }
       public boolean deleteOrder(Order order)
     {
-        String query = "DELETE FROM Commande WHERE id=?";
+
+
+        String query = "DELETE FROM Commande WHERE id=? ";
         try 
         {
             PreparedStatement pst = cn.prepareStatement(query);
@@ -125,7 +147,7 @@ public class OrderService {
     
       /* find method */
         public List<Order> findOrders(String input) {  
-        HashSet<Order> cleanResult = new HashSet<>();
+        List<Order> cleanResult = new ArrayList<Order>();
         List<Order> r1 = findOrdersByQte(input);
         List<Order> r2 = findOrdersByTotal(input);
         List<Order> r3 = findOrdersByID(input);
@@ -139,10 +161,28 @@ public class OrderService {
         if(r3 != null){
             cleanResult.addAll(r3);
         }
-        List<Order> result = new ArrayList<>(cleanResult);
+        List<Order> result = cleanResult.stream().distinct().collect(Collectors.toList());
         return result;
     }
-    
+     public boolean updateOrder(Order order)
+    {
+        System.out.println(order);
+        String query = "UPDATE Commande SET adresse_liv=?,total=?,QteTot=? WHERE id=?";
+        try {
+            PreparedStatement pst = cn.prepareStatement(query);
+            pst.setInt(4, order.getIdCmd());
+            pst.setString(1, order.getAdresseLiv());
+            pst.setFloat(2, order.getTotal());
+            pst.setInt(3, order.getQteTot());
+            pst.executeUpdate();
+            System.out.println("Update successful !");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            return true;
+        }       
+        return false;
+    }
 public List<Order> findOrdersByQte(String qt) {  
      List<Order> list = new ArrayList<>();
         int count = 0;
@@ -156,7 +196,7 @@ public List<Order> findOrdersByQte(String qt) {
                 r.setIdCmd(rs.getInt(1));
                 r.setTotal(rs.getFloat(2));
                 r.setQteTot(rs.getInt(3));
-                r.setAdresseLiv(rs.getString(4)); 
+                r.setAdresseLiv(rs.getString(5)); 
                 list.add(r);
                 count++;
             }
@@ -189,7 +229,7 @@ public List<Order> findOrdersByQte(String qt) {
                 r.setIdCmd(rs.getInt(1));
                 r.setTotal(rs.getFloat(2));
                 r.setQteTot(rs.getInt(3));
-                r.setAdresseLiv(rs.getString(4)); 
+                r.setAdresseLiv(rs.getString(5)); 
                 list.add(r);
                 count++;
             }
@@ -207,7 +247,8 @@ public List<Order> findOrdersByQte(String qt) {
         public List<Order> findOrdersByID(String ID) {
         List<Order> list = new ArrayList<>();
         int count = 0;
-        String query = "SELECT * FROM commande WHERE convert(id,CHARACTER) like '%" + ID + "%'";
+        String s = "Archivage Active"; 
+        String query = "SELECT * FROM commande WHERE convert(id,CHARACTER) like '%" + ID + "%' and adresse_liv not like '"+s+"%'";
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(query);
@@ -217,7 +258,7 @@ public List<Order> findOrdersByQte(String qt) {
                 r.setIdCmd(rs.getInt(1));
                 r.setTotal(rs.getFloat(2));
                 r.setQteTot(rs.getInt(3));
-                r.setAdresseLiv(rs.getString(4)); 
+                r.setAdresseLiv(rs.getString(5)); 
                 list.add(r);
                 count++;
             }
@@ -231,4 +272,29 @@ public List<Order> findOrdersByQte(String qt) {
             return null;
         }
     }
+        
+
+ public boolean archiveOrder(Order order) {
+       System.out.println(order);
+     
+        
+        String query = "UPDATE commande SET adresse_liv=? WHERE id=?";
+        try 
+        {    
+            String s = "Archivage Active "; 
+            PreparedStatement pst = cn.prepareStatement(query);
+            pst.setInt(2, order.getIdCmd());
+            System.out.println(order.getAdresseLiv());
+            pst.setString(1,s+(order.getAdresseLiv()));
+          
+            pst.executeUpdate();
+            System.out.println("archivage successful !");
+
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            return true;
+        }       
+        return false;
+    }
+
 }

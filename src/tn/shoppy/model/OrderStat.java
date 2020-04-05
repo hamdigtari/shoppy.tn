@@ -5,10 +5,12 @@
  */
 package tn.shoppy.model;
 
+import static java.lang.String.valueOf;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
@@ -22,15 +24,16 @@ public class OrderStat {
         Connection cnx = ConnectionDB.getCnx();
 
                      public ObservableList<PieChart.Data> Stats() {
-        String requete = "SELECT (SELECT count(*)  from commande where total>=1000 ) as note_sup , (SELECT count(*)  from commande where total<1000 ) as note_inf  from commande ";
+        String requete = "SELECT (SELECT count(*)  from commande where total>=500 ) as note_sup , (SELECT count(*)  from commande where total<500 ) as note_inf  from commande ";
         try {
             Statement st2 = cnx.createStatement();
 
             ResultSet rs = st2.executeQuery(requete);
             ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
            rs.next() ; 
-                pieChartData.add(new PieChart.Data("total_sup : %"+String.valueOf(100* Float.valueOf(rs.getInt(1))/Float.valueOf(rs.getInt(1)+rs.getInt(2))), rs.getInt(1)));
-                 pieChartData.add(new PieChart.Data("total_inf", rs.getInt(2)));
+    
+                pieChartData.add(new PieChart.Data("total_cmd_sup : %"+String.valueOf(100* Float.valueOf(rs.getInt(1))/Float.valueOf(rs.getInt(1)+rs.getInt(2))), rs.getInt(1)));
+                 pieChartData.add(new PieChart.Data("total_cmd_inf : %"+String.valueOf(100* Float.valueOf(rs.getInt(2))/Float.valueOf(rs.getInt(1)+rs.getInt(2))), rs.getInt(2)));
 
             
 
