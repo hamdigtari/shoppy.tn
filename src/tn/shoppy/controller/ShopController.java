@@ -10,7 +10,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
@@ -49,15 +51,21 @@ public class ShopController implements Initializable {
     private TableColumn<Shop, Integer> shopFiscalityColumn;
 
     private ObservableList<Shop> shopData = FXCollections.observableArrayList();
- 
+    private ObservableList<Integer> sellersData = FXCollections.observableArrayList();
+    
     @FXML
     private TextField addMagasinNameField;
     @FXML
     private TextField addMagasinFiscalityField;
     @FXML
+    private ComboBox<Integer> addMagasinSellerComboBox;
+    
+    @FXML
     private TextField updateMagasinNameField;
     @FXML
     private TextField updateMagasinFiscalityField;
+    @FXML
+    private ComboBox<Integer> updateMagasinSellerComboBox;
     
     @FXML
     private TextField searchShopField;
@@ -67,7 +75,7 @@ public class ShopController implements Initializable {
     @FXML
     private ImageView shopHelpImage;
     private Tooltip helpTooltip;
-
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         shopTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -88,6 +96,15 @@ public class ShopController implements Initializable {
         } else {
             searchShopLabel.setText("");
             shopTable.setPlaceholder(new Label("Il n'y a aucun magasin dans la base de données. Veuillez en rajouter! "));
+        }
+        
+        List<Integer> availableSellers = new ArrayList<>();
+        availableSellers = shopService.getAvailableSellers();
+        if (!availableSellers.isEmpty())
+        {
+            sellersData.addAll(availableSellers);
+            addMagasinSellerComboBox.setItems(sellersData);
+            updateMagasinSellerComboBox.setItems(sellersData);
         }
         
         helpTooltip = new Tooltip("Vous êtes dans l'onglet de getion de magasin.\n"
@@ -113,7 +130,8 @@ public class ShopController implements Initializable {
         if (inputCheck.testTextInput(name) && inputCheck.testNumberInput(taxID))
         {
             int intTaxID = Integer.parseInt(taxID);
-            result = shopService.addShop(new Shop(name,intTaxID));
+            Integer sellerId = addMagasinSellerComboBox.getValue();
+            result = shopService.addShop(new Shop(0,sellerId,name,intTaxID));
         }
         else
         {
@@ -133,6 +151,7 @@ public class ShopController implements Initializable {
     }
     //********************* R **************************//
     public void refreshTableData() {
+        refreshSellersList();
         List<Shop> shopList = new ArrayList<>();
         ShopService shopService = ShopService.getInstance();
         shopList = shopService.getAllShops();
@@ -148,6 +167,18 @@ public class ShopController implements Initializable {
             searchShopLabel.setText("Aucun résultat."); 
             shopTable.setPlaceholder(new Label("Il n'y a aucun magasin dans la base de données. Veuillez en rajouter! "));
         }
+    }
+    
+    public void refreshSellersList(){
+        List<Integer> availableSellers = new ArrayList<>();
+        ShopService shopService = ShopService.getInstance();
+        availableSellers = shopService.getAvailableSellers();
+        if (!availableSellers.isEmpty())
+        {
+            sellersData.addAll(availableSellers);
+            addMagasinSellerComboBox.setItems(sellersData);
+            updateMagasinSellerComboBox.setItems(sellersData);
+        }        
     }
     
     //********************* U **************************//
@@ -189,6 +220,7 @@ public class ShopController implements Initializable {
                 if(inputCheck.testNumberInput(newTaxID) && inputCheck.testTextInput(newName))
                 {
                     shop.setNom(newName);
+                    shop.setId_vendeur(updateMagasinSellerComboBox.getValue());
                     shop.setMatricule_fiscal(Integer.parseInt(newTaxID));
                     ShopService shopService = ShopService.getInstance();
                     shopService.updateShop(shop);
@@ -197,6 +229,7 @@ public class ShopController implements Initializable {
                 else
                 {
                     Alert inputAlert = new Alert(Alert.AlertType.ERROR,"Le format de données saisi est incorrect.",ButtonType.OK);
+                    inputAlert.showAndWait();
                 }
             }else{
             a.close();

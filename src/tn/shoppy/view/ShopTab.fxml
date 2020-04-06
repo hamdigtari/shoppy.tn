@@ -53,7 +53,7 @@
                                         <Text layoutX="17.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du magasin :" />
                                         <Text layoutX="17.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matricule fiscal :" />
                                         <Text layoutX="17.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gérant / Vendeur responsable :" />
-                                        <ComboBox layoutX="17.0" layoutY="229.0" prefHeight="30.0" prefWidth="200.0" />
+                                        <ComboBox fx:id="updateMagasinSellerComboBox" layoutX="17.0" layoutY="229.0" prefHeight="30.0" prefWidth="200.0" promptText="Aucun" />
                                     </children>
                                 </AnchorPane>
                             </content>
@@ -72,7 +72,7 @@
                                         <Text layoutX="17.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom du magasin :" />
                                         <Text layoutX="17.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matricule fiscal :" />
                                         <Text layoutX="17.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gérant / Vendeur responsable :" />
-                                        <ComboBox layoutX="17.0" layoutY="229.0" prefHeight="30.0" prefWidth="200.0" />
+                                        <ComboBox fx:id="addMagasinSellerComboBox" layoutX="17.0" layoutY="229.0" prefHeight="30.0" prefWidth="200.0" promptText="Aucun" />
                                     </children>
                                 </AnchorPane>
                             </content>
@@ -92,5 +92,6 @@
             <Image url="@../resources/images/help.png" />
          </image>
       </ImageView>
+      <Button fx:id="exportExcelShopButton" layoutX="850.0" layoutY="560.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="168.0" text="Exporter vers Excel" />
     </children>
 </AnchorPane>

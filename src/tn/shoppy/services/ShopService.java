@@ -296,5 +296,27 @@ public class ShopService {
         }
     }        
 
+    public List<Integer> getAvailableSellers()
+    {
+        List<Integer> list = new ArrayList<>();
+        int count = 0;
+        String query = "select id from users where ROLES like '%ROLE_VENDEUR%' and id_magasin IS NULL ";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) 
+            {
+                Integer r = rs.getInt(1);
+                count++;
+                list.add(r);
+            }
+            return list;
+        } 
+        catch (SQLException ex) 
+        {
+            System.err.println(ex.getMessage());
+            return null;
+        }
+    }
 
 }
