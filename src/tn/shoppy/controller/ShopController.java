@@ -2,6 +2,7 @@ package tn.shoppy.controller;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -23,6 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import tn.shoppy.model.Shop;
+import tn.shoppy.services.ExcelExport;
 import tn.shoppy.services.ShopService;
 import tn.shoppy.utils.ConnectionDB;
 import tn.shoppy.utils.InputCheck;
@@ -299,4 +301,10 @@ public class ShopController implements Initializable {
         }
     }
     
+    public void exportToExcelAction()
+    {
+        ExcelExport exporter = new ExcelExport();
+        String fileName = "Shop table - "+LocalDate.now().toString();
+        exporter.export(shopTable, fileName);
+    }
 }

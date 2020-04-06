@@ -13,10 +13,10 @@ import java.io.IOException;
  * @author Haroun
  */
 public class ExcelExport<T> {
-public void export(TableView<T> tableView){
+public void export(TableView<T> tableView,String fileName){
 
         HSSFWorkbook hssfWorkbook=new HSSFWorkbook();
-        HSSFSheet hssfSheet=  hssfWorkbook.createSheet("Sheet1"); //Ajouter parametre pour le nom + date pour le fichier dans chaquebouton
+        HSSFSheet hssfSheet=  hssfWorkbook.createSheet(fileName); //Ajouter parametre pour le nom + date pour le fichier dans chaquebouton
         HSSFRow firstRow= hssfSheet.createRow(0);
 
         ///set titles of columns
@@ -50,10 +50,10 @@ public void export(TableView<T> tableView){
 
         //save excel file and close the workbook
         try {
-            hssfWorkbook.write(new FileOutputStream("WorkBook.xls"));
+            hssfWorkbook.write(new FileOutputStream(fileName+".xls"));
             hssfWorkbook.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
     
