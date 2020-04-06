@@ -251,7 +251,6 @@ public class ShopController implements Initializable {
     @FXML
     public void deleteShopAction() {
         ObservableList<Shop> selectedItems = shopTable.getSelectionModel().getSelectedItems();
-        System.out.println(selectedItems);
         Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir supprimer ces "+ selectedItems.size() +" éléments de la base de données ?",ButtonType.YES,ButtonType.NO);
         a.showAndWait();
         if(a.getResult()==ButtonType.YES){
@@ -307,4 +306,27 @@ public class ShopController implements Initializable {
         String fileName = "Shop table - "+LocalDate.now().toString();
         exporter.export(shopTable, fileName);
     }
+    
+    public void switchToShopInterfaceAction()
+    {
+        Shop shop = (Shop) shopTable.getSelectionModel().getSelectedItem();        
+        if(shop != null)
+        {
+            Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir passer à la page de "+ shop.getNom()+" ?",ButtonType.YES,ButtonType.NO);
+            a.showAndWait();
+            if(a.getResult()==ButtonType.YES){
+                System.out.println("TODO: Afficher la page du magasin.");
+                a.close();
+            }else{
+            a.close();
+            }            
+        }
+        else
+        {
+            Alert a=new Alert(Alert.AlertType.WARNING,"Aucune sélection !", ButtonType.OK);
+            a.showAndWait();            
+        }
+
+    }
+    
 }
