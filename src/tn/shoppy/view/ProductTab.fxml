@@ -69,7 +69,7 @@
                             <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="193.0">
                                     <children>
-                                        <Button fx:id="addProductButton" layoutX="17.0" layoutY="335.0" mnemonicParsing="false" onAction="#addProductAction" prefHeight="30.0" prefWidth="200.0" text="Valider">
+                                        <Button fx:id="addProductButton" layoutX="17.0" layoutY="343.0" mnemonicParsing="false" onAction="#addProductAction" prefHeight="30.0" prefWidth="200.0" text="Valider">
                                             <cursor>
                                                 <!--<Cursor fx:constant="HAND" />-->
                                             </cursor>
@@ -81,10 +81,10 @@
                               <TextField fx:id="addProductQuantityField" layoutX="69.0" layoutY="60.0" />
                               <Text layoutX="28.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prix :" />
                               <TextField fx:id="addProductPriceField" layoutX="70.0" layoutY="94.0" />
-                              <TextArea fx:id="addProductDescriptionArea" layoutX="22.0" layoutY="192.0" prefHeight="92.0" prefWidth="190.0" />
+                              <TextArea fx:id="addProductDescriptionArea" layoutX="23.0" layoutY="193.0" prefHeight="92.0" prefWidth="190.0" />
                               <Text layoutX="19.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marque :" />
                               <TextField fx:id="addProductBrandField" layoutX="69.0" layoutY="131.0" />
-                              <ComboBox fx:id="addProductShopComboBox" layoutX="23.0" layoutY="295.0" prefHeight="25.0" prefWidth="190.0" promptText="Magasin offrant" />
+                              <ComboBox fx:id="addProductShopComboBox" layoutX="23.0" layoutY="302.0" prefHeight="25.0" prefWidth="190.0" promptText="Magasin offrant" />
                                     </children>
                                 </AnchorPane>
                             </content>
@@ -95,6 +95,9 @@
                     <padding>
                         <Insets top="20.0" />
                     </padding>
+               <children>
+                  <Button mnemonicParsing="false" onAction="#detailPAction" prefHeight="25.0" prefWidth="126.0" text="Détails" />
+               </children>
                 </HBox>
             </children>
         </VBox>

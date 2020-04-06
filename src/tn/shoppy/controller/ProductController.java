@@ -1,5 +1,6 @@
 package tn.shoppy.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -7,11 +8,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -24,6 +32,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import tn.shoppy.model.Product;
 import tn.shoppy.model.Shop;
 import tn.shoppy.services.ProductService;
@@ -38,6 +47,7 @@ import tn.shoppy.utils.InputCheck;
 public class ProductController implements Initializable{
     
     Connection cnx = ConnectionDB.getCnx();
+    public static Product prod;
     
     /**
      * UI elements
@@ -90,6 +100,7 @@ public class ProductController implements Initializable{
     @FXML
     private ComboBox<Shop> updateProductShopComboBox;
     
+    
     @FXML
     private Label searchProductLabel;
     private ObservableList<Product> productData = FXCollections.observableArrayList();
@@ -101,6 +112,15 @@ public class ProductController implements Initializable{
     @FXML
     private ImageView productHelpImage;
     private Tooltip helpTooltip;
+    @FXML
+    private Button searchProductButton;
+    @FXML
+    private Button updateProductButton;
+    @FXML
+    private Button addProductButton;
+    
+    @FXML
+    private Button deleteProductAction;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -316,6 +336,7 @@ public class ProductController implements Initializable{
     
         //************ SEARCH *********************//
     
+    @FXML
      public void searchProductAction() {
         List<Product> resultList = new ArrayList<>();
         ProductService productService = ProductService.getInstance();
@@ -350,6 +371,27 @@ public class ProductController implements Initializable{
         {
             refreshTableData();
         }
+    }
+
+    @FXML
+    public void detailPAction() {
+        System.out.println("tn.shoppy.controller.ProductController.DetailProductAction()");
+        prod = productTable.getSelectionModel().getSelectedItem();
+
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/tn/shoppy/view/Detail.fxml"));
+            Stage myWindow = (Stage) productTable.getScene().getWindow();
+            Scene sc = new Scene(root);
+            myWindow.setScene(sc);
+            myWindow.setTitle("Détail produit");
+            myWindow.show();
+        } catch (IOException ex) {
+            Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+        
     }
     
 }
