@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import tn.shoppy.model.Offer;
+import tn.shoppy.model.Shop;
 import tn.shoppy.utils.ConnectionDB;
 
 /**
@@ -66,6 +67,41 @@ public class OfferService {
         }
     }
         
+    public List<Offer> getAllOffersForOneShop(Shop shop) 
+    {
+        List<Offer> list = new ArrayList<>();
+        int count = 0;
+        String query="select * from Offre where id_magasin="+shop.getId()+";";
+        try{
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()){
+                
+                Offer r = new Offer();
+                r.setId(rs.getInt(1));
+                r.setId_magasin(rs.getInt(2));
+                r.setTaux(rs.getDouble(3));
+                r.setNom(rs.getString(4));
+                r.setDescription(rs.getString(5));
+                r.setDate_debut(rs.getDate(6));
+                r.setDate_fin(rs.getDate(7));
+                list.add(r);
+                count++;
+            }
+            if(count == 0)
+            {
+                return null;
+            }
+            else
+            {
+               return list;
+            }
+        }
+        catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            return null;
+        }
+    }
 
     public boolean addOffer(Offer offer)
     {

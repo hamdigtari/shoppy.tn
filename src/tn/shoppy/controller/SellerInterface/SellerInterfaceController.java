@@ -41,11 +41,11 @@ public class SellerInterfaceController implements Initializable {
         
         //Setting the controller for the offer tab
         FXMLLoader offerLoader = new FXMLLoader(getClass().getResource("/tn/shoppy/view/SellerInterface/OfferTab.fxml"));
-        SellerOfferController oc = new SellerOfferController();
-        oc.setSessionShop(shop);
-        offerLoader.setController(oc);
+        SellerOfferController oc = new SellerOfferController(shop);
+//        oc.setSessionShop(shop);
+        offerLoader.setControllerFactory(p -> oc);
 //        System.out.println(getClass().getResource("/tn/shoppy/view/SellerInterface/OfferTab.fxml"));
-//        System.out.println(oc);
+        System.out.println(oc.getSessionShop());
         
         //Setting the controller for the products tab
         FXMLLoader productLoader = new FXMLLoader(getClass().getResource("/tn/shoppy/view/SellerInterface/ProductTab.fxml"));

@@ -64,7 +64,7 @@ public class SellerOfferController implements Initializable {
     private TableColumn<Offer, Date> offerStartDateColumn;
     @FXML
     private TableColumn<Offer, Date> offerEndDateColumn;
-    
+
     private ObservableList<Offer> offerData = FXCollections.observableArrayList();
     private ObservableList<Shop> shopData = FXCollections.observableArrayList();
 
@@ -78,8 +78,8 @@ public class SellerOfferController implements Initializable {
     private DatePicker addOfferStartDatePicker;
     @FXML
     private DatePicker addOfferEndDatePicker;
-    @FXML
-    private ComboBox<Shop> addOfferShopComboBox;  
+//    @FXML
+//    private ComboBox<Shop> addOfferShopComboBox;
 
     @FXML
     private TextField updateOfferNameField;
@@ -91,9 +91,9 @@ public class SellerOfferController implements Initializable {
     private DatePicker updateOfferStartDatePicker;
     @FXML
     private DatePicker updateOfferEndDatePicker;
-    @FXML
-    private ComboBox<Shop> updateOfferShopComboBox; 
-    
+//    @FXML
+//    private ComboBox<Shop> updateOfferShopComboBox;
+
     @FXML
     private TextField searchOfferField;
     @FXML
@@ -103,6 +103,14 @@ public class SellerOfferController implements Initializable {
     private ImageView offerHelpImage;
     private Tooltip helpTooltip;
 
+    public SellerOfferController(Shop sessionShop){
+        this.sessionShop = sessionShop;
+    }
+    public SellerOfferController(){
+        this.sessionShop = new Shop();
+        this.sessionShop.setId(10);
+    }
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         offerTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
@@ -112,7 +120,8 @@ public class SellerOfferController implements Initializable {
 
         List<Offer> offerList = new ArrayList<>();
         OfferService offerService = OfferService.getInstance();
-        offerList = offerService.getAllOffers();
+        offerList = offerService.getAllOffersForOneShop(sessionShop);
+
         offerData.clear();
         if (offerList != null) {
             offerData.addAll(offerList);
@@ -123,21 +132,21 @@ public class SellerOfferController implements Initializable {
             offerDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
             offerStartDateColumn.setCellValueFactory(new PropertyValueFactory<>("date_debut"));
             offerEndDateColumn.setCellValueFactory(new PropertyValueFactory<>("date_fin"));
-            offerTable.setItems(offerData);
+            offerTable.setItems(offerData);System.out.println(offerTable);
             searchOfferLabel.setText("Résultat : " + offerList.size() + " ligne(s).");
         } else {
             searchOfferLabel.setText("Aucun résultat.");
             offerTable.setPlaceholder(new Label("Il n'y a aucune offre dans la base de données. Veuillez en rajouter! "));
         }
-             
+
         List<Shop> shopList = new ArrayList<>();
         ShopService shopService = ShopService.getInstance();
-        shopList = shopService.getAllShops();    
+        shopList = shopService.getAllShops();
         shopData.clear();
         if (shopList != null) {
             shopData.addAll(shopList);
-            addOfferShopComboBox.getItems().addAll(shopData);
-            updateOfferShopComboBox.getItems().addAll(shopData);
+//            addOfferShopComboBox.getItems().addAll(shopData);
+//            updateOfferShopComboBox.getItems().addAll(shopData);
         }
 
         helpTooltip = new Tooltip("Vous êtes dans l'onglet de getion des offres.\n"
@@ -150,20 +159,18 @@ public class SellerOfferController implements Initializable {
         Tooltip.install(offerHelpImage, helpTooltip);
     }
 
-    
     /**
      * Session shop operations
      */
-    public void setSessionShop(Shop shop)
-    {
+    public void setSessionShop(Shop shop) {
         this.sessionShop = shop;
+//        refreshTableData();
     }
-    
-    public Shop getSessionShop()
-    {
+
+    public Shop getSessionShop() {
         return this.sessionShop;
     }
-    
+
     //********************* C **************************//
     @FXML
     public void addOfferAction() {
@@ -180,11 +187,7 @@ public class SellerOfferController implements Initializable {
         if (inputCheck.testTextInput(name) && inputCheck.testDoubleInput(rate)
                 && (inputCheck.testFutureDate(startDate, endDate))) {
             Double rateDouble = Double.parseDouble(rate);
-            if(addOfferShopComboBox.getValue()!= null)
-            {
-                shopID = addOfferShopComboBox.getValue().getId();
-            }
-            result = offerService.addOffer(new Offer(0, shopID, rateDouble, name, description, startDate, endDate));
+            result = offerService.addOffer(new Offer(0, sessionShop.getId(), rateDouble, name, description, startDate, endDate));
         } else {
             System.out.println("WIP : Error dialog => Wrong input format !");
         }
@@ -203,7 +206,7 @@ public class SellerOfferController implements Initializable {
     public void refreshTableData() {
         List<Offer> offerList = new ArrayList<>();
         OfferService offerService = OfferService.getInstance();
-        offerList = offerService.getAllOffers();
+        offerList = offerService.getAllOffersForOneShop(sessionShop);
         offerData.clear();
         if (offerList != null) {
             offerData.addAll(offerList);
@@ -214,86 +217,86 @@ public class SellerOfferController implements Initializable {
             offerTable.setPlaceholder(new Label("Il n'y a aucune offre dans la base de données. Veuillez en rajouter! "));
         }
     }
-
+    
+    public void testAction()
+    {
+//        refreshTableData();
+        System.out.println(sessionShop);
+    }
+    
     //********************* U **************************//
     @FXML
     public void selectOneOfferAction(KeyEvent keyEvent) {
         Offer offer = (Offer) offerTable.getSelectionModel().getSelectedItem();
-        if(offer != null)
-        {
+        if (offer != null) {
             fillUpdateForm(offer);
         }
     }
+
     @FXML
     public void clickOneShopAction() {
         Offer offer = (Offer) offerTable.getSelectionModel().getSelectedItem();
-        if(offer != null)
-        {
+        if (offer != null) {
             fillUpdateForm(offer);
         }
     }
-    
-    public void fillUpdateForm(Offer offer)
-    {
-        ShopService shopService= ShopService.getInstance();
-        
+
+    public void fillUpdateForm(Offer offer) {
+        ShopService shopService = ShopService.getInstance();
+
         updateOfferNameField.setText(offer.getNom());
         updateOfferRateField.setText(String.valueOf(offer.getTaux()));
         updateOfferDescriptionArea.setText(offer.getDescription());
         updateOfferStartDatePicker.setValue(LocalDate.parse(offer.getDate_debut().toString()));
         updateOfferEndDatePicker.setValue(LocalDate.parse(offer.getDate_fin().toString()));
-        updateOfferShopComboBox.setValue(shopService.findOneShopByID(offer.getId_magasin()));    
-        
+//        updateOfferShopComboBox.setValue(shopService.findOneShopByID(offer.getId_magasin()));
+
     }
+
     @FXML
     public void updateOfferAction() {
         Offer selection = offerTable.getSelectionModel().getSelectedItem();
         InputCheck inputCheck = InputCheck.getInstance();
-        if (selection != null)
-        {   
+        if (selection != null) {
             Offer offer = new Offer();
             offer.setId(selection.getId());
             String newName = updateOfferNameField.getText();
-            String newRate = updateOfferRateField.getText();  
+            String newRate = updateOfferRateField.getText();
             String newDescription = updateOfferDescriptionArea.getText();
             Date newStartDate = Date.valueOf(updateOfferStartDatePicker.getValue());
             Date newEndDate = Date.valueOf(updateOfferEndDatePicker.getValue());
-            int newShopID = updateOfferShopComboBox.getValue().getId();
-            
-            Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir modifier le magasin: "+selection.getNom()+" de la base de données ?",ButtonType.YES,ButtonType.NO);
+//            int newShopID = updateOfferShopComboBox.getValue().getId();
+
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Êtes-vous sûr(e) de vouloir modifier le magasin: " + selection.getNom() + " de la base de données ?", ButtonType.YES, ButtonType.NO);
             a.showAndWait();
-            
-            if(a.getResult()==ButtonType.YES){
+
+            if (a.getResult() == ButtonType.YES) {
                 if (inputCheck.testTextInput(newName) && inputCheck.testDoubleInput(newRate)
-                && (inputCheck.testFutureDate(newStartDate, newEndDate)))
-                {
+                        && (inputCheck.testFutureDate(newStartDate, newEndDate))) {
                     offer.setNom(newName);
                     offer.setTaux(Double.parseDouble(newRate));
                     offer.setDescription(newDescription);
                     offer.setDate_debut(newStartDate);
                     offer.setDate_fin(newEndDate);
-                    offer.setId_magasin(newShopID);
-                    
+                    offer.setId_magasin(sessionShop.getId());
+
                     OfferService offerService = OfferService.getInstance();
                     offerService.updateOffer(offer);
                     refreshTableData();
                     a.close();
+                } else {
+                    Alert inputAlert = new Alert(Alert.AlertType.ERROR, "Le format de données saisi est incorrect.", ButtonType.OK);
                 }
-                else
-                {
-                    Alert inputAlert = new Alert(Alert.AlertType.ERROR,"Le format de données saisi est incorrect.",ButtonType.OK);
-                }
-            }else{
-            a.close();
+            } else {
+                a.close();
             }
-        }
-        else
-        {   
-            Alert a=new Alert(Alert.AlertType.WARNING,"Aucune séléction !",ButtonType.CLOSE); 
+        } else {
+            Alert a = new Alert(Alert.AlertType.WARNING, "Aucune séléction !", ButtonType.CLOSE);
             a.showAndWait();
         }
         refreshTableData();
-    }    
+    }
+
     //********************* D **************************//
     @FXML
     public void deleteOfferAction() {
@@ -314,48 +317,39 @@ public class SellerOfferController implements Initializable {
     }
 
     //************ SEARCH *********************//
-    
-     public void searchOfferAction() {
+    public void searchOfferAction() {
         List<Offer> resultList = new ArrayList<>();
         OfferService offerService = OfferService.getInstance();
         String input = searchOfferField.getText();
-        if(input.length()>0)
-        {
+        if (input.length() > 0) {
             resultList = offerService.findOfferByNameOrDescription(input);
             offerData.clear();
             offerData.addAll(resultList);
-            offerTable.setItems(offerData);   
-            searchOfferLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
-        }
-        else
-        {
+            offerTable.setItems(offerData);
+            searchOfferLabel.setText("Résultat : " + resultList.size() + " ligne(s).");
+        } else {
             refreshTableData();
         }
     }
-     
-     
-        public void typingSearchOfferAction() {
+
+    public void typingSearchOfferAction() {
         List<Offer> resultList = new ArrayList<>();
         OfferService offerService = OfferService.getInstance();
         String input = searchOfferField.getText();
-        if(input.length()>0)
-        {
+        if (input.length() > 0) {
             resultList = offerService.findOfferByNameOrDescription(input);
             offerData.clear();
             offerData.addAll(resultList);
-            searchOfferLabel.setText("Résultat : "+resultList.size()+" ligne(s).");
-            offerTable.setItems(offerData);   
-        }
-        else
-        {
+            searchOfferLabel.setText("Résultat : " + resultList.size() + " ligne(s).");
+            offerTable.setItems(offerData);
+        } else {
             refreshTableData();
         }
     }
-        
-    public void exportToExcelAction()
-    {
+
+    public void exportToExcelAction() {
         ExcelExport exporter = new ExcelExport();
-        String fileName = "Offer table - "+LocalDate.now().toString();
+        String fileName = "Offer table - " + LocalDate.now().toString();
         exporter.export(offerTable, fileName);
-    }    
+    }
 }
