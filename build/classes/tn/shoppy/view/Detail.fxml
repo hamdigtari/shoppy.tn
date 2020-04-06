@@ -10,5 +10,6 @@
       <Label fx:id="NameProductLabel" layoutX="422.0" layoutY="69.0" text="Label" />
       <Label fx:id="QuantityProductLabel" layoutX="422.0" layoutY="129.0" text="Label" />
       <Label fx:id="PriceProductLabel" layoutX="422.0" layoutY="192.0" text="Label" />
+      <Label layoutX="307.0" layoutY="69.0" text="Nom du produit :" />
    </children>
 </AnchorPane>

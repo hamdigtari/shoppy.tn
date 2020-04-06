@@ -35,6 +35,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import tn.shoppy.model.Product;
 import tn.shoppy.model.Shop;
+import tn.shoppy.services.Pdf;
 import tn.shoppy.services.ProductService;
 import tn.shoppy.services.ShopService;
 import tn.shoppy.utils.ConnectionDB;
@@ -121,6 +122,8 @@ public class ProductController implements Initializable{
     
     @FXML
     private Button deleteProductAction;
+    @FXML
+    private Button pdf_btn;
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -393,5 +396,14 @@ public class ProductController implements Initializable{
 
         
     }
+        @FXML
+    private void pdf_btn(ActionEvent event) {
+                if (!(productTable.getItems().isEmpty())) {
+            Pdf.PdfListeProduits();
+                    System.out.println("ouui");
+
     
+    }
+
+}
 }

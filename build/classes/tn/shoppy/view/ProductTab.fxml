@@ -96,6 +96,7 @@
                         <Insets top="20.0" />
                     </padding>
                <children>
+                  <Button fx:id="pdf_btn" mnemonicParsing="false" onAction="#pdf_btn" text="Print PDF" />
                   <Button mnemonicParsing="false" onAction="#detailPAction" prefHeight="25.0" prefWidth="126.0" text="Détails" />
                </children>
                 </HBox>

@@ -8,6 +8,10 @@ import java.sql.Statement;
 import java.time.Clock;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import tn.shoppy.model.Product;
 import tn.shoppy.utils.ConnectionDB;
 
@@ -20,7 +24,7 @@ public class ProductService {
     private static ProductService productServiceInstance;
     private final Connection cn = ConnectionDB.getCnx();
     
-    private ProductService(){}
+    ProductService(){}
        
     public static ProductService getInstance() {   //Singleton Design Pattern
         if (productServiceInstance==null)
@@ -222,5 +226,19 @@ public class ProductService {
             result += cs.findCategoryNameByID(elem) +"  ";  
         }
         return result;
+    }
+    
+        public ResultSet pdf() {
+
+        ObservableList<Product> ob = FXCollections.observableArrayList();
+        PreparedStatement pt;
+        ResultSet rs=null ;
+        try {
+            pt = cn.prepareStatement("select * from Produit");
+            rs = pt.executeQuery();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rs;
     }
 }
