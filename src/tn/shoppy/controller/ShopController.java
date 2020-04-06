@@ -1,15 +1,23 @@
 package tn.shoppy.controller;
 
+import tn.shoppy.controller.SellerInterface.SellerInterfaceController;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -21,8 +29,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import tn.shoppy.model.Shop;
 import tn.shoppy.services.ExcelExport;
 import tn.shoppy.services.ShopService;
@@ -222,7 +232,9 @@ public class ShopController implements Initializable {
                 if(inputCheck.testNumberInput(newTaxID) && inputCheck.testTextInput(newName))
                 {
                     shop.setNom(newName);
-                    shop.setId_vendeur(updateMagasinSellerComboBox.getValue());
+                    if(updateMagasinSellerComboBox.getValue() != null){
+                       shop.setId_vendeur(updateMagasinSellerComboBox.getValue()); 
+                    }                
                     shop.setMatricule_fiscal(Integer.parseInt(newTaxID));
                     ShopService shopService = ShopService.getInstance();
                     shopService.updateShop(shop);
@@ -309,13 +321,27 @@ public class ShopController implements Initializable {
     
     public void switchToShopInterfaceAction()
     {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/tn/shoppy/view/SellerInterface/SellerInterface.fxml"));
+        
         Shop shop = (Shop) shopTable.getSelectionModel().getSelectedItem();        
         if(shop != null)
         {
             Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir passer à la page de "+ shop.getNom()+" ?",ButtonType.YES,ButtonType.NO);
             a.showAndWait();
             if(a.getResult()==ButtonType.YES){
-                System.out.println("TODO: Afficher la page du magasin.");
+                try {
+                    Parent root = loader.load();
+                    SellerInterfaceController sic = loader.getController();
+                    sic.setSessionShop(shop);
+                    Scene scene = new Scene(root);
+                    Stage sellerInterface = new Stage();
+                    sellerInterface.setTitle("Shoppy Desktop");
+                    sellerInterface.getIcons().add(new Image(getClass().getResourceAsStream("/tn/shoppy/resources/images/logo.png")));
+                    sellerInterface.setScene(scene);
+                    sellerInterface.show();
+                } catch (IOException ex) {
+                    Logger.getLogger(ShopController.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 a.close();
             }else{
             a.close();
@@ -327,6 +353,5 @@ public class ShopController implements Initializable {
             a.showAndWait();            
         }
 
-    }
-    
+    }    
 }

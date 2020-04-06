@@ -1,5 +1,6 @@
-package tn.shoppy.controller;
+package tn.shoppy.controller.SellerInterface;
 
+import tn.shoppy.controller.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -11,6 +12,7 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -38,8 +40,9 @@ import tn.shoppy.utils.InputCheck;
  *
  * @author Haroun
  */
-public class OfferController implements Initializable {
+public class SellerOfferController implements Initializable {
 
+    private Shop sessionShop;
     Connection cnx = ConnectionDB.getCnx();
 
     /**
@@ -126,7 +129,7 @@ public class OfferController implements Initializable {
             searchOfferLabel.setText("Aucun résultat.");
             offerTable.setPlaceholder(new Label("Il n'y a aucune offre dans la base de données. Veuillez en rajouter! "));
         }
-        
+             
         List<Shop> shopList = new ArrayList<>();
         ShopService shopService = ShopService.getInstance();
         shopList = shopService.getAllShops();    
@@ -147,6 +150,20 @@ public class OfferController implements Initializable {
         Tooltip.install(offerHelpImage, helpTooltip);
     }
 
+    
+    /**
+     * Session shop operations
+     */
+    public void setSessionShop(Shop shop)
+    {
+        this.sessionShop = shop;
+    }
+    
+    public Shop getSessionShop()
+    {
+        return this.sessionShop;
+    }
+    
     //********************* C **************************//
     @FXML
     public void addOfferAction() {

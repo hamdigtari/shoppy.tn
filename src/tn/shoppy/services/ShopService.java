@@ -243,7 +243,54 @@ public class ShopService {
         }
     }
     
-        public List<Shop> findShopsByID(String ID) {
+    public boolean uniqueTaxID(int taxID)
+    {
+        List<Shop> list = new ArrayList<>();
+        int count = 0;
+        String query = "SELECT * FROM Magasin WHERE matricule_fiscal=" + taxID+";";
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) {
+                count++;
+            }
+            if (count == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            return false;
+        }
+    }
+    
+    public Shop findOneShopBySellerID(int sellerId)
+    {
+        String query = "SELECT * FROM Magasin WHERE id_vendeur = " + sellerId;
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()) 
+            {
+                Shop r = new Shop();
+                r.setId(rs.getInt(1));
+                r.setId_vendeur(rs.getInt(2));
+                r.setNom(rs.getString(3));
+                r.setTaille_stock(rs.getInt(4));
+                r.setMatricule_fiscal(rs.getInt(5));
+                return r;
+            }
+            return null;
+        } 
+        catch (SQLException ex) 
+        {
+            System.err.println(ex.getMessage());
+            return null;
+        }
+    }
+    
+    public List<Shop> findShopsByID(String ID) {
         List<Shop> list = new ArrayList<>();
         int count = 0;
         String query = "SELECT * FROM Magasin WHERE convert(id,CHARACTER) like '%" + ID + "%'";

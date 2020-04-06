@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="618.0" prefWidth="1058.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.shoppy.controller.OfferController">
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="618.0" prefWidth="1058.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.shoppy.controller.SellerInterface.SellerOfferController">
     <children>
         <Pane prefHeight="51.0" prefWidth="800.0">
             <children>
@@ -102,7 +102,7 @@
         </VBox>
         <ImageView fx:id="offerHelpImage" fitHeight="32.0" fitWidth="32.0" layoutX="1002.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../resources/images/help.png" />
+                <Image url="@../../resources/images/help.png" />
             </image>
         </ImageView>
         <Button fx:id="exportExcelShopButton" layoutX="849.0" layoutY="535.0" mnemonicParsing="false" onAction="#exportToExcelAction" prefHeight="30.0" prefWidth="170.0" text="Exporter vers Excel" />

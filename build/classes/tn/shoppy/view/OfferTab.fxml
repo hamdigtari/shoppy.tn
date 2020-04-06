@@ -14,7 +14,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
@@ -32,11 +31,11 @@
             <columns>
                 <TableColumn fx:id="offerIdColumn" prefWidth="60.0" text="ID" />
                 <TableColumn fx:id="offerNameColumn" prefWidth="104.0" text="Nom" />
-            <TableColumn fx:id="offerShopColumn" prefWidth="105.0" text="Magasin offrant" />
-            <TableColumn fx:id="offerRateColumn" prefWidth="75.0" text="Taux" />
-            <TableColumn fx:id="offerDescriptionColumn" prefWidth="248.0" text="Description" />
-            <TableColumn fx:id="offerStartDateColumn" minWidth="0.0" prefWidth="108.0" text="Début" />
-            <TableColumn fx:id="offerEndDateColumn" prefWidth="101.0" text="Fin" />
+                <TableColumn fx:id="offerShopColumn" prefWidth="105.0" text="Magasin offrant" />
+                <TableColumn fx:id="offerRateColumn" prefWidth="75.0" text="Taux" />
+                <TableColumn fx:id="offerDescriptionColumn" prefWidth="248.0" text="Description" />
+                <TableColumn fx:id="offerStartDateColumn" minWidth="0.0" prefWidth="108.0" text="Début" />
+                <TableColumn fx:id="offerEndDateColumn" prefWidth="101.0" text="Fin" />
             </columns>
         </TableView>
         <VBox layoutX="811.0" layoutY="51.0" prefHeight="499.0" prefWidth="245.0">
@@ -99,18 +98,15 @@
                         </TitledPane>
                     </panes>
                 </Accordion>
-                <HBox alignment="CENTER" prefHeight="39.0" prefWidth="802.0" spacing="10.0">
-                    <padding>
-                        <Insets top="20.0" />
-                    </padding>
-                </HBox>
             </children>
         </VBox>
-        <Button fx:id="deleteOfferButton" layoutX="867.0" layoutY="555.0" mnemonicParsing="false" onAction="#deleteOfferAction" text="Supprimer la selection" />
-      <ImageView fx:id="offerHelpImage" fitHeight="32.0" fitWidth="32.0" layoutX="1002.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../resources/images/help.png" />
-         </image>
-      </ImageView>
+        <ImageView fx:id="offerHelpImage" fitHeight="32.0" fitWidth="32.0" layoutX="1002.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../resources/images/help.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="exportExcelShopButton" layoutX="849.0" layoutY="535.0" mnemonicParsing="false" onAction="#exportToExcelAction" prefHeight="30.0" prefWidth="170.0" text="Exporter vers Excel" />
+        <Button fx:id="deleteOfferButton" layoutX="849.0" layoutY="574.0" mnemonicParsing="false" onAction="#deleteOfferAction" prefHeight="30.0" prefWidth="170.0" text="Supprimer la selection" />
+
     </children>
 </AnchorPane>
