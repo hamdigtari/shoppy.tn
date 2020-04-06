@@ -75,8 +75,6 @@ public class SellerProductController implements Initializable{
     private TextField addProductBrandField;
     @FXML
     private TextArea addProductDescriptionArea;
-    @FXML
-    private ComboBox<Shop> addProductShopComboBox;
     
     @FXML
     private TextField updateProductNameField;
@@ -88,13 +86,10 @@ public class SellerProductController implements Initializable{
     private TextField updateProductBrandField;
     @FXML
     private TextArea updateProductDescriptionArea;
-    @FXML
-    private ComboBox<Shop> updateProductShopComboBox;
     
     @FXML
     private Label searchProductLabel;
     private ObservableList<Product> productData = FXCollections.observableArrayList();
-    private ObservableList<Shop> shopData = FXCollections.observableArrayList();
 
     @FXML
     private TextField searchProductField;
@@ -103,13 +98,25 @@ public class SellerProductController implements Initializable{
     private ImageView productHelpImage;
     private Tooltip helpTooltip;
     
+    private Shop sessionShop;
+    
+    public SellerProductController(Shop shop){
+        this.sessionShop = shop;
+    }
+    
+    public SellerProductController()
+    {
+        this.sessionShop = new Shop();
+        this.sessionShop.setId(11);
+    }
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         productTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         
         List<Product> productList = new ArrayList<>();
         ProductService productService = ProductService.getInstance();
-        productList = productService.getAllProducts();
+        productList = productService.getAllProductsForOneShop(sessionShop);
         productData.clear();
         if (productList != null) {
             productData.addAll(productList);
@@ -132,16 +139,6 @@ public class SellerProductController implements Initializable{
             productTable.setPlaceholder(new Label("Il n'y a aucun produit dans la base de données. Veuillez en rajouter! "));
         }
         
-        List<Shop> shopList = new ArrayList<>();
-        ShopService shopService = ShopService.getInstance();
-        shopList = shopService.getAllShops();    
-        shopData.clear();
-        if (shopList != null) {
-            shopData.addAll(shopList);
-            addProductShopComboBox.getItems().addAll(shopData);
-            updateProductShopComboBox.getItems().addAll(shopData);
-        }
-
         helpTooltip = new Tooltip("Vous êtes dans l'onglet de getion des produits.\n"
                 + "Ici, vous pouvez visualiser la liste des produits des partenaires de Shoppy,\n "
                 + "en rechercher par identifiant, nom et biensûr par identifiant de magasin.\n"
@@ -158,7 +155,6 @@ public class SellerProductController implements Initializable{
     public void addProductAction() throws SQLException {
         ProductService productService = ProductService.getInstance();
         InputCheck inputCheck = InputCheck.getInstance();
-        int shopID = 2;
         String name = addProductNameField.getText();
         String quantity = addProductQuantityField.getText();
         String description = addProductDescriptionArea.getText();
@@ -171,11 +167,7 @@ public class SellerProductController implements Initializable{
                 && (inputCheck.testNumberInput(quantity)) && inputCheck.testTextInput(brand) ) {
             Double priceDouble = Double.parseDouble(price);
             Integer quantityInt = Integer.parseInt(quantity);
-            if(addProductShopComboBox.getValue()!= null)
-            {
-                shopID = addProductShopComboBox.getValue().getId();
-            }
-            Product p = new Product(0,shopID,name,quantityInt,description,priceDouble,brand);
+            Product p = new Product(0,sessionShop.getId(),name,quantityInt,description,priceDouble,brand);
             System.out.println(p);
             result = productService.addProduct(p) ;
         } 
@@ -199,7 +191,7 @@ public class SellerProductController implements Initializable{
     public void refreshTableData() {
         List<Product> productList = new ArrayList<>();
         ProductService productService = ProductService.getInstance();
-        productList = productService.getAllProducts();
+        productList = productService.getAllProductsForOneShop(sessionShop);
         productData.clear();
         if (productList != null) {
             productData.addAll(productList);
@@ -237,8 +229,7 @@ public class SellerProductController implements Initializable{
         updateProductQuantityField.setText(String.valueOf(product.getQuantite()));
         updateProductDescriptionArea.setText(product.getDescription());
         updateProductPriceField.setText(String.valueOf(product.getPrix()));
-        updateProductBrandField.setText(product.getMarque());
-        updateProductShopComboBox.setValue(shopService.findOneShopByID(product.getId_magasin()));    
+        updateProductBrandField.setText(product.getMarque());    
         
     }
     
@@ -255,7 +246,6 @@ public class SellerProductController implements Initializable{
             String newDescription = updateProductDescriptionArea.getText();
             String newPrice = updateProductPriceField.getText();  
             String newBrand = updateProductBrandField.getText();  
-            int newShopID = updateProductShopComboBox.getValue().getId();
             
             Alert a=new Alert(Alert.AlertType.CONFIRMATION,"Êtes-vous sûr(e) de vouloir modifier le produit: "+selection.getNom()+" de la base de données ?",ButtonType.YES,ButtonType.NO);
             a.showAndWait();
@@ -269,7 +259,7 @@ public class SellerProductController implements Initializable{
                     product.setQuantite(Integer.parseInt(newQuantity));
                     product.setDescription(newDescription);
                     product.setPrix(Double.parseDouble(newPrice));
-                    product.setId_magasin(newShopID);
+                    product.setId_magasin(sessionShop.getId());
                     product.setUpdated_at(new java.sql.Date(System.currentTimeMillis()));
 
                     

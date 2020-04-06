@@ -1,6 +1,5 @@
 package tn.shoppy.controller.SellerInterface;
 
-import tn.shoppy.controller.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -12,11 +11,9 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
@@ -66,7 +63,6 @@ public class SellerOfferController implements Initializable {
     private TableColumn<Offer, Date> offerEndDateColumn;
 
     private ObservableList<Offer> offerData = FXCollections.observableArrayList();
-    private ObservableList<Shop> shopData = FXCollections.observableArrayList();
 
     @FXML
     private TextField addOfferNameField;
@@ -78,8 +74,6 @@ public class SellerOfferController implements Initializable {
     private DatePicker addOfferStartDatePicker;
     @FXML
     private DatePicker addOfferEndDatePicker;
-//    @FXML
-//    private ComboBox<Shop> addOfferShopComboBox;
 
     @FXML
     private TextField updateOfferNameField;
@@ -91,8 +85,6 @@ public class SellerOfferController implements Initializable {
     private DatePicker updateOfferStartDatePicker;
     @FXML
     private DatePicker updateOfferEndDatePicker;
-//    @FXML
-//    private ComboBox<Shop> updateOfferShopComboBox;
 
     @FXML
     private TextField searchOfferField;
@@ -114,7 +106,7 @@ public class SellerOfferController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         offerTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
+        System.out.println(sessionShop);
         addOfferStartDatePicker.setValue(Optional.ofNullable(addOfferStartDatePicker.getValue()).orElse(LocalDate.now()));
         addOfferEndDatePicker.setValue(Optional.ofNullable(addOfferEndDatePicker.getValue()).orElse(LocalDate.now()));
 
@@ -137,16 +129,6 @@ public class SellerOfferController implements Initializable {
         } else {
             searchOfferLabel.setText("Aucun résultat.");
             offerTable.setPlaceholder(new Label("Il n'y a aucune offre dans la base de données. Veuillez en rajouter! "));
-        }
-
-        List<Shop> shopList = new ArrayList<>();
-        ShopService shopService = ShopService.getInstance();
-        shopList = shopService.getAllShops();
-        shopData.clear();
-        if (shopList != null) {
-            shopData.addAll(shopList);
-//            addOfferShopComboBox.getItems().addAll(shopData);
-//            updateOfferShopComboBox.getItems().addAll(shopData);
         }
 
         helpTooltip = new Tooltip("Vous êtes dans l'onglet de getion des offres.\n"
@@ -176,7 +158,6 @@ public class SellerOfferController implements Initializable {
     public void addOfferAction() {
         OfferService offerService = OfferService.getInstance();
         InputCheck inputCheck = InputCheck.getInstance();
-        int shopID = 0;
         String name = addOfferNameField.getText();
         String rate = addOfferRateField.getText();
         String description = addOfferDescriptionArea.getText();
@@ -249,7 +230,6 @@ public class SellerOfferController implements Initializable {
         updateOfferDescriptionArea.setText(offer.getDescription());
         updateOfferStartDatePicker.setValue(LocalDate.parse(offer.getDate_debut().toString()));
         updateOfferEndDatePicker.setValue(LocalDate.parse(offer.getDate_fin().toString()));
-//        updateOfferShopComboBox.setValue(shopService.findOneShopByID(offer.getId_magasin()));
 
     }
 
@@ -265,7 +245,6 @@ public class SellerOfferController implements Initializable {
             String newDescription = updateOfferDescriptionArea.getText();
             Date newStartDate = Date.valueOf(updateOfferStartDatePicker.getValue());
             Date newEndDate = Date.valueOf(updateOfferEndDatePicker.getValue());
-//            int newShopID = updateOfferShopComboBox.getValue().getId();
 
             Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Êtes-vous sûr(e) de vouloir modifier le magasin: " + selection.getNom() + " de la base de données ?", ButtonType.YES, ButtonType.NO);
             a.showAndWait();
@@ -349,7 +328,7 @@ public class SellerOfferController implements Initializable {
 
     public void exportToExcelAction() {
         ExcelExport exporter = new ExcelExport();
-        String fileName = "Offer table - " + LocalDate.now().toString();
+        String fileName = sessionShop.getNom()+" - Offer table - " + LocalDate.now().toString();
         exporter.export(offerTable, fileName);
     }
 }

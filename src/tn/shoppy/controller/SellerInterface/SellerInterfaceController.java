@@ -22,14 +22,17 @@ public class SellerInterfaceController implements Initializable {
     private Shop sessionShop;
     Connection cnx = ConnectionDB.getCnx();
     
-    /**
-     * UI attributes
-     */
-
+    public SellerInterfaceController(){
+        sessionShop = null;
+    }
+    
+    public SellerInterfaceController(Shop shop){
+        this.sessionShop = shop;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//         while seesionShop == null disable all tabs
+        System.out.println(sessionShop);
     }
 
     /**
@@ -42,16 +45,14 @@ public class SellerInterfaceController implements Initializable {
         //Setting the controller for the offer tab
         FXMLLoader offerLoader = new FXMLLoader(getClass().getResource("/tn/shoppy/view/SellerInterface/OfferTab.fxml"));
         SellerOfferController oc = new SellerOfferController(shop);
-//        oc.setSessionShop(shop);
         offerLoader.setControllerFactory(p -> oc);
 //        System.out.println(getClass().getResource("/tn/shoppy/view/SellerInterface/OfferTab.fxml"));
-        System.out.println(oc.getSessionShop());
+//        System.out.println(oc.getSessionShop());
         
         //Setting the controller for the products tab
         FXMLLoader productLoader = new FXMLLoader(getClass().getResource("/tn/shoppy/view/SellerInterface/ProductTab.fxml"));
-        SellerProductController pc = new SellerProductController();
-        oc.setSessionShop(shop);
-        productLoader.setController(pc);
+        SellerProductController pc = new SellerProductController(shop);
+        productLoader.setControllerFactory(x -> pc);
 //        System.out.println(getClass().getResource("/tn/shoppy/view/SellerInterface/ProductTab.fxml"));
 //        System.out.println(pc);
         

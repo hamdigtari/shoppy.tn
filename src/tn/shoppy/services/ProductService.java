@@ -9,6 +9,7 @@ import java.time.Clock;
 import java.util.ArrayList;
 import java.util.List;
 import tn.shoppy.model.Product;
+import tn.shoppy.model.Shop;
 import tn.shoppy.utils.ConnectionDB;
 
 /**
@@ -72,6 +73,47 @@ public class ProductService {
         }
     }
     
+    public List<Product> getAllProductsForOneShop(Shop shop) 
+    {
+        List<Product> list = new ArrayList<>();
+        int count = 0;
+        
+        String query="select * from produit where id_magasin="+shop.getId()+";";
+        try{
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(query);
+            while (rs.next()){
+                
+                Product r = new Product();
+                r.setId(rs.getInt(1));
+                r.setId_magasin(rs.getInt(2));
+                r.setNom(rs.getString(4));
+                r.setQuantite(rs.getInt(3));
+                r.setDescription(rs.getString(5));
+                r.setPrix(rs.getDouble(6));
+                r.setMarque(rs.getString(7));
+                if (findAllCategoriesByProductID(rs.getInt(1)) != null){
+                    r.getCategoriesID().addAll(findAllCategoriesByProductID(rs.getInt(1)));
+                    r.setCategoriesString(getAllCategoriesAsString(rs.getInt(1)));
+                }
+                
+                list.add(r);
+                count++;
+            }
+            if(count == 0)
+            {
+                return null;
+            }
+            else
+            {
+               return list;
+            }
+        }
+        catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+            return null;
+        }
+    }
    
     
 
