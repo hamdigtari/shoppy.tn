@@ -35,7 +35,7 @@
          </image>
       </ImageView>
       <JFXButton fx:id="btn_login" layoutX="120.0" layoutY="404.0" onAction="#AuthentificationAction" onMouseClicked="#handle" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #a89900;" text="Login" textFill="WHITE" />
-      <Label layoutX="60.0" layoutY="505.0" text="All Rights Reserved to ECOSMART +   |  Customersupport@ecosmart.tn" textFill="#a86300">
+      <Label layoutX="60.0" layoutY="505.0" text="All Rights Reserved to SHOPPY.TN  |  Customersupport@shoppy.tn" textFill="#a86300">
          <font>
             <Font size="10.0" />
          </font>

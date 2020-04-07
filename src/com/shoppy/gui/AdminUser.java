@@ -1,10 +1,13 @@
-package hamdigtar.crudAccount;
+package com.shoppy.gui;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import com.shoppy.entities.FosUser;
+import com.shoppy.services.FosUserServices;
+import hamdigtar.crudAccount.AccountService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -21,7 +24,7 @@ import java.net.URL;
 import java.util.*;
 import java.util.function.Predicate;
 
-public class Controller implements Initializable{
+public class AdminUser implements Initializable{
 
 
     @FXML
@@ -68,7 +71,7 @@ public class Controller implements Initializable{
 
     ObservableList<Account> list;
 
-    List<Account> accountList= new ArrayList<>();
+    ObservableList<FosUser> accountList;
 
 
 
@@ -114,18 +117,21 @@ public class Controller implements Initializable{
         treeTableView.setRoot(root);
         treeTableView.setShowRoot(false);
 
-        list.addAll(new Account("adel","vendor","22","Male"));
-        list.addAll(new Account("Salam","client","32","Female"));
+ //       list.addAll(new Account("adel","vendor","22","Male"));
+ //       list.addAll(new Account("Salam","client","32","Female"));
         list.addAll(new Account("Jack","admin","42","Male"));
 
 
+        FosUserServices fs = new FosUserServices();
+
         AccountService productService = AccountService.getInstance();
-        accountList = productService.getAllAccounts();
+        accountList = fs.findAll();
 
         if (accountList != null) {
 
-            for (Account acc : accountList) {
-                list.addAll(new Account(acc.getName(),acc.getJob(),acc.getPassword(),"Male"));
+            for (FosUser acc : accountList) {
+
+                list.addAll(new Account(acc.getFirstname()+" "+acc.getLastname(),fs.CheckRole(acc),acc.getEmail(),"Male"));
             }
 
 

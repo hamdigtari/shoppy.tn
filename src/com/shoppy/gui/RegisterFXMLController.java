@@ -138,7 +138,7 @@ public class RegisterFXMLController implements Initializable {
             //u.setPhone(txtphone.getText());
             fs.create(u);
             System.out.println("Ajout effectué avec succès");
-            Parent home_page_parent = FXMLLoader.load(getClass().getResource("LoginFXML.fxml"));
+            Parent home_page_parent = FXMLLoader.load(getClass().getResource("LoginFXMLv2.fxml"));
             Scene home_page_scene = new Scene(home_page_parent);
             Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             app_stage.hide(); //optional

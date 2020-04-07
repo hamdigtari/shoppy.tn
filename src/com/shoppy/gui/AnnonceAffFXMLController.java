@@ -245,7 +245,7 @@ btfb.setStyle("-fx-background-color: #4267B2; -fx-text-fill: black;");
                 public void handle(ActionEvent event) {
                     Parent homePage;
                      Annonce annonce = new Annonce();
-             String accessToken = "EAAdGfq8mIJsBAHXubUoPovefXggDw35MsanyGwIUhRF7hYS6WBZBI2unjNv7YKp9RaQYAsbMb05lYEMoX9Ga9AWui8NX0hzganGLJleRBEB4ggAKzg44j6iHVG8CsHT7dljYIPlvKJ9dTZBdhyYeOZABsTSAkmmmfiaYsFkT35vgzTPiv0byg6F0YHIrTmBS7vjOAVCOAZDZD";
+             String accessToken = "EAADIO6PBZA38BANjxRz3JTra7luVkPvX135vQTeaCvOJQEbM37D3axvdGP9MwZAoWgym3UUvSesDiZCUz5zDxT52quHuoN88vdtyzxIjRgqN8Lq9O0GOCwSw3zQEZAJIu179I5iT32WXbMbrf3O2X8mZCXtt50GdZC5npyqqLhdUHe8LUs10cMZBUmMQTXzZCZBXZCMrXrwZBLPpHPgCX5ry0BT23CQUnbfVNFef68Fh55TzioZBSrxUmEtvYEDHAGTz0ZCkZD";
             AnnonceServices ls = new AnnonceServices();
           //  Annonce loc = ls.afficherLocalUn(Annonce.getId());
             Scanner s = new Scanner(System.in);

@@ -1,12 +1,12 @@
 package hamdigtar.crudAccount;
 
+import com.shoppy.gui.Account;
 import hamdigtar.DB.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;

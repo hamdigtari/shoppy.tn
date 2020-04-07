@@ -1,4 +1,4 @@
-package hamdigtar.crudAccount;
+package com.shoppy.gui;
 
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;

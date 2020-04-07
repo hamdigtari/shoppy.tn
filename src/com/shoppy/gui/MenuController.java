@@ -82,7 +82,7 @@ public class MenuController implements Initializable {
          utilisateurs.setOnAction(ev->{
               Parent home_page_parent;
             try {
-                 AnchorPane p = FXMLLoader.load(getClass().getResource("AdminUserFXML.fxml"));
+                 AnchorPane p = FXMLLoader.load(getClass().getResource("AdminUserFXMLv2.fxml"));
                 
                    Scene home_page_scene = new Scene(p);
         Stage app_stage = (Stage) ((Node) ev.getSource()).getScene().getWindow();

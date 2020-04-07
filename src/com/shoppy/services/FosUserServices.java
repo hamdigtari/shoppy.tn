@@ -292,7 +292,8 @@ public class FosUserServices implements IFosUserServices {
 
     public String CheckRole(FosUser u) {
         String role = null;
-        if (u.getRoles().equals("a:1:{i:0;s:5:\"ADMIN\";}")) {
+        boolean isAdmin = u.getRoles().indexOf("ADMIN") !=-1? true: false;
+        if (isAdmin) {
             role = "admin";
         } else {
             role = "user";
